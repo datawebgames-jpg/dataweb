@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DATAWEB - Asesoramiento Integral</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #0a2e5c;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a2e5c, #1e5fb3);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      margin-top: 25px;
+      background: #25D366;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1da851;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #0a2e5c;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .service-card {
+      background: #f7faff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .service-card h3 {
+      color: #1e5fb3;
+      margin-bottom: 10px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    button {
+      background: #1e5fb3;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0a2e5c;
+    }
+
+    footer {
+      background: #0a2e5c;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>DATAWEB</h1>
+    <p>Tu asesor digital en gestiones, trámites y tecnología</p>
+    <a href="https://wa.me/542954320639" target="_blank" class="btn-whatsapp">💬 Pedí tu asesoramiento ahora</a>
+  </header>
+
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="services">
+      <div class="service-card">
+        <h3>Ciudadanías y Trámites</h3>
+        <p>Te ayudamos a gestionar ciudadanías (italiana, española), carpetas IDU y documentación general.</p>
+      </div>
+      <div class="service-card">
+        <h3>Pagos y Facturas</h3>
+        <p>Asesoramiento y gestión de pagos de servicios y trámites de facturación personal o comercial.</p>
+      </div>
+      <div class="service-card">
+        <h3>Asesoramiento Legal</h3>
+        <p>Conectamos con abogados, escribanías y gestorías para resolver tus trámites legales.</p>
+      </div>
+      <div class="service-card">
+        <h3>Tecnología e Insumos</h3>
+        <p>Te asesoramos en la compra de computadoras, notebooks, celulares e insumos tecnológicos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que">
+    <h2>¿Por qué elegir DATAWEB?</h2>
+    <p>✔ Atención rápida y personalizada<br>
+       ✔ Asesoramiento 100% online<br>
+       ✔ Amplia red de profesionales<br>
+       ✔ Confidencialidad y confianza</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form action="mailto:dataweb76@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Nombre" placeholder="Tu nombre" required>
+      <input type="email" name="Correo" placeholder="Tu correo electrónico" required>
+      <textarea name="Mensaje" rows="5" placeholder="Escribí tu mensaje..." required></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+    <p style="margin-top:20px;">O escribinos directamente por <a href="https://wa.me/542954320639" target="_blank">WhatsApp</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 DATAWEB | Asesoramiento Integral</p>
+    <p>📧 <a href="mailto:dataweb76@gmail.com">dataweb76@gmail.com</a> | 📱 <a href="https://wa.me/542954320639" target="_blank">+54 2954 320639</a></p>
+  </footer>
+
+</body>
+</html>

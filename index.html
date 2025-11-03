@@ -4,110 +4,129 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DATAWEB ASESORAMIENTOS</title>
-  <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas, asesoramiento tecnológico. Consultas por mail o WhatsApp." />
+  <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas y asesoramiento tecnológico. Consultas por mail o WhatsApp." />
 
-  <!-- CSS externo -->
+  <!-- Google Font (legible) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (íconos detallados, gratuitos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-p1Cm6y+f5w3x0GQXx7r0qfGk6G5p8kR2D5Hc7g6PQ1V6hF7h3z9q6Zx5sX2s9qI3yVQG2s9qI3yVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Widget Twitter/X -->
+  <!-- Twitter/X widget (para timeline embebido) -->
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 <body>
-  <!-- HEADER -->
+  <!-- ===================== HEADER ===================== -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
         <h1>DATAWEB ASESORAMIENTOS</h1>
-        <p class="reseña">Soluciones digitales y ciudadanías europeas — trámites, pagos, gestoría y asesoramiento tecnológico para hacerte la vida más simple.</p>
+        <p class="subtitle">Soluciones digitales y ciudadanías europeas — hacemos tu vida más simple</p>
       </div>
 
-      <nav class="main-nav" aria-label="Navegación principal">
+      <nav class="main-nav" aria-label="Menú principal">
         <a href="#servicios">Servicios</a>
         <a href="#consultas">Consultas</a>
         <a href="#noticias">Noticias</a>
-        <a href="#quienes" id="link-quienes">Quiénes somos</a>
+        <a href="#quienes">Quiénes somos</a>
       </nav>
     </div>
   </header>
 
-  <!-- LAYOUT: contenedor principal con centro y sidebar derecho -->
+  <!-- ===================== PAGE LAYOUT: CENTER + SIDEBAR ===================== -->
   <div class="page container">
-    <!-- CENTRO: ICONOS DE SERVICIOS -->
+    <!-- ---------- CENTRO: ICONOS DE SERVICIOS ---------- -->
     <main class="center">
-      <section id="servicios" class="services">
+      <section id="servicios" class="services card">
         <h2>Nuestros servicios</h2>
-        <p class="muted">Tocá un ícono para abrir el formulario y consultarnos por mail o WhatsApp.</p>
+        <p class="muted">Tocá un ícono para abrir el formulario (modal) y elegir enviar por mail o por WhatsApp.</p>
 
         <!-- GRID ICONOS -->
-        <div class="grid-icons">
+        <div class="grid-icons" id="grid-icons">
+          <!-- Ciudadanías -->
           <button class="icon-card" data-service="Ciudadanías">
-            <div class="icon">🌍</div><div class="label">Ciudadanías</div>
+            <i class="fa-solid fa-globe icon-fa"></i>
+            <div class="label">Ciudadanías</div>
           </button>
 
-          <button class="icon-card" data-service="Pago de facturas (municipales, nacionales)">
-            <div class="icon">💳</div><div class="label">Pago de facturas</div>
+          <!-- Pagos y facturas -->
+          <button class="icon-card" data-service="Pago de facturas (municipales y nacionales)">
+            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i>
+            <div class="label">Pago de facturas</div>
           </button>
 
+          <!-- ARCA -->
           <button class="icon-card" data-service="ARCA">
-            <div class="icon">🏛️</div><div class="label">ARCA</div>
+            <i class="fa-solid fa-landmark icon-fa"></i>
+            <div class="label">ARCA</div>
           </button>
 
+          <!-- Compras y Ventas -->
           <button class="icon-card" data-service="Compras y Ventas">
-            <div class="icon">🛒</div><div class="label">Compras y Ventas</div>
+            <i class="fa-solid fa-cart-shopping icon-fa"></i>
+            <div class="label">Compras y Ventas</div>
           </button>
 
+          <!-- Asesoramiento tecnológico -->
           <button class="icon-card" data-service="Asesoramiento tecnológico">
-            <div class="icon">💻</div><div class="label">Asesoramiento tecnológico</div>
+            <i class="fa-solid fa-laptop-code icon-fa"></i>
+            <div class="label">Asesoramiento tech</div>
           </button>
 
+          <!-- Otros trámites -->
           <button class="icon-card" data-service="Otros trámites">
-            <div class="icon">📄</div><div class="label">Otros trámites</div>
+            <i class="fa-solid fa-file-lines icon-fa"></i>
+            <div class="label">Otros trámites</div>
           </button>
         </div>
       </section>
 
-      <!-- QUIÉNES SOMOS (sección que puede abrirse o anclarse) -->
-      <section id="quienes" class="quienes card">
+      <!-- ---------- QUIÉNES SOMOS ---------- -->
+      <section id="quienes" class="card quienes">
         <h3>Quiénes somos</h3>
-        <p>En <strong>DATAWEB Asesoramientos</strong> nos ocupamos de que tus trámites sean sencillos: ciudadanías, gestorías, pagos, asesoramiento tecnológico, compras y ventas. <strong>Garantía</strong>: gestionamos los pasos para que vos ganes tiempo y tranquilidad. Trabajamos con transparencia y comunicación durante todo el proceso.</p>
+        <p>En <strong>DATAWEB Asesoramientos</strong> nos dedicamos a gestionar trámites y asesorar en ciudadanías, pagos, compras/ventas y tecnología. 
+          Ofrecemos comunicación clara, seguimiento puntual y la garantía de gestionar para que ganes tiempo y tranquilidad.</p>
       </section>
 
-      <!-- NOTICIAS (resumen abajo del centro) -->
-      <section id="noticias" class="news card">
+      <!-- ---------- NOTICIAS CENTRALES (resumen) ---------- -->
+      <section id="noticias" class="card news">
         <h3>Titulares locales</h3>
-        <div id="news-summary">Cargando titulares...</div>
+        <div id="news-summary">Cargando titulares locales...</div>
       </section>
     </main>
 
-    <!-- SIDEBAR DERECHO FIJO -->
-    <aside class="sidebar" aria-label="Panel derecho - Clima, noticias y redes">
-      <!-- CLIMA -->
+    <!-- ---------- SIDEBAR DERECHO (fijo) ---------- -->
+    <aside class="sidebar" aria-label="Panel derecho - clima, noticias y redes">
+      <!-- Clima -->
       <div class="card" id="widget-clima">
         <h4>🌤️ Clima</h4>
         <div id="clima-content">Cargando clima...</div>
       </div>
 
-      <!-- RESUMEN NOTICIAS LOCALES -->
+      <!-- Noticias locales (lista) -->
       <div class="card">
-        <h4>🗞️ Noticias localizadas</h4>
+        <h4>🗞️ Noticias locales</h4>
         <div id="news-list">Cargando noticias...</div>
       </div>
 
-      <!-- REDES / CONTADOR VISITAS -->
+      <!-- Redes + contador -->
       <div class="card">
         <h4>🔗 Nuestras redes</h4>
         <div class="social-icons">
-          <!-- iconos que abren la pagina de la red en nueva pestaña -->
-          <a href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener" class="social" title="Facebook">f</a>
-          <a href="https://twitter.com/lanacion" target="_blank" rel="noopener" class="social" title="X / Twitter">x</a>
-          <a href="https://discord.gg/t7pZVVP8B3" target="_blank" rel="noopener" class="social" title="Discord">d</a>
+          <a class="social" href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="social" href="https://twitter.com/lanacion" target="_blank" rel="noopener" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a class="social" href="https://discord.gg/t7pZVVP8B3" target="_blank" rel="noopener" title="Discord"><i class="fa-brands fa-discord"></i></a>
         </div>
+
         <div class="visits">
           <strong>Visitas (este navegador):</strong> <span id="visit-count">0</span>
         </div>
       </div>
 
-      <!-- MINI WIDGET X (timeline) -->
+      <!-- Mini timeline X -->
       <div class="card">
         <h4>Últimos de X</h4>
         <a class="twitter-timeline" data-height="300" href="https://twitter.com/lanacion">Tweets by La Nación</a>
@@ -115,45 +134,39 @@
     </aside>
   </div>
 
-  <!-- FOOTER -->
+  <!-- ========== FOOTER ========== -->
   <footer class="site-footer">
     <div class="container">
-      <div class="foot-left">
-        <p>✉️ <a href="mailto:dataweb76@gmail.com">dataweb76@gmail.com</a> • 📱 <a href="https://wa.me/542954320639">+54 2954 320639</a></p>
-      </div>
-      <div class="foot-right">
-        <a href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener">Facebook</a> ·
-        <a href="https://discord.gg/t7pZVVP8B3" target="_blank" rel="noopener">Discord</a>
-      </div>
+      <div class="left">✉️ <a href="mailto:dataweb76@gmail.com">dataweb76@gmail.com</a> • 📱 <a href="https://wa.me/542954320639" target="_blank">+54 2954 320639</a></div>
+      <div class="right small">© 2025 DATAWEB Asesoramientos — Soluciones digitales y ciudadanías europeas</div>
     </div>
   </footer>
 
-  <!-- MODAL (aparece al clickear un icono) -->
+  <!-- ========== MODAL (clásico con sombra) ========== -->
   <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-panel">
-      <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+    <div class="modal-panel" role="document">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
       <h3 id="modal-title">Consulta</h3>
-      <p id="modal-sub" class="muted">Elegí enviar por mail (Formspree) o por WhatsApp.</p>
+      <p id="modal-sub" class="muted">Elegí enviar por mail o por WhatsApp.</p>
 
-      <!-- FORMULARIO DENTRO DEL MODAL -->
       <form id="modal-form" class="modal-form" action="https://formspree.io/f/xqagjovo" method="POST">
-        <!-- campo oculto con el servicio seleccionado -->
-        <input type="hidden" name="servicio" id="form-servicio" value="">
+        <input type="hidden" name="servicio" id="form-servicio" value="Consulta general" />
+
         <label for="m-nombre">Nombre completo</label>
-        <input id="m-nombre" name="nombre" type="text" required>
+        <input id="m-nombre" name="nombre" type="text" required />
 
         <label for="m-email">Correo electrónico</label>
-        <input id="m-email" name="email" type="email" required>
+        <input id="m-email" name="email" type="email" required />
 
         <label for="m-wa">WhatsApp (opcional)</label>
-        <input id="m-wa" name="whatsapp" type="text" placeholder="+54...">
+        <input id="m-wa" name="whatsapp" type="text" placeholder="+54..." />
 
         <label for="m-mensaje">Mensaje</label>
         <textarea id="m-mensaje" name="mensaje" rows="4" required></textarea>
 
         <div class="modal-actions">
           <button type="submit" class="btn primary">Enviar por mail</button>
-          <button type="button" id="send-wa" class="btn whatsapp">Enviar por WhatsApp</button>
+          <button type="button" id="send-wa" class="btn whatsapp"><i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp</button>
         </div>
 
         <div id="modal-status" class="form-status" aria-live="polite"></div>
@@ -161,16 +174,17 @@
     </div>
   </div>
 
-  <!-- WHATSAPP FLOTANTE CON AVATAR -->
+  <!-- ========== WHATSAPP FLOTANTE ========== -->
   <a id="wa-float" class="whatsapp-float" href="https://wa.me/542954320639" target="_blank" rel="noopener" aria-label="WhatsApp">
     <span class="avatar">💁‍♀️</span>
     <span class="wa-label">Consultanos</span>
   </a>
 
-  <!-- SCRIPTS -->
+  <!-- Script principal -->
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

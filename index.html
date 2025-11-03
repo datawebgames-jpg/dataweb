@@ -12,10 +12,6 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Leaflet (mapa sin API key) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -43,33 +39,53 @@
     <main class="center">
       <section id="servicios" class="services card">
         <h2>Nuestros servicios</h2>
-        <p class="muted">Tocá un ícono para abrir el formulario (modal). Podés enviar por email o WhatsApp.</p>
+        <p class="muted">Tocá un ícono para abrir el formulario (modal). Podés enviar por correo o WhatsApp.</p>
 
         <div class="grid-icons" id="grid-icons">
           <button class="icon-card" data-service="Ciudadanías">
-            <i class="fa-solid fa-globe icon-fa"></i><div class="label">Ciudadanías</div>
+            <i class="fa-solid fa-globe icon-fa"></i>
+            <div class="label">Ciudadanías</div>
           </button>
 
           <button class="icon-card" data-service="Pago de facturas (municipales y nacionales)">
-            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i><div class="label">Pago de facturas</div>
+            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i>
+            <div class="label">Pago de facturas</div>
           </button>
 
           <button class="icon-card" data-service="ARCA">
-            <i class="fa-solid fa-landmark icon-fa"></i><div class="label">ARCA</div>
+            <i class="fa-solid fa-landmark icon-fa"></i>
+            <div class="label">ARCA</div>
           </button>
 
           <button class="icon-card" data-service="Compras y Ventas">
-            <i class="fa-solid fa-cart-shopping icon-fa"></i><div class="label">Compras y Ventas</div>
+            <i class="fa-solid fa-cart-shopping icon-fa"></i>
+            <div class="label">Compras y Ventas</div>
           </button>
 
           <button class="icon-card" data-service="Asesoramiento tecnológico">
-            <i class="fa-solid fa-laptop-code icon-fa"></i><div class="label">Asesoramiento tecnológico</div>
+            <i class="fa-solid fa-laptop-code icon-fa"></i>
+            <div class="label">Asesoramiento tecnológico</div>
           </button>
 
           <button class="icon-card" data-service="Otros trámites">
-            <i class="fa-solid fa-file-lines icon-fa"></i><div class="label">Otros trámites</div>
+            <i class="fa-solid fa-file-lines icon-fa"></i>
+            <div class="label">Otros trámites</div>
           </button>
         </div>
+
+        <!-- Sección de compras/ventas debajo de los iconos -->
+        <div class="sell-buy card sellbuy">
+          <h3>Compras y Ventas — ¿Querés ayuda?</h3>
+          <p>
+            ¿Deseás comprar en Mercado Pago, Temu, Tiendamia u otras tiendas online? Dejá tu consulta y te asesoramos para comprar de forma segura.
+            ¿Querés vender algo que tenés en tu casa o comercio? Envíanos fotos, cuánto pedís y nosotros te ayudamos a venderlo.
+          </p>
+          <div class="sellbuy-actions">
+            <button id="btn-consulta" class="btn primary open-modal">Enviar mi consulta o producto</button>
+            <small class="muted">Al hacer clic se abrirá el formulario para que adjuntes la información.</small>
+          </div>
+        </div>
+
       </section>
 
       <!-- QUIÉNES SOMOS -->
@@ -78,12 +94,11 @@
         <p>En <strong>DATAWEB Asesoramientos</strong> gestionamos trámites (ciudadanías, pagos, gestoría, asesoría tecnológica, ventas/compras). Comunicación clara, seguimiento puntual y la garantía de gestionar para que ganes tiempo y seguridad.</p>
       </section>
 
-      <!-- NOTICIAS (resumen) -->
+      <!-- NOTICIAS (resumen) + efemérides -->
       <section id="noticias" class="card news">
-        <h3>Titulares locales</h3>
-        <div id="news-summary">Cargando titulares locales...</div>
+        <h3>Titulares principales (Argentina)</h3>
+        <div id="news-summary">Cargando titulares...</div>
 
-        <!-- EFEMÉRIDES -->
         <h4 style="margin-top:14px">📅 Efemérides del día</h4>
         <div id="efemerides">Cargando efemérides...</div>
       </section>
@@ -103,40 +118,10 @@
         <div id="dolar-content">Cargando cotización...</div>
       </div>
 
-      <!-- TRÁNSITO -->
-      <div class="card" id="widget-transito">
-        <h4>🚗 Tránsito</h4>
-        <div id="transito-content">Cargando tránsito...</div>
-      </div>
-
       <!-- FARMACIAS -->
       <div class="card" id="widget-farmacias">
         <h4>💊 Farmacias de turno</h4>
         <div id="farmacias-content">Cargando farmacias...</div>
-      </div>
-
-      <!-- LOCALES MERCADO PAGO (MAPA) -->
-      <div class="card" id="widget-mercadopago">
-        <h4>🏪 Locales que aceptan Mercado Pago</h4>
-        <div id="mp-list">Cargando locales...</div>
-        <div id="mp-map" style="height:220px; margin-top:10px; border-radius:8px; overflow:hidden;"></div>
-      </div>
-
-      <!-- TELEFONOS -->
-      <div class="card" id="widget-telefonos">
-        <h4>📞 Teléfonos útiles</h4>
-        <ul id="telefonos-content">
-          <li>Policía: <strong>101</strong></li>
-          <li>Bomberos: <strong>100</strong></li>
-          <li>Ambulancia/Salud: <strong>107</strong></li>
-          <li>Emergencias Viales: <strong>103</strong></li>
-        </ul>
-      </div>
-
-      <!-- NOTICIAS (lista) -->
-      <div class="card">
-        <h4>🗞️ Noticias locales</h4>
-        <div id="news-list">Cargando noticias...</div>
       </div>
 
       <!-- REDES + VISITAS -->
@@ -165,25 +150,36 @@
     <div class="modal-panel" role="document">
       <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
       <h3 id="modal-title">Consulta</h3>
-      <p id="modal-sub" class="muted">Elegí enviar por mail o por WhatsApp</p>
+      <p id="modal-sub" class="muted">Completá tus datos y elegí enviar por correo o por WhatsApp.</p>
 
       <form id="modal-form" class="modal-form" action="https://formspree.io/f/xqagjovo" method="POST">
+        <!-- Campos solicitados -->
         <input type="hidden" name="servicio" id="form-servicio" value="Consulta general" />
         <label for="m-nombre">Nombre completo</label>
         <input id="m-nombre" name="nombre" type="text" required />
+
         <label for="m-email">Correo electrónico</label>
         <input id="m-email" name="email" type="email" required />
-        <label for="m-wa">WhatsApp (opcional)</label>
-        <input id="m-wa" name="whatsapp" type="text" placeholder="+54..." />
-        <label for="m-mensaje">Motivo / Mensaje</label>
-        <textarea id="m-mensaje" name="mensaje" rows="4" required></textarea>
 
+        <label for="m-tel">Teléfono</label>
+        <input id="m-tel" name="telefono" type="text" placeholder="+54..." />
+
+        <label for="m-ciudad">Ciudad</label>
+        <input id="m-ciudad" name="ciudad" type="text" />
+
+        <label for="m-mensaje">Consulta / Descripción (si vas a vender, adjuntá fotos por email)</label>
+        <textarea id="m-mensaje" name="mensaje" rows="5" required></textarea>
+
+        <!-- Opciones: enviar por mail o enviar por WhatsApp -->
         <div class="modal-actions">
-          <button type="submit" class="btn primary">Enviar por mail</button>
+          <button type="submit" class="btn primary">Enviar por correo</button>
           <button type="button" id="send-wa" class="btn whatsapp"><i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp</button>
         </div>
 
         <div id="modal-status" class="form-status" aria-live="polite"></div>
+
+        <!-- confirmación visual debajo -->
+        <p id="confirmacion" class="hidden" style="margin-top:10px; font-weight:700; color:#1b8f3a;">✅ Gracias por tu consulta, te responderemos a la brevedad.</p>
       </form>
     </div>
   </div>
@@ -198,6 +194,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

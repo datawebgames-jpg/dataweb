@@ -1,5 +1,6 @@
-/* style.css - DATAWEB Asesoramientos
-   Diseño claro y legible; añade widget mapa (Leaflet) y listas
+/* style.css - versión final DATAWEB Asesoramientos
+   Diseño claro y muy legible (azul / blanco), modal clásico con sombra,
+   sección compras/ventas y panel derecho con widgets.
 */
 
 :root{
@@ -29,7 +30,7 @@ html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, 
 .page{ display:flex; gap:20px; align-items:flex-start; padding:22px 0; }
 @media (max-width:1000px){ .page{ flex-direction:column; } }
 
-/* cards / center */
+/* center */
 .center{ flex:1; }
 .card{ background:var(--card); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow); border:1px solid rgba(2,20,50,0.03); }
 
@@ -53,15 +54,16 @@ html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, 
 .icon-fa{ font-size:34px; color:var(--accent-dark); margin-bottom:10px; }
 .icon-card .label{ font-weight:700; color:var(--accent-dark); }
 
+/* sell/buy section */
+.sellbuy{ margin-top:18px; background: linear-gradient(180deg,#ffffff,#f8fbff); padding:16px; border-radius:12px; }
+.sellbuy h3{ margin:0 0 8px 0; color:var(--accent-dark); }
+.sellbuy p{ margin:0 0 12px 0; color:var(--muted); }
+.sellbuy-actions{ display:flex; align-items:center; gap:12px; }
+.open-modal{ cursor:pointer; }
+
 /* sidebar */
 .sidebar{ width:340px; position:sticky; top:86px; align-self:flex-start; display:flex; flex-direction:column; gap:14px; }
 @media (max-width:1000px){ .sidebar{ position:relative; width:100%; top:0 } }
-
-/* mp list */
-#mp-list ul{ list-style:none; padding:0; margin:0; }
-.mp-item{ display:flex; gap:10px; align-items:center; padding:8px 6px; border-radius:8px; border:1px solid rgba(2,20,50,0.04); margin-bottom:8px; background:linear-gradient(180deg,#ffffff,#fcfeff); }
-.mp-item .name{ font-weight:700; color:var(--accent-dark); }
-.mp-item .meta{ font-size:0.9rem; color:var(--muted); }
 
 /* social icons */
 .social-icons{ display:flex; gap:8px; margin-bottom:8px; }
@@ -71,27 +73,33 @@ html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, 
 .social[title="Instagram"]{ background: radial-gradient(circle at 30% 30%, #f58529, #dd2a7b) }
 .social[title="X / Twitter"]{ background:#1DA1F2 }
 
-/* efemérides */
+/* efemerides */
 #efemerides ul{ padding-left:18px; margin:6px 0 0; color:var(--muted); }
 
 /* modal */
 .modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(2,8,20,0.35); z-index:3000; padding:20px; }
 .modal.hidden{ display:none; }
-.modal-panel{ width:100%; max-width:560px; background:var(--card); border-radius:12px; padding:18px; position:relative; box-shadow:0 30px 80px rgba(2,20,50,0.18); color:var(--text); }
+.modal-panel{ width:100%; max-width:640px; background:var(--card); border-radius:12px; padding:18px; position:relative; box-shadow:0 30px 80px rgba(2,20,50,0.18); color:var(--text); }
 .modal-close{ position:absolute; right:12px; top:12px; background:transparent; border:0; font-size:22px; cursor:pointer; }
+
+/* inputs */
+.modal-form label{ display:block; margin-top:10px; font-weight:600; color:var(--accent-dark); }
 .modal-form input, .modal-form textarea{ width:100%; padding:10px; margin-top:6px; border-radius:8px; border:1px solid rgba(2,20,50,0.06); background:#fff; color:var(--text); }
 .modal-actions{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
 .btn{ padding:10px 14px; border-radius:10px; cursor:pointer; border:0; font-weight:700; }
 .btn.primary{ background:var(--accent); color:white; }
 .btn.whatsapp{ background:var(--wa); color:#032; }
 
-/* map (Leaflet) => asegurar tamaño y que quede bonito */
-.leaflet-container{ border-radius:8px; }
+/* status */
+.form-status{ margin-top:10px; font-weight:700; color:#075985; }
 
 /* whatsapp flotante */
 .whatsapp-float{ position:fixed; right:18px; bottom:18px; background:linear-gradient(90deg,var(--wa),#1cc859); color:#032; padding:10px 14px; border-radius:999px; display:flex; gap:10px; align-items:center; text-decoration:none; z-index:4000; box-shadow:0 12px 30px rgba(2,62,12,0.12); }
 .whatsapp-float .avatar{ font-size:20px; }
 .whatsapp-float .wa-label{ font-weight:800; }
+
+/* footer */
+.site-footer{ background: linear-gradient(90deg,var(--accent),var(--accent-dark)); color:white; padding:14px 0; margin-top:22px; text-align:center; }
 
 /* utilities */
 .hidden{ display:none !important; }

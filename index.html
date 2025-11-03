@@ -6,20 +6,17 @@
   <title>DATAWEB ASESORAMIENTOS</title>
   <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas y asesoramiento tecnológico. Consultas por mail o WhatsApp." />
 
-  <!-- Google Font (legible) -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (íconos detallados, gratuitos) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-p1Cm6y+f5w3x0GQXx7r0qfGk6G5p8kR2D5Hc7g6PQ1V6hF7h3z9q6Zx5sX2s9qI3yVQG2s9qI3yVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome (CDN sin integrity para evitar bloqueos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Twitter/X widget (para timeline embebido) -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 <body>
-  <!-- ===================== HEADER ===================== -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -36,89 +33,71 @@
     </div>
   </header>
 
-  <!-- ===================== PAGE LAYOUT: CENTER + SIDEBAR ===================== -->
+  <!-- PAGE LAYOUT -->
   <div class="page container">
-    <!-- ---------- CENTRO: ICONOS DE SERVICIOS ---------- -->
+    <!-- CENTRO -->
     <main class="center">
       <section id="servicios" class="services card">
         <h2>Nuestros servicios</h2>
         <p class="muted">Tocá un ícono para abrir el formulario (modal) y elegir enviar por mail o por WhatsApp.</p>
 
-        <!-- GRID ICONOS -->
         <div class="grid-icons" id="grid-icons">
-          <!-- Ciudadanías -->
           <button class="icon-card" data-service="Ciudadanías">
-            <i class="fa-solid fa-globe icon-fa"></i>
-            <div class="label">Ciudadanías</div>
+            <i class="fa-solid fa-globe icon-fa"></i><div class="label">Ciudadanías</div>
           </button>
 
-          <!-- Pagos y facturas -->
           <button class="icon-card" data-service="Pago de facturas (municipales y nacionales)">
-            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i>
-            <div class="label">Pago de facturas</div>
+            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i><div class="label">Pago de facturas</div>
           </button>
 
-          <!-- ARCA -->
           <button class="icon-card" data-service="ARCA">
-            <i class="fa-solid fa-landmark icon-fa"></i>
-            <div class="label">ARCA</div>
+            <i class="fa-solid fa-landmark icon-fa"></i><div class="label">ARCA</div>
           </button>
 
-          <!-- Compras y Ventas -->
           <button class="icon-card" data-service="Compras y Ventas">
-            <i class="fa-solid fa-cart-shopping icon-fa"></i>
-            <div class="label">Compras y Ventas</div>
+            <i class="fa-solid fa-cart-shopping icon-fa"></i><div class="label">Compras y Ventas</div>
           </button>
 
-          <!-- Asesoramiento tecnológico -->
           <button class="icon-card" data-service="Asesoramiento tecnológico">
-            <i class="fa-solid fa-laptop-code icon-fa"></i>
-            <div class="label">Asesoramiento tech</div>
+            <i class="fa-solid fa-laptop-code icon-fa"></i><div class="label">Asesoramiento tech</div>
           </button>
 
-          <!-- Otros trámites -->
           <button class="icon-card" data-service="Otros trámites">
-            <i class="fa-solid fa-file-lines icon-fa"></i>
-            <div class="label">Otros trámites</div>
+            <i class="fa-solid fa-file-lines icon-fa"></i><div class="label">Otros trámites</div>
           </button>
         </div>
       </section>
 
-      <!-- ---------- QUIÉNES SOMOS ---------- -->
       <section id="quienes" class="card quienes">
         <h3>Quiénes somos</h3>
-        <p>En <strong>DATAWEB Asesoramientos</strong> nos dedicamos a gestionar trámites y asesorar en ciudadanías, pagos, compras/ventas y tecnología. 
-          Ofrecemos comunicación clara, seguimiento puntual y la garantía de gestionar para que ganes tiempo y tranquilidad.</p>
+        <p>En <strong>DATAWEB Asesoramientos</strong> nos ocupamos de gestionar trámites y asesorar en ciudadanías, pagos, compras/ventas y tecnología. Comunicación clara, seguimiento puntual y la garantía de gestionar para que ganes tiempo y tranquilidad.</p>
       </section>
 
-      <!-- ---------- NOTICIAS CENTRALES (resumen) ---------- -->
       <section id="noticias" class="card news">
         <h3>Titulares locales</h3>
         <div id="news-summary">Cargando titulares locales...</div>
       </section>
     </main>
 
-    <!-- ---------- SIDEBAR DERECHO (fijo) ---------- -->
+    <!-- SIDEBAR DERECHO -->
     <aside class="sidebar" aria-label="Panel derecho - clima, noticias y redes">
-      <!-- Clima -->
       <div class="card" id="widget-clima">
         <h4>🌤️ Clima</h4>
         <div id="clima-content">Cargando clima...</div>
       </div>
 
-      <!-- Noticias locales (lista) -->
       <div class="card">
         <h4>🗞️ Noticias locales</h4>
         <div id="news-list">Cargando noticias...</div>
       </div>
 
-      <!-- Redes + contador -->
       <div class="card">
         <h4>🔗 Nuestras redes</h4>
         <div class="social-icons">
+          <!-- Facebook, Instagram y X (Twitter) SOLO -->
           <a class="social" href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="social" href="https://www.instagram.com" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a class="social" href="https://twitter.com/lanacion" target="_blank" rel="noopener" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-          <a class="social" href="https://discord.gg/t7pZVVP8B3" target="_blank" rel="noopener" title="Discord"><i class="fa-brands fa-discord"></i></a>
         </div>
 
         <div class="visits">
@@ -126,7 +105,6 @@
         </div>
       </div>
 
-      <!-- Mini timeline X -->
       <div class="card">
         <h4>Últimos de X</h4>
         <a class="twitter-timeline" data-height="300" href="https://twitter.com/lanacion">Tweets by La Nación</a>
@@ -134,7 +112,7 @@
     </aside>
   </div>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="left">✉️ <a href="mailto:dataweb76@gmail.com">dataweb76@gmail.com</a> • 📱 <a href="https://wa.me/542954320639" target="_blank">+54 2954 320639</a></div>
@@ -142,7 +120,7 @@
     </div>
   </footer>
 
-  <!-- ========== MODAL (clásico con sombra) ========== -->
+  <!-- MODAL (clásico con sombra) -->
   <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-panel" role="document">
       <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
@@ -151,16 +129,12 @@
 
       <form id="modal-form" class="modal-form" action="https://formspree.io/f/xqagjovo" method="POST">
         <input type="hidden" name="servicio" id="form-servicio" value="Consulta general" />
-
         <label for="m-nombre">Nombre completo</label>
         <input id="m-nombre" name="nombre" type="text" required />
-
         <label for="m-email">Correo electrónico</label>
         <input id="m-email" name="email" type="email" required />
-
         <label for="m-wa">WhatsApp (opcional)</label>
         <input id="m-wa" name="whatsapp" type="text" placeholder="+54..." />
-
         <label for="m-mensaje">Mensaje</label>
         <textarea id="m-mensaje" name="mensaje" rows="4" required></textarea>
 
@@ -174,16 +148,17 @@
     </div>
   </div>
 
-  <!-- ========== WHATSAPP FLOTANTE ========== -->
+  <!-- WHATSAPP FLOTANTE -->
   <a id="wa-float" class="whatsapp-float" href="https://wa.me/542954320639" target="_blank" rel="noopener" aria-label="WhatsApp">
     <span class="avatar">💁‍♀️</span>
     <span class="wa-label">Consultanos</span>
   </a>
 
-  <!-- Script principal -->
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

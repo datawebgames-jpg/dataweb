@@ -1,9 +1,5 @@
-/* style.css - DATAWEB Asesoramientos
-   Claridad: fondo claro azul/blanco, tipografía legible, modal clásico con sombra
-   Usa Font Awesome para íconos modernos y detallados
-*/
+/* style.css - versión corregida: claridad, modal clásico con sombra, iconos sociales visibles */
 
-/* ---------- Variables y reset ---------- */
 :root{
   --bg: #f7fbff;
   --accent: #0077d6;
@@ -15,35 +11,33 @@
   --wa: #25D366;
   --text: #07253a;
 }
-*{box-sizing:border-box}
-html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
 
-/* ---------- Contenedor ---------- */
+/* reset */
+*{box-sizing:border-box}
+html,body{ margin:0; font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
+
+/* container */
 .container{ max-width:1180px; margin:0 auto; padding:0 16px; }
 
-/* ---------- Header ---------- */
+/* header */
 .site-header{ background: linear-gradient(90deg,var(--accent),var(--accent-dark)); color:white; padding:14px 0; position:sticky; top:0; z-index:60; box-shadow:0 6px 22px rgba(2,20,50,0.06); }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
 .brand h1{ margin:0; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.6px; }
 .subtitle{ margin:6px 0 0; opacity:0.95; font-size:0.9rem; }
 
-/* ---------- Nav ---------- */
+/* nav */
 .main-nav a{ color:white; text-decoration:none; margin-left:12px; font-weight:600; }
 .main-nav a:hover{ text-decoration:underline; }
 
-/* ---------- Page layout (center + sidebar) ---------- */
+/* layout */
 .page{ display:flex; gap:20px; align-items:flex-start; padding:22px 0; }
 @media (max-width:1000px){ .page{ flex-direction:column; } }
 
-/* ---------- Centro (servicios) ---------- */
+/* center */
 .center{ flex:1; }
 .card{ background:var(--card); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow); border:1px solid rgba(2,20,50,0.03); }
 
-/* Títulos */
-.services h2{ margin:0 0 6px 0; color:var(--accent-dark); }
-.muted{ color:var(--muted); margin-bottom:10px; }
-
-/* ---------- Grid de iconos ---------- */
+/* grid icons */
 .grid-icons{ display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top:12px; }
 @media (max-width:900px){ .grid-icons{ grid-template-columns: repeat(2,1fr); } }
 @media (max-width:520px){ .grid-icons{ grid-template-columns: 1fr; } }
@@ -63,28 +57,28 @@ html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, 
 .icon-fa{ font-size:34px; color:var(--accent-dark); margin-bottom:10px; }
 .icon-card .label{ font-weight:700; color:var(--accent-dark); }
 
-/* ---------- Sidebar ---------- */
+/* sidebar */
 .sidebar{ width:320px; position:sticky; top:86px; align-self:flex-start; display:flex; flex-direction:column; gap:14px; }
 @media (max-width:1000px){ .sidebar{ position:relative; width:100%; top:0 } }
 
-/* Social icons */
+/* social icons - aseguro visibilidad */
 .social-icons{ display:flex; gap:8px; margin-bottom:8px; }
-.social{ width:40px; height:40px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; color:white; font-weight:700; }
+.social{ width:40px; height:40px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; color:white; font-weight:700; font-size:16px; }
 .social i{ font-size:18px; }
 .social[title="Facebook"]{ background:#1877F2 }
+.social[title="Instagram"]{ background: radial-gradient(circle at 30% 30%, #f58529, #dd2a7b); }
 .social[title="X / Twitter"]{ background:#1DA1F2 }
-.social[title="Discord"]{ background:#5865F2 }
 
-/* Visitas */
+/* visits */
 .visits{ margin-top:8px; color:var(--muted); font-weight:700; }
 
-/* ---------- Modal (clásico con sombra) ---------- */
+/* modal */
 .modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(2,8,20,0.35); z-index:3000; padding:20px; }
 .modal.hidden{ display:none; }
 .modal-panel{ width:100%; max-width:560px; background:var(--card); border-radius:12px; padding:18px; position:relative; box-shadow:0 30px 80px rgba(2,20,50,0.18); color:var(--text); }
-.modal-close{ position:absolute; right:12px; top:12px; background:transparent; border:0; font-size:20px; cursor:pointer; }
+.modal-close{ position:absolute; right:12px; top:12px; background:transparent; border:0; font-size:22px; cursor:pointer; }
 
-/* Form modal */
+/* modal form */
 .modal-form label{ display:block; margin-top:10px; font-weight:600; color:var(--accent-dark); }
 .modal-form input, .modal-form textarea{ width:100%; padding:10px; margin-top:6px; border-radius:8px; border:1px solid rgba(2,20,50,0.06); background:#fff; color:var(--text); }
 .modal-actions{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
@@ -92,18 +86,18 @@ html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, 
 .btn.primary{ background:var(--accent); color:white; }
 .btn.whatsapp{ background:var(--wa); color:#032; }
 
-/* Form status */
+/* form status */
 .form-status{ margin-top:10px; font-weight:700; color:#075985; }
 
-/* ---------- WhatsApp flotante ---------- */
+/* whatsapp flotante */
 .whatsapp-float{ position:fixed; right:18px; bottom:18px; background:linear-gradient(90deg,var(--wa),#1cc859); color:#032; padding:10px 14px; border-radius:999px; display:flex; gap:10px; align-items:center; text-decoration:none; z-index:4000; box-shadow:0 12px 30px rgba(2,62,12,0.12); }
 .whatsapp-float .avatar{ font-size:20px; }
 .whatsapp-float .wa-label{ font-weight:800; }
 
-/* ---------- Footer ---------- */
+/* footer */
 .site-footer{ background: linear-gradient(90deg,var(--accent),var(--accent-dark)); color:white; padding:14px 0; margin-top:22px; text-align:center; }
 
-/* ---------- Utilities ---------- */
+/* utilities */
 .hidden{ display:none !important; }
 .muted{ color:var(--muted); }
 .small{ font-size:0.9rem; color:var(--muted); }

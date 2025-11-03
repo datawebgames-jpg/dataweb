@@ -1,15 +1,14 @@
-/* script.js - DATAWEB Asesoramientos
-   Widgets: modal, Formspree, WhatsApp, clima, dólar, tránsito, farmacias y teléfonos útiles
+/* script.js - Widgets completos: modal, Formspree, WhatsApp, clima, dólar (Bluelytics), efemérides (Wikipedia),
+   locales demo que aceptan Mercado Pago (mapa Leaflet), farmacias y tránsito en modo informativo.
 */
 
 /* CONFIG */
 const FORMSPREE = "https://formspree.io/f/xqagjovo";
-const WA_NUMBER = "542954320639"; // para wa.me (sin '+')
+const WA_NUMBER = "542954320639"; // sin '+'
 const DEFAULT_LOC = { lat: -36.6167, lon: -64.2833, region: "La Pampa", city: "Santa Rosa", country: "Argentina" };
 
 /* Ejecutar cuando DOM esté listo */
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------- refs ---------- */
   const iconCards = document.querySelectorAll(".icon-card");
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modal-title");
@@ -26,17 +25,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const transitoEl = document.getElementById("transito-content");
   const farmEl = document.getElementById("farmacias-content");
   const telefonosEl = document.getElementById("telefonos-content");
+  const efemeridesEl = document.getElementById("efemerides");
+  const mpListEl = document.getElementById("mp-list");
+  const mpMapEl = document.getElementById("mp-map");
 
-  /* ---------- contador local ---------- */
+  /* Contador local */
   try {
-    const key = "dataweb_visits_v4";
+    const key = "dataweb_visits_v5";
     let visits = parseInt(localStorage.getItem(key) || "0", 10);
     visits += 1;
     localStorage.setItem(key, String(visits));
     if (visitCountEl) visitCountEl.textContent = visits;
   } catch (e) { console.warn("visit counter:", e); }
 
-  /* ---------- modal: abrir desde iconos ---------- */
+  /* Modal handlers */
   if (!iconCards || iconCards.length === 0) console.warn("No se encontraron .icon-card en el DOM.");
   iconCards.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -49,17 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => { const el = document.getElementById("m-nombre"); if (el) el.focus(); }, 120);
     });
   });
-
-  /* ---------- cerrar modal ---------- */
-  if (modalClose) {
-    modalClose.addEventListener("click", () => {
-      modal.classList.add("hidden");
-      modal.setAttribute("aria-hidden", "true");
-    });
-  }
+  if (modalClose) modalClose.addEventListener("click", () => { modal.classList.add("hidden"); modal.setAttribute("aria-hidden", "true"); });
   window.addEventListener("keydown", (e) => { if (e.key === "Escape") { modal.classList.add("hidden"); modal.setAttribute("aria-hidden", "true"); } });
 
-  /* ---------- enviar por Formspree ---------- */
+  /* Formspree submit */
   if (modalForm) {
     modalForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -81,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---------- enviar por WhatsApp ---------- */
+  /* Send via WhatsApp */
   if (sendWaBtn) {
     sendWaBtn.addEventListener("click", () => {
       const service = formServicio.value || "Consulta general";
@@ -95,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---------- GEOLOCALIZACIÓN (intenta geolocation -> fallback por IP) ---------- */
+  /* ---------- Location detection ---------- */
   async function detectLocation() {
     try {
       return await new Promise((resolve) => {
@@ -113,114 +108,114 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* ---------- CLIMA: Open-Meteo (gratuito) ---------- */
+  /* ---------- Weather: Open-Meteo ---------- */
   async function loadWeather(lat, lon, label) {
+    if (!climaEl) return;
+    climaEl.textContent = "Cargando clima...";
     try {
-      if (climaEl) climaEl.textContent = "Cargando clima...";
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
       const r = await fetch(url);
       const j = await r.json();
-      if (j && j.current_weather && climaEl) {
+      if (j && j.current_weather) {
         const c = j.current_weather;
         climaEl.innerHTML = `<strong>${label || 'Tu ubicación'}</strong><div style="margin-top:6px;font-weight:700">${c.temperature}°C</div><div class="muted">Viento: ${c.windspeed} km/h</div>`;
         return;
       }
     } catch (err) { console.warn("clima error:", err); }
-    if (climaEl) climaEl.textContent = "No se pudo obtener el clima.";
+    climaEl.textContent = "No se pudo obtener el clima.";
   }
 
-  /* ---------- DÓLAR: intento por país (ej. Argentina: Dolarsi API) ---------- */
+  /* ---------- Dólar: Bluelytics (sin clave) ---------- */
   async function loadDolar(country) {
     if (!dolarEl) return;
     dolarEl.textContent = "Cargando cotización...";
     try {
-      // Si es Argentina, uso Dolarsi (valores populares). Fallback a mensaje.
-      if (country && country.toLowerCase().includes("argentina")) {
-        // API pública Dolarsi (puede cambiar). Si falla, se muestra fallback.
-        const res = await fetch("https://api.bluelytics.com.ar/v2/latest"); // alternativa estable
-        if (res.ok) {
-          const j = await res.json();
-          // bluelytics: j.usd and j.blue? show official and blue if available
-          const oficial = j.oficial ? j.oficial.value_sell || j.oficial.value : (j.usd && j.usd.value_sell ? j.usd.value_sell : null);
-          const blue = j.blue ? j.blue.value_sell || j.blue.value : (j.blue ? j.blue.value_sell : null);
-          dolarEl.innerHTML = `<div><strong>Oficial:</strong> $${oficial ?? "N/D"}</div><div><strong>Blue:</strong> $${blue ?? "N/D"}</div>`;
-          return;
-        }
-      }
-      // Para otros países mostramos una simple conversión USD->local currency via exchangerate.host
-      const r2 = await fetch("https://api.exchangerate.host/latest?base=USD");
-      if (r2.ok) {
-        const j2 = await r2.json();
-        // si country no se detecta, mostramos USD -> local currency as ARS default
-        const target = (country && country.toLowerCase().includes("argentina")) ? "ARS" : (j2.rates && Object.keys(j2.rates)[0]);
-        const rate = j2.rates ? (j2.rates[target] || null) : null;
-        dolarEl.innerHTML = rate ? `<div>1 USD = ${rate.toFixed(2)} ${target}</div>` : `<div>No disponible</div>`;
+      const res = await fetch("https://api.bluelytics.com.ar/v2/latest");
+      if (!res.ok) throw new Error("no ok");
+      const j = await res.json();
+      // bluelytics retorna .oficial y .blue en muchos casos
+      const oficial = (j.oficial && (j.oficial.value_sell || j.oficial.value)) || (j.usd && j.usd.value_sell) || null;
+      const blue = (j.blue && (j.blue.value_sell || j.blue.value)) || null;
+      if (oficial) {
+        dolarEl.innerHTML = `<div><strong>Oficial:</strong> $${Number(oficial).toFixed(2)}</div><div><strong>Blue:</strong> ${blue ? '$' + Number(blue).toFixed(2) : 'N/D'}</div><div style="margin-top:6px;font-size:0.9rem;color:#666;">Fuente: Bluelytics</div>`;
         return;
       }
     } catch (err) {
       console.warn("dolar error:", err);
     }
+    // fallback: exchangerate.host (show USD -> ARS if possible)
+    try {
+      const r2 = await fetch("https://api.exchangerate.host/latest?base=USD&symbols=ARS,UYU,CLP");
+      if (r2.ok) {
+        const j2 = await r2.json();
+        const ars = j2.rates && j2.rates.ARS ? j2.rates.ARS.toFixed(2) : null;
+        dolarEl.innerHTML = ars ? `<div>1 USD = ${ars} ARS (aprox)</div><div style="margin-top:6px;font-size:0.9rem;color:#666;">Fuente: exchangerate.host</div>` : `<div>No disponible</div>`;
+        return;
+      }
+    } catch (e) { console.warn("dolar fallback error", e); }
     dolarEl.textContent = "No se pudo cargar la cotización.";
   }
 
-  /* ---------- TRÁNSITO (resumen simple) ---------- */
+  /* ---------- Transito (demo/heurístico) ---------- */
   async function loadTransito(city) {
     if (!transitoEl) return;
     transitoEl.textContent = `Cargando estado del tránsito en ${city || "tu zona"}...`;
     try {
-      // No usamos Google/Waze API (requieren key). Mostramos resumen simple.
-      // Si querés integrar Waze/Google luego, lo configuro.
-      // Heurística simple: si la ciudad es grande, avisamos posible tráfico; si no, decimos normal.
       const bigCities = ["buenos aires","cordoba","rosario","mendoza","la plata","mar del plata"];
       const low = city ? city.toLowerCase() : "";
       if (bigCities.some(b => low.includes(b))) {
-        transitoEl.innerHTML = `<strong>Atención:</strong> Tránsito con demoras en las principales avenidas. Revisá Google Maps/Waze.`;
+        transitoEl.innerHTML = `<strong>Atención:</strong> Tránsito con demoras en las principales avenidas. Recomendamos Waze o Google Maps.`;
       } else {
         transitoEl.innerHTML = `Tránsito normal en la zona.`;
       }
-    } catch (err) {
-      console.warn("transito error:", err);
+    } catch (e) {
+      console.warn("transito error", e);
       transitoEl.textContent = "Sin datos de tránsito disponibles.";
     }
   }
 
-  /* ---------- FARMACIAS DE TURNO (fallback con enlace) ---------- */
+  /* ---------- Farmacias (fallback por región con enlace) ---------- */
   async function loadFarmacias(region, city) {
     if (!farmEl) return;
     farmEl.textContent = "Cargando farmacias de turno...";
     try {
-      // Intentamos abrir enlaces útiles por provincia/región.
       if (region && region.toLowerCase().includes("la pampa")) {
         farmEl.innerHTML = `<a href="https://www.laarena.com.ar/seccion/farmacias-de-turno" target="_blank" rel="noopener">Ver farmacias de turno (La Pampa)</a>`;
         return;
       }
-      // fallback general Argentina
       if (region && region.toLowerCase().includes("argentina") || region === undefined) {
         farmEl.innerHTML = `<a href="https://www.argentina.gob.ar/salud/farmacias-de-turno" target="_blank" rel="noopener">Ver farmacias de turno (Argentina)</a>`;
         return;
       }
-      // si no, dejamos un buscador general
       farmEl.innerHTML = `<a href="https://www.google.com/search?q=farmacias+de+turno+${encodeURIComponent(city||'')}" target="_blank" rel="noopener">Buscar farmacias de turno</a>`;
-    } catch (err) {
-      console.warn("farmacias error:", err);
-      farmEl.textContent = "No se pudo obtener la información de farmacias.";
+    } catch (e) { console.warn("farmacias error", e); farmEl.textContent = "No se pudo obtener la información de farmacias."; }
+  }
+
+  /* ---------- Efemérides: Wikipedia OnThisDay (events) ---------- */
+  async function loadEfemerides() {
+    if (!efemeridesEl) return;
+    efemeridesEl.textContent = "Cargando efemérides...";
+    try {
+      const now = new Date();
+      const month = now.getMonth() + 1;
+      const day = now.getDate();
+      const url = `https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${month}/${day}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("no ok");
+      const j = await res.json();
+      // tomamos hasta 5 eventos y los mostramos en español si hay 'text' (evento en inglés, lo simplificamos)
+      const events = (j.events || []).slice(0, 5);
+      if (events.length) {
+        efemeridesEl.innerHTML = "<ul>" + events.map(ev => `<li>${(ev.year ? ev.year + " — " : "")}${ev.text ? ev.text : (ev.pages && ev.pages[0] && ev.pages[0].normalizedtitle ? ev.pages[0].normalizedtitle : "Evento")}</li>`).join("") + "</ul>";
+        return;
+      }
+    } catch (e) {
+      console.warn("efemerides error", e);
     }
+    efemeridesEl.textContent = "No se encontraron efemérides para hoy.";
   }
 
-  /* ---------- TELEFONOS útiles (adaptable por país) ---------- */
-  function loadTelefonos(country) {
-    if (!telefonosEl) return;
-    // Base para Argentina. Podés editar según país.
-    const list = [
-      { label: "Policía", number: "101" },
-      { label: "Bomberos", number: "100" },
-      { label: "Ambulancia / SAME", number: "107" },
-      { label: "Emergencias Viales", number: "103" }
-    ];
-    telefonosEl.innerHTML = list.map(it => `<li>${it.label}: <strong>${it.number}</strong></li>`).join("");
-  }
-
-  /* ---------- NOTICIAS (RSS via proxy allorigins) ---------- */
+  /* ---------- Noticias (RSS via proxy) ---------- */
   const regionalFeeds = {
     'LA PAMPA': ['https://www.laarena.com.ar/rss'],
     'BUENOS AIRES': ['https://www.clarin.com/rss/lo-ultimo/'],
@@ -266,25 +261,66 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* ---------- Inicialización: detectar ubicación y cargar widgets ---------- */
+  /* ---------- LOCALES MERCADO PAGO (demo con Leaflet) ---------- */
+  // Creamos marcadores demo alrededor de la ubicación detectada
+  async function loadMercadoPagoLocals(lat, lon) {
+    if (!mpListEl || !mpMapEl) return;
+    mpListEl.innerHTML = "Buscando locales que aceptan Mercado Pago cerca tu ubicación...";
+    // Datos demo: si querés los reemplazo con datos reales cuando tengas Places API key
+    const demo = [
+      { name: "Kiosco Central (acepta Mercado Pago)", addr: "Av. Principal 123", phone: "2954-111111", offset: [0.002, 0.002] },
+      { name: "Almacén La Esquina (MP disponible)", addr: "Calle Falsa 456", phone: "2954-222222", offset: [-0.0025, 0.001] },
+      { name: "Cafetería DATA (pago con Mercado Pago)", addr: "Rivadavia 789", phone: "2954-333333", offset: [0.0015, -0.0025] }
+    ];
+    // inicializar mapa Leaflet
+    try {
+      mpListEl.innerHTML = ""; // limpiar
+      // crear mapa
+      const map = L.map(mpMapEl, { scrollWheelZoom: false }).setView([lat, lon], 14);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
+      // marcador del usuario
+      const userMarker = L.marker([lat, lon]).addTo(map).bindPopup("Tu ubicación estimada").openPopup();
+      // agregar demo markers
+      demo.forEach(d => {
+        const mlat = lat + (d.offset[0]);
+        const mlon = lon + (d.offset[1]);
+        const marker = L.marker([mlat, mlon]).addTo(map).bindPopup(`<strong>${d.name}</strong><br>${d.addr}<br>Tel: ${d.phone}`);
+        // agregar a la lista
+        const el = document.createElement("div");
+        el.className = "mp-item";
+        el.innerHTML = `<div style="flex:1"><div class="name">${d.name}</div><div class="meta">${d.addr} • ${d.phone}</div></div><div><button class="btn primary" style="padding:6px 8px; font-size:0.9rem;" onclick="window.open('https://wa.me/542954320639?text=${encodeURIComponent('Hola,%20tengo%20consulta%20sobre%20' + d.name)}','_blank')">Contactar</button></div>`;
+        mpListEl.appendChild(el);
+      });
+      // si se desean centrar bounds con markers, podemos expandir
+    } catch (err) {
+      console.warn("Leaflet/map error:", err);
+      mpListEl.innerHTML = `<p class="muted">No se pudo cargar el mapa. Podés buscar locales en <a href="https://www.google.com/maps/search/mercado+pago+acepta+locales+near+me" target="_blank">Google Maps</a>.</p>`;
+    }
+  }
+
+  /* ---------- Inicialización: detectar ubicación y cargar todo ---------- */
   (async function initWidgets() {
     const loc = await detectLocation();
     const lat = loc.lat || DEFAULT_LOC.lat;
     const lon = loc.lon || DEFAULT_LOC.lon;
-    const region = loc.region || loc.region_name || DEFAULT_LOC.region;
+    const region = loc.region || DEFAULT_LOC.region;
     const city = loc.city || DEFAULT_LOC.city;
     const country = loc.country || DEFAULT_LOC.country;
 
-    // cargar clima y noticias y demás widgets
+    // clima, dolar, noticias, efemérides, farmacias, tránsito, locales MP
     await loadWeather(lat, lon, city || region || "Tu zona");
     await loadDolar(country);
+    await loadNews(region);
+    await loadEfemerides();
     await loadTransito(city);
     await loadFarmacias(region, city);
     loadTelefonos(country);
-    await loadNews(region);
+    await loadMercadoPagoLocals(lat, lon);
+
   })();
 
-}); // end DOMContentLoaded
+}); // DOMContentLoaded end
+
 
 
 

@@ -6,11 +6,15 @@
   <title>DATAWEB ASESORAMIENTOS</title>
   <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas y asesoramiento tecnológico. Consultas por mail o WhatsApp." />
 
-  <!-- Tipografía legible -->
+  <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (íconos modernos) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Leaflet (mapa sin API key) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
@@ -33,9 +37,9 @@
     </div>
   </header>
 
-  <!-- PAGE: centro + sidebar -->
+  <!-- PAGE -->
   <div class="page container">
-    <!-- CENTRO: iconos de servicios -->
+    <!-- CENTRO -->
     <main class="center">
       <section id="servicios" class="services card">
         <h2>Nuestros servicios</h2>
@@ -43,33 +47,27 @@
 
         <div class="grid-icons" id="grid-icons">
           <button class="icon-card" data-service="Ciudadanías">
-            <i class="fa-solid fa-globe icon-fa"></i>
-            <div class="label">Ciudadanías</div>
+            <i class="fa-solid fa-globe icon-fa"></i><div class="label">Ciudadanías</div>
           </button>
 
           <button class="icon-card" data-service="Pago de facturas (municipales y nacionales)">
-            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i>
-            <div class="label">Pago de facturas</div>
+            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i><div class="label">Pago de facturas</div>
           </button>
 
           <button class="icon-card" data-service="ARCA">
-            <i class="fa-solid fa-landmark icon-fa"></i>
-            <div class="label">ARCA</div>
+            <i class="fa-solid fa-landmark icon-fa"></i><div class="label">ARCA</div>
           </button>
 
           <button class="icon-card" data-service="Compras y Ventas">
-            <i class="fa-solid fa-cart-shopping icon-fa"></i>
-            <div class="label">Compras y Ventas</div>
+            <i class="fa-solid fa-cart-shopping icon-fa"></i><div class="label">Compras y Ventas</div>
           </button>
 
           <button class="icon-card" data-service="Asesoramiento tecnológico">
-            <i class="fa-solid fa-laptop-code icon-fa"></i>
-            <div class="label">Asesoramiento tecnológico</div>
+            <i class="fa-solid fa-laptop-code icon-fa"></i><div class="label">Asesoramiento tecnológico</div>
           </button>
 
           <button class="icon-card" data-service="Otros trámites">
-            <i class="fa-solid fa-file-lines icon-fa"></i>
-            <div class="label">Otros trámites</div>
+            <i class="fa-solid fa-file-lines icon-fa"></i><div class="label">Otros trámites</div>
           </button>
         </div>
       </section>
@@ -84,11 +82,15 @@
       <section id="noticias" class="card news">
         <h3>Titulares locales</h3>
         <div id="news-summary">Cargando titulares locales...</div>
+
+        <!-- EFEMÉRIDES -->
+        <h4 style="margin-top:14px">📅 Efemérides del día</h4>
+        <div id="efemerides">Cargando efemérides...</div>
       </section>
     </main>
 
-    <!-- SIDEBAR DERECHO: clima, dólar, tránsito, farmacias, teléfonos, noticias y redes -->
-    <aside class="sidebar" aria-label="Panel derecho - clima, cotización, tránsito, farmacias y redes">
+    <!-- SIDEBAR DERECHO -->
+    <aside class="sidebar" aria-label="Panel derecho - widgets">
       <!-- CLIMA -->
       <div class="card" id="widget-clima">
         <h4>🌤️ Clima</h4>
@@ -113,7 +115,14 @@
         <div id="farmacias-content">Cargando farmacias...</div>
       </div>
 
-      <!-- TELÉFONOS ÚTILES -->
+      <!-- LOCALES MERCADO PAGO (MAPA) -->
+      <div class="card" id="widget-mercadopago">
+        <h4>🏪 Locales que aceptan Mercado Pago</h4>
+        <div id="mp-list">Cargando locales...</div>
+        <div id="mp-map" style="height:220px; margin-top:10px; border-radius:8px; overflow:hidden;"></div>
+      </div>
+
+      <!-- TELEFONOS -->
       <div class="card" id="widget-telefonos">
         <h4>📞 Teléfonos útiles</h4>
         <ul id="telefonos-content">
@@ -189,6 +198,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

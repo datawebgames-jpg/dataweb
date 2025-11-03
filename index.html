@@ -2,239 +2,177 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>dataweb asesoramientos</title>
-  <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, compras/ventas, gestoría y ayuda tecnológica." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DATAWEB ASESORAMIENTOS</title>
+  <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas, asesoramiento tecnológico. Consultas por mail o WhatsApp." />
 
-  <!-- Link a CSS externo -->
+  <!-- CSS externo -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Favicon temporal (archivo assets/favicon_dw.png en tu repo) -->
-  <link rel="icon" type="image/png" href="assets/favicon_dw.png">
-
-  <!-- SDK Twitter embed (para widget X) -->
+  <!-- Widget Twitter/X -->
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 <body>
-  <!-- ======================
-       HEADER
-       ====================== -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <h1>dataweb asesoramientos</h1>
-        <p class="tagline">Hacemos tu vida más simple — trámites, ciudadanías, compras y ventas.</p>
+        <h1>DATAWEB ASESORAMIENTOS</h1>
+        <p class="reseña">Soluciones digitales y ciudadanías europeas — trámites, pagos, gestoría y asesoramiento tecnológico para hacerte la vida más simple.</p>
       </div>
-      <nav class="main-nav" aria-label="Menú principal">
-        <a href="#inicio">Inicio</a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
-        <a href="#noticias">Noticias</a>
         <a href="#consultas">Consultas</a>
+        <a href="#noticias">Noticias</a>
+        <a href="#quienes" id="link-quienes">Quiénes somos</a>
       </nav>
     </div>
   </header>
 
-  <!-- ======================
-       HERO / INTRO
-       ====================== -->
-  <section id="inicio" class="hero container">
-    <div class="hero-left">
-      <h2>Queremos hacerte la vida más simple</h2>
-      <p>En <strong>DATAWEB</strong> te ayudamos con trámites, ciudadanías, gestorías, compras y ventas. Dejá que nosotros nos encarguemos.</p>
-      <a href="#consultas" class="btn primary">Hacé una consulta</a>
-    </div>
+  <!-- LAYOUT: contenedor principal con centro y sidebar derecho -->
+  <div class="page container">
+    <!-- CENTRO: ICONOS DE SERVICIOS -->
+    <main class="center">
+      <section id="servicios" class="services">
+        <h2>Nuestros servicios</h2>
+        <p class="muted">Tocá un ícono para abrir el formulario y consultarnos por mail o WhatsApp.</p>
 
-    <!-- PANEL DERECHO FIJO: clima + noticias + X -->
-    <aside class="sidebar" aria-label="Clima y noticias">
-      <!-- Widget clima -->
-      <div class="card" id="widget-clima" aria-live="polite">
-        <h3>🌤️ Clima</h3>
+        <!-- GRID ICONOS -->
+        <div class="grid-icons">
+          <button class="icon-card" data-service="Ciudadanías">
+            <div class="icon">🌍</div><div class="label">Ciudadanías</div>
+          </button>
+
+          <button class="icon-card" data-service="Pago de facturas (municipales, nacionales)">
+            <div class="icon">💳</div><div class="label">Pago de facturas</div>
+          </button>
+
+          <button class="icon-card" data-service="ARCA">
+            <div class="icon">🏛️</div><div class="label">ARCA</div>
+          </button>
+
+          <button class="icon-card" data-service="Compras y Ventas">
+            <div class="icon">🛒</div><div class="label">Compras y Ventas</div>
+          </button>
+
+          <button class="icon-card" data-service="Asesoramiento tecnológico">
+            <div class="icon">💻</div><div class="label">Asesoramiento tecnológico</div>
+          </button>
+
+          <button class="icon-card" data-service="Otros trámites">
+            <div class="icon">📄</div><div class="label">Otros trámites</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- QUIÉNES SOMOS (sección que puede abrirse o anclarse) -->
+      <section id="quienes" class="quienes card">
+        <h3>Quiénes somos</h3>
+        <p>En <strong>DATAWEB Asesoramientos</strong> nos ocupamos de que tus trámites sean sencillos: ciudadanías, gestorías, pagos, asesoramiento tecnológico, compras y ventas. <strong>Garantía</strong>: gestionamos los pasos para que vos ganes tiempo y tranquilidad. Trabajamos con transparencia y comunicación durante todo el proceso.</p>
+      </section>
+
+      <!-- NOTICIAS (resumen abajo del centro) -->
+      <section id="noticias" class="news card">
+        <h3>Titulares locales</h3>
+        <div id="news-summary">Cargando titulares...</div>
+      </section>
+    </main>
+
+    <!-- SIDEBAR DERECHO FIJO -->
+    <aside class="sidebar" aria-label="Panel derecho - Clima, noticias y redes">
+      <!-- CLIMA -->
+      <div class="card" id="widget-clima">
+        <h4>🌤️ Clima</h4>
         <div id="clima-content">Cargando clima...</div>
       </div>
 
-      <!-- Noticias locales (titulares) -->
-      <div class="card" id="widget-noticias">
-        <h3>🗞️ Titulares locales</h3>
+      <!-- RESUMEN NOTICIAS LOCALES -->
+      <div class="card">
+        <h4>🗞️ Noticias localizadas</h4>
         <div id="news-list">Cargando noticias...</div>
       </div>
 
-      <!-- Widget X (Twitter) -->
-      <div class="card" id="widget-x">
-        <h3>Últimos de X</h3>
-        <!-- Ejemplo: @lanacion timeline -->
-        <a class="twitter-timeline" data-height="300" href="https://twitter.com/lanacion?ref_src=twsrc%5Etfw">Tweets by La Nación</a>
+      <!-- REDES / CONTADOR VISITAS -->
+      <div class="card">
+        <h4>🔗 Nuestras redes</h4>
+        <div class="social-icons">
+          <!-- iconos que abren la pagina de la red en nueva pestaña -->
+          <a href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener" class="social" title="Facebook">f</a>
+          <a href="https://twitter.com/lanacion" target="_blank" rel="noopener" class="social" title="X / Twitter">x</a>
+          <a href="https://discord.gg/t7pZVVP8B3" target="_blank" rel="noopener" class="social" title="Discord">d</a>
+        </div>
+        <div class="visits">
+          <strong>Visitas (este navegador):</strong> <span id="visit-count">0</span>
+        </div>
+      </div>
+
+      <!-- MINI WIDGET X (timeline) -->
+      <div class="card">
+        <h4>Últimos de X</h4>
+        <a class="twitter-timeline" data-height="300" href="https://twitter.com/lanacion">Tweets by La Nación</a>
       </div>
     </aside>
-  </section>
+  </div>
 
-  <!-- ======================
-       SERVICIOS / BLOQUES CENTRALES
-       ====================== -->
-  <main class="container main-grid">
-    <section id="servicios" class="services">
-      <h2>Nuestros servicios</h2>
-      <p class="muted">Tocá un bloque para consultar por mail o WhatsApp.</p>
-
-      <!-- GRID DE BLOQUES -->
-      <div class="grid-cards">
-        <!-- 1. ARCA -->
-        <article class="card service-card" data-service="ARCA">
-          <div class="icon">🏛️</div>
-          <h4>ARCA</h4>
-          <p>Gestiones impositivas y ARBA</p>
-          <div class="card-actions">
-            <button class="btn small mail-btn">✉️ Consultar por mail</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-
-        <!-- 2. Municipal -->
-        <article class="card service-card" data-service="Municipal">
-          <div class="icon">🏙️</div>
-          <h4>Municipal</h4>
-          <p>Trámites municipales y tasas</p>
-          <div class="card-actions">
-            <button class="btn small mail-btn">✉️ Consultar por mail</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-
-        <!-- 3. Gestoría Automotor -->
-        <article class="card service-card" data-service="Gestoría Automotor">
-          <div class="icon">🚗</div>
-          <h4>Gestoría Automotor</h4>
-          <p>Transferencias, altas y bajas</p>
-          <div class="card-actions">
-            <button class="btn small mail-btn">✉️ Consultar por mail</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-
-        <!-- 4. Ciudadanías (icono mundo) -->
-        <article class="card service-card" data-service="Ciudadanías">
-          <div class="icon">🌍</div>
-          <h4>Ciudadanías</h4>
-          <p>Armar carpeta para DNI / IDU - España / Italia</p>
-          <div class="card-actions">
-            <button class="btn small mail-btn">✉️ Consultar por mail</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-
-        <!-- 5. Compras Seguras -->
-        <article class="card service-card" data-service="Compras Seguras">
-          <div class="icon">💳</div>
-          <h4>Compras Seguras</h4>
-          <p>Asesoramiento para compras online seguras</p>
-          <div class="card-actions">
-            <button class="btn small mail-btn">✉️ Consultar por mail</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-
-        <!-- 6. Tasaciones -->
-        <article class="card service-card" data-service="Tasaciones">
-          <div class="icon">💰</div>
-          <h4>Tasaciones</h4>
-          <p>Valuación y tasación de bienes</p>
-          <div class="card-actions">
-            <button class="btn small mail-btn">✉️ Consultar por mail</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-
-        <!-- 7. Ventas y Compras (con dos opciones internas) -->
-        <article class="card service-card" data-service="Ventas y Compras">
-          <div class="icon">🛒</div>
-          <h4>Ventas y Compras</h4>
-          <p>¿Querés comprar o vender? Te ayudamos en todo el proceso.</p>
-          <div class="card-actions two-options">
-            <button class="btn small mail-btn" data-sub="Comprar">🛍️ Quiero comprar</button>
-            <button class="btn small mail-btn" data-sub="Vender">🤝 Quiero vender</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-
-        <!-- 8. Otros Trámites -->
-        <article class="card service-card" data-service="Otros Trámites">
-          <div class="icon">📄</div>
-          <h4>Otros Trámites</h4>
-          <p>Consultas varias y gestiones personalizadas</p>
-          <div class="card-actions">
-            <button class="btn small mail-btn">✉️ Consultar por mail</button>
-            <button class="btn small wa-btn">💬 Consultar por WhatsApp</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ======================
-         SECCION CONSULTAS (formulario detallado)
-         ====================== -->
-    <section id="consultas" class="form-section">
-      <h2>Formulario de consulta</h2>
-      <p class="muted">Elegí el servicio en los bloques de arriba o completá este formulario.</p>
-
-      <!-- Formspree endpoint (ya creado por vos) -->
-      <form id="contactForm" action="https://formspree.io/f/xqagjovo" method="POST" class="form-card">
-        <!-- Campo que indica servicio (rellenado por JS si el usuario viene desde un bloque) -->
-        <input type="hidden" name="servicio" id="f-servicio" value="Consulta general">
-
-        <label for="f-nombre">Nombre completo</label>
-        <input id="f-nombre" name="nombre" type="text" required placeholder="Tu nombre completo">
-
-        <label for="f-email">Correo electrónico</label>
-        <input id="f-email" name="email" type="email" required placeholder="ejemplo@mail.com">
-
-        <label for="f-whatsapp">WhatsApp</label>
-        <input id="f-whatsapp" name="whatsapp" type="text" placeholder="+54..." >
-
-        <label for="f-mensaje">Mensaje / detalle del trámite</label>
-        <textarea id="f-mensaje" name="mensaje" rows="5" required placeholder="Contanos qué necesitás..."></textarea>
-
-        <div class="form-row">
-          <label><input type="radio" name="canal" value="mail" checked> Responder por correo</label>
-          <label><input type="radio" name="canal" value="whatsapp"> Responder por WhatsApp</label>
-        </div>
-
-        <div class="form-actions">
-          <button class="btn primary" type="submit">Enviar consulta</button>
-          <button type="button" id="btn-reset" class="btn secondary">Limpiar</button>
-        </div>
-
-        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
-      </form>
-    </section>
-  </main>
-
-  <!-- ======================
-       FOOTER
-       ====================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <p>© 2025 dataweb asesoramientos • ✉️ dataweb76@gmail.com • 📱 +54 2954 320639</p>
-      <p class="small">En DATAWEB queremos hacerte la vida más simple. Dejá que nosotros resolvamos tus trámites.</p>
-      <div class="socials">
-        <a href="https://www.facebook.com/AsesoramientosPampa" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://wa.me/542954320639" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="foot-left">
+        <p>✉️ <a href="mailto:dataweb76@gmail.com">dataweb76@gmail.com</a> • 📱 <a href="https://wa.me/542954320639">+54 2954 320639</a></p>
+      </div>
+      <div class="foot-right">
+        <a href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener">Facebook</a> ·
+        <a href="https://discord.gg/t7pZVVP8B3" target="_blank" rel="noopener">Discord</a>
       </div>
     </div>
   </footer>
 
-  <!-- ======================
-       ICONO FLOTANTE DE WHATSAPP + AVATAR ATENDIENDO
-       ====================== -->
-  <a id="whatsapp-float" class="whatsapp-float" href="https://wa.me/542954320639" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <!-- MODAL (aparece al clickear un icono) -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-panel">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+      <h3 id="modal-title">Consulta</h3>
+      <p id="modal-sub" class="muted">Elegí enviar por mail (Formspree) o por WhatsApp.</p>
+
+      <!-- FORMULARIO DENTRO DEL MODAL -->
+      <form id="modal-form" class="modal-form" action="https://formspree.io/f/xqagjovo" method="POST">
+        <!-- campo oculto con el servicio seleccionado -->
+        <input type="hidden" name="servicio" id="form-servicio" value="">
+        <label for="m-nombre">Nombre completo</label>
+        <input id="m-nombre" name="nombre" type="text" required>
+
+        <label for="m-email">Correo electrónico</label>
+        <input id="m-email" name="email" type="email" required>
+
+        <label for="m-wa">WhatsApp (opcional)</label>
+        <input id="m-wa" name="whatsapp" type="text" placeholder="+54...">
+
+        <label for="m-mensaje">Mensaje</label>
+        <textarea id="m-mensaje" name="mensaje" rows="4" required></textarea>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Enviar por mail</button>
+          <button type="button" id="send-wa" class="btn whatsapp">Enviar por WhatsApp</button>
+        </div>
+
+        <div id="modal-status" class="form-status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- WHATSAPP FLOTANTE CON AVATAR -->
+  <a id="wa-float" class="whatsapp-float" href="https://wa.me/542954320639" target="_blank" rel="noopener" aria-label="WhatsApp">
     <span class="avatar">💁‍♀️</span>
-    <span class="wa-text">Consultanos</span>
+    <span class="wa-label">Consultanos</span>
   </a>
 
-  <!-- ======================
-       SCRIPTS
-       ====================== -->
+  <!-- SCRIPTS -->
   <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
 

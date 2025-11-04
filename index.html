@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DATAWEB Asesoramientos</title>
   <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas y asesoramiento tecnológico." />
-  <!-- Tipografía -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome para iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -35,40 +32,39 @@
         <p class="muted">Tocá un ícono para abrir el chat con Lía o para hacer una consulta rápida.</p>
 
         <div class="grid-icons" id="grid-icons">
-          <!-- íconos: usan FontAwesome para no depender de assets -->
           <button class="icon-card" data-service="Ciudadanías">
-            <i class="fa-solid fa-globe icon-fa"></i><div class="label">Ciudadanías</div>
+            <i class="fa-globe icon-fa" aria-hidden="true"></i><div class="label">Ciudadanías</div>
           </button>
 
           <button class="icon-card" data-service="Pago de facturas">
-            <i class="fa-solid fa-file-invoice-dollar icon-fa"></i><div class="label">Pago de facturas</div>
+            <i class="fa-file-invoice-dollar icon-fa" aria-hidden="true"></i><div class="label">Pago de facturas</div>
           </button>
 
           <button class="icon-card" data-service="ARCA">
-            <i class="fa-solid fa-landmark icon-fa"></i><div class="label">ARCA</div>
+            <i class="fa-landmark icon-fa" aria-hidden="true"></i><div class="label">ARCA</div>
           </button>
 
           <button class="icon-card" data-service="Compras y Ventas">
-            <i class="fa-solid fa-cart-shopping icon-fa"></i><div class="label">Compras y Ventas</div>
+            <i class="fa-cart-shopping icon-fa" aria-hidden="true"></i><div class="label">Compras y Ventas</div>
           </button>
 
           <button class="icon-card" data-service="Asesoramiento tecnológico">
-            <i class="fa-solid fa-laptop-code icon-fa"></i><div class="label">Asesoramiento tecnológico</div>
+            <i class="fa-laptop-code icon-fa" aria-hidden="true"></i><div class="label">Asesoramiento tecnológico</div>
           </button>
 
           <button class="icon-card" data-service="Páginas Web y Hosting">
-            <i class="fa-solid fa-server icon-fa"></i><div class="label">Páginas Web y Hosting</div>
+            <i class="fa-server icon-fa" aria-hidden="true"></i><div class="label">Páginas Web y Hosting</div>
           </button>
 
           <button class="icon-card" data-service="Agente Inmobiliario">
-            <i class="fa-solid fa-house icon-fa"></i><div class="label">Agente Inmobiliario</div>
+            <i class="fa-house icon-fa" aria-hidden="true"></i><div class="label">Agente Inmobiliario</div>
           </button>
 
           <button class="icon-card" data-service="Automotor">
-            <i class="fa-solid fa-car icon-fa"></i><div class="label">Automotor</div>
+            <i class="fa-car icon-fa" aria-hidden="true"></i><div class="label">Automotor</div>
           </button>
 
-          <button class="icon-card icon-lia" data-service="Asistente Lía">
+          <button class="icon-card icon-lia" data-service="Asistente Lía" id="icon-lia">
             <div class="lia-avatar">L</div><div class="label">Hablar con Lía</div>
           </button>
         </div>
@@ -103,7 +99,7 @@
     <aside class="sidebar" aria-label="Panel derecho - widgets">
       <div class="card" id="widget-clima">
         <h4>🌤️ Clima</h4>
-        <div id="clima-content">Cargando clima...</div>
+        <div id="clima-content">Detectando ubicación...</div>
       </div>
 
       <div class="card" id="widget-dolar">
@@ -119,9 +115,9 @@
       <div class="card">
         <h4>🔗 Nuestras redes</h4>
         <div class="social-icons">
-          <a class="social" href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a class="social" href="https://www.instagram.com" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a class="social" href="https://twitter.com/lanacion" target="_blank" rel="noopener" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a class="social" href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener" title="Facebook">Facebook</a>
+          <a class="social" href="https://www.instagram.com" target="_blank" rel="noopener" title="Instagram">Instagram</a>
+          <a class="social" href="https://twitter.com/lanacion" target="_blank" rel="noopener" title="X / Twitter">X</a>
         </div>
         <div class="visits"><strong>Visitas (este navegador):</strong> <span id="visit-count">0</span></div>
       </div>
@@ -184,7 +180,7 @@
         <textarea id="m-mensaje" name="mensaje" rows="4" required></textarea>
         <div style="display:flex;gap:8px;margin-top:10px;">
           <button type="submit" class="btn primary">Enviar por correo</button>
-          <button type="button" id="modal-send-wa" class="btn whatsapp"><i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp</button>
+          <button type="button" id="modal-send-wa" class="btn whatsapp"><i aria-hidden="true">📱</i> Enviar por WhatsApp</button>
         </div>
         <div id="modal-status" class="form-status"></div>
       </form>
@@ -194,6 +190,8 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
 

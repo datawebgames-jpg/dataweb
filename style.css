@@ -1,133 +1,37 @@
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f7f9fc;
-  color: #222;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+body { background: #f5f5f5; color: #333; line-height: 1.5; }
 
-header {
-  background: linear-gradient(135deg, #0056b3, #00aaff);
-  color: white;
-  padding: 2rem 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
+/* Header */
+header { text-align: center; padding: 20px; background: #007bff; color: white; }
+header h1 { font-size: 2em; margin-bottom: 5px; }
+header p { font-size: 1.1em; }
 
-header h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-}
+/* Servicios */
+.services { display: flex; flex-wrap: wrap; justify-content: center; margin: 20px 0; gap: 20px; }
+.service-card { background: white; border-radius: 10px; padding: 15px; width: 180px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s; }
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 12px rgba(0,0,0,0.2); }
+.service-card img { width: 60px; margin-bottom: 10px; }
 
-header p {
-  font-size: 1.1rem;
-}
+/* Botones */
+.service-card button { margin: 5px 0; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer; background: #007bff; color: white; transition: background 0.2s; }
+.service-card button:hover { background: #0056b3; }
 
-main {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 2rem;
-  gap: 2rem;
-}
+/* Aside clima y dolar */
+aside { position: fixed; right: 10px; top: 150px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 200px; }
+#clima-content, #dolar-content { margin-bottom: 10px; }
 
-.iconos-consulta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 800px;
-  gap: 1.5rem;
-}
+/* Formulario */
+#consultas { max-width: 500px; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+#consultas label { display: block; margin: 10px 0 5px; }
+#consultas input, #consultas textarea { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+textarea { resize: vertical; height: 100px; }
+.form-buttons { display: flex; justify-content: space-between; margin-top: 10px; }
+.form-buttons button { width: 48%; padding: 10px; border-radius: 5px; border: none; cursor: pointer; background: #007bff; color: white; }
+.form-buttons button:hover { background: #0056b3; }
 
-.icono {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 1rem;
-  width: 130px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.icono:hover {
-  transform: translateY(-6px);
-  background: #e6f2ff;
-}
-
-.icono p {
-  margin-top: 0.5rem;
-  font-weight: 500;
-}
-
-.widgets {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#climaWidget, #dolarWidget {
-  background: white;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  width: 180px;
-}
-
-.chat-flotante {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-#abrirChat {
-  background: #0078d7;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.modal-chat {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  right: 20px;
-  bottom: 90px;
-  width: 320px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  padding: 1rem;
-}
-
-.modal-chat-contenido textarea {
-  width: 90%;
-  height: 60px;
-  margin: 0.5rem 0;
-}
-
-.opciones-envio button {
-  margin: 0.3rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #0078d7;
-  color: white;
-}
-
-.opciones-envio button:hover {
-  background: #005fa3;
-}
-
-.cerrar {
-  float: right;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
+/* Estado del formulario */
+#form-status { margin-top: 10px; font-weight: bold; text-align: center; }
 
 
 

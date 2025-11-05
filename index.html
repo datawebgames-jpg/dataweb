@@ -1,74 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DATAWEB Asesoramientos</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dataweb Asesoramientos</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>DATAWEB Asesoramientos</h1>
-    <p>Hola, soy <strong>Lía</strong>, tu asistente virtual. Estoy aquí para ayudarte a resolver tus trámites y consultas.</p>
+    <p>Te ayudamos a simplificar tus trámites y gestiones. ¡Deja que nos encarguemos de todo!</p>
   </header>
 
+  <!-- Servicios / Iconos -->
   <main>
-    <section class="services">
-      <div class="service-card" data-service="Ciudadanía">
-        <img src="assets/ciudadania.png" alt="Ciudadanía">
-        <h3>Ciudadanía</h3>
-        <button class="mail-btn">Consulta por mail</button>
-        <button class="wa-btn">Consulta por WhatsApp</button>
+    <section id="services">
+      <div class="service-card" data-service="Ciudadanías">
+        <img src="assets/ciudadania.png" alt="Ciudadanías">
+        <span>Ciudadanías</span>
+        <button class="mail-btn">Consulta</button>
+        <button class="wa-btn">WhatsApp</button>
       </div>
       <div class="service-card" data-service="Pago de facturas">
-        <img src="assets/factura.png" alt="Facturas">
-        <h3>Pago de facturas</h3>
-        <button class="mail-btn">Consulta por mail</button>
-        <button class="wa-btn">Consulta por WhatsApp</button>
+        <img src="assets/factura.png" alt="Pago de facturas">
+        <span>Pago de facturas</span>
+        <button class="mail-btn">Consulta</button>
+        <button class="wa-btn">WhatsApp</button>
       </div>
       <div class="service-card" data-service="ARCA">
         <img src="assets/arca.png" alt="ARCA">
-        <h3>ARCA</h3>
-        <button class="mail-btn">Consulta por mail</button>
-        <button class="wa-btn">Consulta por WhatsApp</button>
+        <span>ARCA</span>
+        <button class="mail-btn">Consulta</button>
+        <button class="wa-btn">WhatsApp</button>
       </div>
       <div class="service-card" data-service="Compras y Ventas">
-        <img src="assets/compraventa.png" alt="Compras y ventas">
-        <h3>Compras y Ventas</h3>
-        <button class="mail-btn" data-sub="Comprar">Comprar</button>
-        <button class="mail-btn" data-sub="Vender">Vender</button>
-        <button class="wa-btn">Consulta por WhatsApp</button>
+        <img src="assets/compraventa.png" alt="Compras y Ventas">
+        <span>Compras y Ventas</span>
+        <button class="mail-btn">Consulta</button>
+        <button class="wa-btn">WhatsApp</button>
       </div>
-      <!-- Agregá más tarjetas si querés -->
+      <div class="service-card" data-service="Páginas web / Hosting / Juegos">
+        <img src="assets/web.png" alt="Web / Hosting / Juegos">
+        <span>Web / Hosting / Juegos</span>
+        <button class="mail-btn">Consulta</button>
+        <button class="wa-btn">WhatsApp</button>
+      </div>
+      <div class="service-card" data-service="Agente Inmobiliario">
+        <img src="assets/inmobiliario.png" alt="Inmobiliario">
+        <span>Inmobiliario</span>
+        <button class="mail-btn">Consulta</button>
+        <button class="wa-btn">WhatsApp</button>
+      </div>
+      <div class="service-card" data-service="Automotor">
+        <img src="assets/auto.png" alt="Automotor">
+        <span>Automotor</span>
+        <button class="mail-btn">Consulta</button>
+        <button class="wa-btn">WhatsApp</button>
+      </div>
     </section>
 
-    <aside>
-      <div id="clima-content">Cargando clima...</div>
-      <div id="dolar-content">Cargando cotización...</div>
-    </aside>
+    <!-- Chat / Lía -->
+    <div id="lia-chat">
+      <div id="lia-header">Lía - Asistente DATAWEB</div>
+      <div id="lia-messages">
+        <div class="lia-message">¡Hola! Para hacer una consulta, hacé click en alguna de las opciones. Estoy para ayudarte 😊</div>
+      </div>
+      <input type="text" id="lia-input" placeholder="Escribí aquí..." />
+      <button id="lia-send">Enviar</button>
+    </div>
 
+    <!-- Formulario de contacto -->
     <section id="consultas">
-      <h2>Formulario de consultas</h2>
       <form id="contactForm">
-        <input type="hidden" id="f-servicio" name="Servicio" value="Consulta general">
-        <label for="f-nombre">Nombre:</label>
-        <input type="text" id="f-nombre" name="Nombre" required>
-        <label for="f-email">Email:</label>
-        <input type="email" id="f-email" name="Email" required>
-        <label for="f-whatsapp">WhatsApp:</label>
-        <input type="text" id="f-whatsapp" name="WhatsApp">
-        <label for="f-mensaje">Consulta:</label>
-        <textarea id="f-mensaje" name="Mensaje" required></textarea>
-        <div class="form-buttons">
-          <button type="submit">Enviar</button>
-          <button type="button" id="btn-reset">Limpiar</button>
-        </div>
+        <input type="hidden" name="servicio" id="f-servicio" value="Consulta general">
+        <label>Nombre</label>
+        <input type="text" name="nombre" id="f-nombre" required>
+        <label>Email</label>
+        <input type="email" name="email" id="f-email" required>
+        <label>Teléfono</label>
+        <input type="tel" name="telefono" id="f-tel">
+        <label>Ciudad</label>
+        <input type="text" name="ciudad" id="f-ciudad">
+        <label>Consulta</label>
+        <textarea name="mensaje" id="f-mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+        <button type="button" id="btn-reset">Limpiar</button>
+        <div id="form-status"></div>
       </form>
-      <div id="form-status"></div>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <!-- Widget derecho -->
+  <aside id="widgets">
+    <div id="clima-content">Cargando clima...</div>
+    <div id="dolar-content">Cargando cotización...</div>
+  </aside>
+
+<script src="script.js"></script>
 </body>
 </html>
 

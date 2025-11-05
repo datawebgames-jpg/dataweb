@@ -1,66 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a DATAWEB</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DATAWEB Asesoramientos</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Bienvenido a <span class="resaltado">DATAWEB</span></h1>
-        <p id="saludo">Conectando contigo...</p>
-        <p id="clima">Detectando tu ubicación...</p>
-    </header>
+  <header>
+    <h1>DATAWEB Asesoramientos</h1>
+    <p>Tu conexión inteligente para resolver trámites, gestiones y servicios sin complicaciones.</p>
+  </header>
 
-    <main>
-        <section class="servicios">
-            <h2>Nuestros Servicios</h2>
-            <div class="cards">
-                <div class="card">
-                    <img src="assets/ciudadania.png" alt="Ciudadanía">
-                    <h3>Ciudadanía</h3>
-                </div>
-                <div class="card">
-                    <img src="assets/inmobiliario.png" alt="Inmobiliario">
-                    <h3>Gestiones Inmobiliarias</h3>
-                </div>
-                <div class="card">
-                    <img src="assets/web.png" alt="Web">
-                    <h3>Diseño Web</h3>
-                </div>
-                <div class="card">
-                    <img src="assets/auto.png" alt="Auto">
-                    <h3>Automotor</h3>
-                </div>
-                <div class="card">
-                    <img src="assets/factura.png" alt="Factura">
-                    <h3>Facturación</h3>
-                </div>
-                <div class="card">
-                    <img src="assets/arca.png" alt="Arca">
-                    <h3>Servidor ARCA</h3>
-                </div>
-            </div>
-        </section>
+  <main>
+    <section class="iconos-consulta">
+      <div class="icono" data-consulta="Ciudadanías">🌍<p>Ciudadanías</p></div>
+      <div class="icono" data-consulta="Pagos de Facturas">💳<p>Pagos de Facturas</p></div>
+      <div class="icono" data-consulta="ARCA">🏦<p>ARCA</p></div>
+      <div class="icono" data-consulta="Compras y Ventas">🛒<p>Compras y Ventas</p></div>
+      <div class="icono" data-consulta="Asesoramiento Tecnológico">💻<p>Asesoramiento Tecnológico</p></div>
+      <div class="icono" data-consulta="Páginas Web y Hosting">🌐<p>Páginas Web y Hosting</p></div>
+      <div class="icono" data-consulta="Agente Inmobiliario">🏠<p>Agente Inmobiliario</p></div>
+      <div class="icono" data-consulta="Automotor">🚗<p>Automotor</p></div>
+    </section>
+  </main>
 
-        <section class="lia">
-            <h2>Habla con Lía</h2>
-            <form id="contact-form" action="https://formspree.io/f/mkgwlyay" method="POST">
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-                <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-            <p id="respuesta-lia"></p>
-        </section>
-    </main>
+  <!-- Modal de Lía -->
+  <div id="liaModal" class="modal">
+    <div class="modal-content">
+      <span id="cerrarModal" class="cerrar">&times;</span>
+      <h2>👋 Hola, soy Lía</h2>
+      <p>Asistente virtual de <strong>DATAWEB Asesoramientos</strong>.  
+      Estoy aquí para ayudarte a entender cada servicio y, si lo deseas, coordinar la gestión con nuestro equipo.</p>
+      <button id="btnContinuar">Entendido</button>
+    </div>
+  </div>
 
-    <footer>
-        <p>© 2025 DATAWEB. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <footer>
+    <p>© 2025 DATAWEB Asesoramientos - Todos los derechos reservados</p>
+  </footer>
 </body>
 </html>
 

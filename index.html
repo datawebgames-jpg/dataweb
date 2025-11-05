@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DATAWEB Asesoramientos</title>
   <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas y asesoramiento tecnológico." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
     <div class="container header-inner">
       <div class="brand">
         <h1>DATAWEB ASESORAMIENTOS</h1>
-        <p class="subtitle">Te ayudamos a gestionar lo que necesitás para que disfrutes de tu tiempo</p>
+        <p class="subtitle">Te ayudamos a gestionar lo que necesitás para que disfrutes tu tiempo</p>
       </div>
       <nav class="main-nav" aria-label="Menú principal">
         <a href="#servicios">Servicios</a>
@@ -25,77 +25,70 @@
   </header>
 
   <div class="page container">
-    <!-- Main -->
     <main class="center">
-      <section id="servicios" class="services card">
+      <section id="servicios" class="card">
         <h2>Nuestros servicios</h2>
         <p class="muted">Tocá un ícono para abrir el chat con Lía o para hacer una consulta rápida.</p>
 
         <div class="grid-icons" id="grid-icons">
-          <button class="icon-card" data-service="Ciudadanías">
-            <i class="fa-globe icon-fa" aria-hidden="true"></i><div class="label">Ciudadanías</div>
+          <button class="icon-card" data-service="Ciudadanías" aria-label="Ciudadanías">
+            <div class="icon ico-globe" aria-hidden="true"></div>
+            <div class="label">Ciudadanías</div>
           </button>
 
-          <button class="icon-card" data-service="Pago de facturas">
-            <i class="fa-file-invoice-dollar icon-fa" aria-hidden="true"></i><div class="label">Pago de facturas</div>
+          <button class="icon-card" data-service="Pago de facturas" aria-label="Pago de facturas">
+            <div class="icon ico-invoice" aria-hidden="true"></div>
+            <div class="label">Pago de facturas</div>
           </button>
 
-          <button class="icon-card" data-service="ARCA">
-            <i class="fa-landmark icon-fa" aria-hidden="true"></i><div class="label">ARCA</div>
+          <button class="icon-card" data-service="ARCA" aria-label="ARCA">
+            <div class="icon ico-arca" aria-hidden="true"></div>
+            <div class="label">ARCA</div>
           </button>
 
-          <button class="icon-card" data-service="Compras y Ventas">
-            <i class="fa-cart-shopping icon-fa" aria-hidden="true"></i><div class="label">Compras y Ventas</div>
+          <button class="icon-card" data-service="Compras y Ventas" aria-label="Compras y Ventas">
+            <div class="icon ico-cart" aria-hidden="true"></div>
+            <div class="label">Compras y Ventas</div>
           </button>
 
-          <button class="icon-card" data-service="Asesoramiento tecnológico">
-            <i class="fa-laptop-code icon-fa" aria-hidden="true"></i><div class="label">Asesoramiento tecnológico</div>
+          <button class="icon-card" data-service="Asesoramiento tecnológico" aria-label="Asesoramiento tecnológico">
+            <div class="icon ico-tech" aria-hidden="true"></div>
+            <div class="label">Asesoramiento tecnológico</div>
           </button>
 
-          <button class="icon-card" data-service="Páginas Web y Hosting">
-            <i class="fa-server icon-fa" aria-hidden="true"></i><div class="label">Páginas Web y Hosting</div>
+          <button class="icon-card" data-service="Páginas Web y Hosting" aria-label="Páginas Web y Hosting">
+            <div class="icon ico-server" aria-hidden="true"></div>
+            <div class="label">Páginas Web / Hosting</div>
           </button>
 
-          <button class="icon-card" data-service="Agente Inmobiliario">
-            <i class="fa-house icon-fa" aria-hidden="true"></i><div class="label">Agente Inmobiliario</div>
+          <button class="icon-card" data-service="Agente Inmobiliario" aria-label="Agente Inmobiliario">
+            <div class="icon ico-house" aria-hidden="true"></div>
+            <div class="label">Agente Inmobiliario</div>
           </button>
 
-          <button class="icon-card" data-service="Automotor">
-            <i class="fa-car icon-fa" aria-hidden="true"></i><div class="label">Automotor</div>
-          </button>
-
-          <button class="icon-card icon-lia" data-service="Asistente Lía" id="icon-lia">
-            <div class="lia-avatar">L</div><div class="label">Hablar con Lía</div>
+          <button class="icon-card" data-service="Automotor" aria-label="Automotor">
+            <div class="icon ico-car" aria-hidden="true"></div>
+            <div class="label">Automotor</div>
           </button>
         </div>
 
-        <div class="sellbuy card sellbuy">
-          <h3>Compras y Ventas — ¿Querés ayuda?</h3>
-          <p>
-            ¿Deseás comprar en Mercado Pago, Temu, Tiendamia u otras tiendas online? Dejá tu consulta y te asesoramos para comprar de forma segura.
-            ¿Querés vender algo que tenés en tu casa o comercio? Envíanos fotos, cuánto pedís y nosotros te ayudamos a venderlo.
-          </p>
+        <div class="sellbuy">
+          <h3>Compras y ventas — ¿Querés ayuda?</h3>
+          <p class="muted">Si deseás comprar en Mercado Pago, Temu, Tiendamia u otras tiendas: dejá tu consulta. Si querés vender, mandanos fotos y precio y te ayudamos a publicarlo.</p>
           <div class="sellbuy-actions">
             <button id="btn-consulta" class="btn primary open-modal">Enviar mi consulta o producto</button>
-            <small class="muted">Al hacer clic se abrirá el formulario para que adjuntes la información.</small>
           </div>
         </div>
       </section>
 
-      <section id="quienes" class="card quienes">
-        <h3>Quiénes somos</h3>
-        <p>En <strong>DATAWEB Asesoramientos</strong> gestionamos trámites (ciudadanías, pagos, gestoría, asesoría tecnológica, ventas/compras). Comunicación clara, seguimiento puntual y la garantía de gestionar para que ganes tiempo y seguridad.</p>
-      </section>
-
       <section id="noticias" class="card news">
         <h3>Titulares principales (Argentina)</h3>
-        <div id="news-summary">Cargando titulares...</div>
+        <div id="news-summary" class="news-summary">Cargando titulares...</div>
         <h4 style="margin-top:14px">📅 Efemérides del día</h4>
         <div id="efemerides">Cargando efemérides...</div>
       </section>
     </main>
 
-    <!-- Sidebar -->
     <aside class="sidebar" aria-label="Panel derecho - widgets">
       <div class="card" id="widget-clima">
         <h4>🌤️ Clima</h4>
@@ -108,16 +101,24 @@
       </div>
 
       <div class="card" id="widget-farmacias">
-        <h4>💊 Farmacias de turno</h4>
-        <div id="farmacias-content">Cargando farmacias...</div>
+        <h4>💊 Farmacias de turno en Santa Rosa</h4>
+        <div id="farmacias-fixed">
+          <ul>
+            <li><b>Demaria:</b> Av. Belgrano Norte 672. Tel: 410900.</li>
+            <li><b>PIO XII:</b> Ameghino y Pio XII. Tel: 427400.</li>
+            <li><b>Palasciano SCS:</b> H. Irigoyen y Moreno. Tel: 416400.</li>
+            <li><b>Weigel:</b> A. Cavero 306. Tel: 415651.</li>
+            <li><b>Costabel:</b> Av. Uruguay 350.</li>
+          </ul>
+        </div>
       </div>
 
       <div class="card">
         <h4>🔗 Nuestras redes</h4>
         <div class="social-icons">
-          <a class="social" href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener" title="Facebook">Facebook</a>
-          <a class="social" href="https://www.instagram.com" target="_blank" rel="noopener" title="Instagram">Instagram</a>
-          <a class="social" href="https://twitter.com/lanacion" target="_blank" rel="noopener" title="X / Twitter">X</a>
+          <a href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener">Facebook</a> ·
+          <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a> ·
+          <a href="https://x.com" target="_blank" rel="noopener">X</a>
         </div>
         <div class="visits"><strong>Visitas (este navegador):</strong> <span id="visit-count">0</span></div>
       </div>
@@ -147,9 +148,7 @@
     </div>
 
     <div class="lia-body" id="lia-body">
-      <div id="lia-messages" class="lia-messages">
-        <!-- mensajes dinámicos -->
-      </div>
+      <div id="lia-messages" class="lia-messages"></div>
       <div id="lia-quick" class="lia-quick"></div>
     </div>
 
@@ -161,7 +160,7 @@
     </form>
   </div>
 
-  <!-- Modal de Consulta (estructurado) -->
+  <!-- Modal de Consulta -->
   <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-panel">
       <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
@@ -180,7 +179,7 @@
         <textarea id="m-mensaje" name="mensaje" rows="4" required></textarea>
         <div style="display:flex;gap:8px;margin-top:10px;">
           <button type="submit" class="btn primary">Enviar por correo</button>
-          <button type="button" id="modal-send-wa" class="btn whatsapp"><i aria-hidden="true">📱</i> Enviar por WhatsApp</button>
+          <button type="button" id="modal-send-wa" class="btn whatsapp">📱 Enviar por WhatsApp</button>
         </div>
         <div id="modal-status" class="form-status"></div>
       </form>
@@ -190,6 +189,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

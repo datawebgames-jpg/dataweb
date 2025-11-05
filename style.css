@@ -42,14 +42,18 @@ html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, 
   text-align:center;
 }
 .icon-card:hover{ transform: translateY(-6px); box-shadow: 0 24px 50px rgba(2,20,50,0.10); background: linear-gradient(180deg,#eaf6ff,#ffffff); }
-.icon-fa{ font-size:30px; color:var(--accent-dark); margin-bottom:10px; }
-.icon-card .label{ font-weight:700; color:var(--accent-dark); }
+.icon{ width:56px; height:56px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:8px; background:linear-gradient(180deg,#eaf6ff,#ffffff); color:var(--accent-dark); font-weight:700; font-size:22px; }
 
-/* Lia icon style */
-.icon-lia .lia-avatar{ display:none; }
-.icon-lia .lia-avatar-small{ display:block; width:48px; height:48px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; margin-bottom:8px; }
+/* here we use simple shapes/text instead of images to keep assets minimal */
+.ico-globe::before{ content:"🌎"; font-size:26px; }
+.ico-invoice::before{ content:"📄"; font-size:26px; }
+.ico-arca::before{ content:"🏛️"; font-size:22px; }
+.ico-cart::before{ content:"🛒"; font-size:26px; }
+.ico-tech::before{ content:"💻"; font-size:26px; }
+.ico-server::before{ content:"🖥️"; font-size:22px; }
+.ico-house::before{ content:"🏠"; font-size:26px; }
+.ico-car::before{ content:"🚗"; font-size:26px; }
 
-/* sell/buy */
 .sellbuy{ margin-top:18px; background: linear-gradient(180deg,#ffffff,#f8fbff); padding:16px; border-radius:12px; }
 .sellbuy h3{ margin:0 0 8px 0; color:var(--accent-dark); }
 .sellbuy p{ margin:0 0 12px 0; color:var(--muted); }
@@ -103,6 +107,7 @@ html,body{ margin:0; height:100%; font-family:Inter, "Segoe UI", Roboto, Arial, 
 .form-status{ margin-top:10px; font-weight:700; color:#075985; }
 .hidden{ display:none !important; }
 .small{ font-size:0.9rem; color:var(--muted); }
+
 
 
 

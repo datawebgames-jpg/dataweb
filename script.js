@@ -1,179 +1,125 @@
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #0a0a0a;
-  color: #f1f1f1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+// ===============================
+// LÍA - ASISTENTE VIRTUAL DATAWEB
+// ===============================
+
+// Muestra automáticamente la burbuja de Lía al cargar
+document.addEventListener("DOMContentLoaded", () => {
+    const liaBubble = document.getElementById("lia-bubble");
+    const liaChat = document.getElementById("lia-chat");
+
+    // Mostrar la burbuja
+    liaBubble.style.display = "flex";
+
+    // Al hacer clic en la burbuja, abrir el chat
+    liaBubble.addEventListener("click", openLia);
+
+    // Enviar mensaje
+    document.getElementById("lia-send").addEventListener("click", sendMessage);
+
+    // Saludo inicial automático
+    setTimeout(() => {
+        addLiaMessage("👋 ¡Hola! Soy Lía, tu asistente virtual de <b>DATAWEB</b>. ¿En qué puedo ayudarte hoy?");
+    }, 1200);
+});
+
+// Función para abrir el chat de Lía
+function openLia() {
+    const liaChat = document.getElementById("lia-chat");
+    liaChat.classList.add("open");
+    addLiaMessage("Bienvenido nuevamente 👋 ¿Querés conocer nuestros servicios o consultar algo?");
 }
 
-header {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #0059ff, #00d4ff);
-  width: 100%;
-  color: white;
+// Enviar mensaje del usuario
+function sendMessage() {
+    const input = document.getElementById("lia-input");
+    const message = input.value.trim();
+    if (message === "") return;
+
+    addUserMessage(message);
+    input.value = "";
+
+    // Respuesta de Lía según contexto
+    respondToContext(message);
 }
 
-main {
-  width: 95%;
-  max-width: 1200px;
-  margin: 1.5rem 0;
+// Mostrar mensaje del usuario
+function addUserMessage(text) {
+    const chatBody = document.getElementById("lia-body");
+    const msg = document.createElement("div");
+    msg.className = "lia-msg user";
+    msg.innerHTML = `<p>${text}</p>`;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-.icon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+// Mostrar mensaje de Lía
+function addLiaMessage(text) {
+    const chatBody = document.getElementById("lia-body");
+    const msg = document.createElement("div");
+    msg.className = "lia-msg lia";
+    msg.innerHTML = `<p>${text}</p>`;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-.icon-card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  text-align: center;
-  padding: 1rem;
-  cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+// Responder según mensaje del usuario
+function respondToContext(input) {
+    const text = input.toLowerCase();
+
+    if (text.includes("hola")) {
+        addLiaMessage("¡Hola! 😊 ¿Querés conocer nuestros servicios o contactar con soporte?");
+    } else if (text.includes("servicio") || text.includes("dataweb")) {
+        addLiaMessage("Ofrecemos desarrollo web, servidores y asistencia técnica. 🌐 ¿Querés que te muestre el catálogo completo?");
+    } else if (text.includes("clima")) {
+        addLiaMessage("☀️ Te muestro el clima actual en tu zona...");
+        loadWeather();
+    } else if (text.includes("gracias")) {
+        addLiaMessage("¡De nada! 💙 Siempre es un placer ayudarte.");
+    } else {
+        addLiaMessage("Puedo ayudarte con información de <b>Dataweb</b>, el clima, o soporte técnico. ¿Qué te gustaría hacer?");
+    }
 }
 
-.icon-card:hover {
-  transform: translateY(-5px);
-  background: #002b80;
+// ========================================
+// WIDGET CLIMA AUTOMÁTICO SEGÚN UBICACIÓN
+// ========================================
+async function loadWeather() {
+    const widget = document.getElementById("weather-widget");
+    widget.innerHTML = "⏳ Cargando clima...";
+
+    try {
+        // Obtener ubicación del usuario
+        const geoRes = await fetch("https://ipapi.co/json/");
+        const geoData = await geoRes.json();
+
+        const city = geoData.city || "Buenos Aires";
+        const apiKey = "b6907d289e10d714a6e88b30761fae22"; // Ejemplo, puedes poner tu key real de OpenWeather si tenés una
+        const weatherRes = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=es&appid=${apiKey}`
+        );
+        const weather = await weatherRes.json();
+
+        if (weather.main) {
+            widget.innerHTML = `
+                <h3>🌤 Clima en ${city}</h3>
+                <p>${weather.weather[0].description}</p>
+                <p>🌡 ${weather.main.temp}°C | 💧 ${weather.main.humidity}% humedad</p>
+            `;
+        } else {
+            widget.innerHTML = "❌ No se pudo obtener el clima actual.";
+        }
+    } catch (err) {
+        console.error("Error clima:", err);
+        widget.innerHTML = "⚠️ No se pudo cargar el clima.";
+    }
 }
 
-.icon-card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 0.5rem;
-}
-
-.widget {
-  background: #1a1a1a;
-  padding: 1rem;
-  border-radius: 12px;
-  margin-top: 1rem;
-  color: #f0f0f0;
-}
-
-.widget h3 {
-  margin-top: 0;
-  color: #00d4ff;
-}
-
-footer {
-  background: #002b80;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  width: 100%;
-}
-
-/* === LÍA === */
-
-.bubble {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #007bff;
-  color: white;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  padding: 15px;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s;
-  z-index: 100;
-}
-
-.bubble:hover {
-  transform: scale(1.1);
-}
-
-.lia-chat {
-  position: fixed;
-  bottom: 90px;
-  right: 25px;
-  width: 320px;
-  background: #121212;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 99;
-}
-
-.lia-chat.open {
-  display: flex;
-}
-
-.lia-header {
-  background: #007bff;
-  color: white;
-  padding: 0.5rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#liaClose {
-  cursor: pointer;
-  font-size: 1.3rem;
-}
-
-.lia-messages {
-  flex: 1;
-  padding: 1rem;
-  overflow-y: auto;
-  background: #1a1a1a;
-  max-height: 300px;
-}
-
-.msg {
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  margin-bottom: 0.5rem;
-  max-width: 85%;
-}
-
-.msg.lia {
-  background: #0044cc;
-  align-self: flex-start;
-  color: #fff;
-}
-
-.msg.user {
-  background: #333;
-  align-self: flex-end;
-  color: #fff;
-}
-
-.lia-input {
-  display: flex;
-  padding: 0.5rem;
-  background: #0d0d0d;
-}
-
-.lia-input input {
-  flex: 1;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-}
-
-.lia-input button {
-  background: #007bff;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  margin-left: 0.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
+// ======================================
+// CARGAR AL INICIAR
+// ======================================
+document.addEventListener("DOMContentLoaded", () => {
+    loadWeather();
+});
 
 
 

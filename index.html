@@ -1,80 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DATAWEB Asesoramientos</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DATAWEB - Servicios Digitales</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
-  <header>
-    <h1>DATAWEB ASESORAMIENTOS</h1>
-    <p>Gestiones, servicios y soluciones digitales a tu alcance.</p>
-  </header>
+    <header>
+        <h1>🌐 DATAWEB</h1>
+        <p>Soluciones digitales, servidores y soporte técnico.</p>
+    </header>
 
-  <main>
-    <section id="servicios">
-      <h2>Consultas rápidas</h2>
-      <div class="icon-grid">
-        <div class="icon-card" data-context="ciudadania">
-          <img src="assets/iconos/ciudadania.png" alt="Ciudadanía" />
-          <p>Ciudadanías</p>
-        </div>
-        <div class="icon-card" data-context="facturas">
-          <img src="assets/iconos/factura.png" alt="Facturas" />
-          <p>Pago de Facturas</p>
-        </div>
-        <div class="icon-card" data-context="arca">
-          <img src="assets/iconos/arca.png" alt="ARCA" />
-          <p>ARCA</p>
-        </div>
-        <div class="icon-card" data-context="web">
-          <img src="assets/iconos/web.png" alt="Páginas Web" />
-          <p>Páginas Web y Host</p>
-        </div>
-        <div class="icon-card" data-context="inmobiliario">
-          <img src="assets/iconos/inmobiliario.png" alt="Inmobiliario" />
-          <p>Agente Inmobiliario</p>
-        </div>
-        <div class="icon-card" data-context="automotor">
-          <img src="assets/iconos/auto.png" alt="Automotor" />
-          <p>Automotor</p>
-        </div>
-      </div>
-    </section>
+    <main>
+        <section id="services">
+            <h2>🛠️ Nuestros Servicios</h2>
+            <div class="service-grid">
+                <div class="service-item">
+                    <img src="assets/web-icon.png" alt="Desarrollo Web">
+                    <h3>Desarrollo Web</h3>
+                    <p>Páginas modernas, seguras y rápidas, adaptadas a tus necesidades.</p>
+                </div>
+                <div class="service-item">
+                    <img src="assets/server-icon.png" alt="Servidores">
+                    <h3>Servidores</h3>
+                    <p>Hosting, VPS y servidores personalizados para tus proyectos o juegos.</p>
+                </div>
+                <div class="service-item">
+                    <img src="assets/support-icon.png" alt="Soporte Técnico">
+                    <h3>Soporte Técnico</h3>
+                    <p>Asistencia remota o presencial para que nada te detenga.</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="widgets">
-      <div id="clima" class="widget">Cargando clima...</div>
-      <div id="news" class="widget">
-        <h3>Últimas noticias</h3>
-        <ul></ul>
-      </div>
-    </section>
-  </main>
+        <section id="widgets">
+            <div id="weather-widget" class="widget">
+                ⏳ Cargando clima...
+            </div>
+            <div id="farmacias" class="widget">
+                <h3>💊 Farmacias de turno en Santa Rosa</h3>
+                <ul>
+                    <li>Demaria: Av. Belgrano Norte 672. Tel: 410900.</li>
+                    <li>PIO XII: Ameghino y Pio XII. Tel: 427400.</li>
+                    <li>Palasciano SCS: H. Irigoyen y Moreno. Tel: 416400.</li>
+                    <li>Weigel: A. Cavero 306. Tel: 415651.</li>
+                    <li>Costabel: Av. Uruguay 350.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
 
-  <!-- LÍA BURBUJA -->
-  <div id="liaBubble" class="bubble">
-    💬
-  </div>
+    <footer>
+        <p>© 2025 DATAWEB. Todos los derechos reservados.</p>
+    </footer>
 
-  <!-- CHAT DE LÍA -->
-  <div id="liaChat" class="lia-chat">
-    <div class="lia-header">
-      <h3>💠 Lía</h3>
-      <span id="liaClose">×</span>
+    <!-- Burbuja flotante de Lía -->
+    <div id="lia-bubble">💬</div>
+
+    <!-- Ventana de chat de Lía -->
+    <div id="lia-chat" class="lia-hidden">
+        <div id="lia-header">Lía - Asistente Virtual</div>
+        <div id="lia-body"></div>
+        <div id="lia-input-area">
+            <input id="lia-input" type="text" placeholder="Escribí tu mensaje..." />
+            <button id="lia-send">Enviar</button>
+        </div>
     </div>
-    <div id="liaMessages" class="lia-messages"></div>
-    <div class="lia-input">
-      <input type="text" id="liaInput" placeholder="Escribí tu mensaje..." />
-      <button id="liaSend">Enviar</button>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2025 Dataweb Asesoramientos - Todos los derechos reservados.</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
 

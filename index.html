@@ -1,190 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DATAWEB Asesoramientos</title>
-  <meta name="description" content="DATAWEB Asesoramientos - trámites, ciudadanías, pagos, compras/ventas y asesoramiento tecnológico." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>DATAWEB ASESORAMIENTOS</h1>
-        <p class="subtitle">Te ayudamos a gestionar lo que necesitás para que disfrutes tu tiempo</p>
-      </div>
-      <nav class="main-nav" aria-label="Menú principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#consultas">Consultas</a>
-        <a href="#noticias">Noticias</a>
-        <a href="#quienes">Quiénes somos</a>
-      </nav>
-    </div>
+  <header>
+    <h1>DATAWEB ASESORAMIENTOS</h1>
+    <p>Gestiones, servicios y soluciones digitales a tu alcance.</p>
   </header>
 
-  <div class="page container">
-    <main class="center">
-      <section id="servicios" class="card">
-        <h2>Nuestros servicios</h2>
-        <p class="muted">Tocá un ícono para abrir el chat con Lía o para hacer una consulta rápida.</p>
-
-        <div class="grid-icons" id="grid-icons">
-          <button class="icon-card" data-service="Ciudadanías" aria-label="Ciudadanías">
-            <div class="icon ico-globe" aria-hidden="true"></div>
-            <div class="label">Ciudadanías</div>
-          </button>
-
-          <button class="icon-card" data-service="Pago de facturas" aria-label="Pago de facturas">
-            <div class="icon ico-invoice" aria-hidden="true"></div>
-            <div class="label">Pago de facturas</div>
-          </button>
-
-          <button class="icon-card" data-service="ARCA" aria-label="ARCA">
-            <div class="icon ico-arca" aria-hidden="true"></div>
-            <div class="label">ARCA</div>
-          </button>
-
-          <button class="icon-card" data-service="Compras y Ventas" aria-label="Compras y Ventas">
-            <div class="icon ico-cart" aria-hidden="true"></div>
-            <div class="label">Compras y Ventas</div>
-          </button>
-
-          <button class="icon-card" data-service="Asesoramiento tecnológico" aria-label="Asesoramiento tecnológico">
-            <div class="icon ico-tech" aria-hidden="true"></div>
-            <div class="label">Asesoramiento tecnológico</div>
-          </button>
-
-          <button class="icon-card" data-service="Páginas Web y Hosting" aria-label="Páginas Web y Hosting">
-            <div class="icon ico-server" aria-hidden="true"></div>
-            <div class="label">Páginas Web / Hosting</div>
-          </button>
-
-          <button class="icon-card" data-service="Agente Inmobiliario" aria-label="Agente Inmobiliario">
-            <div class="icon ico-house" aria-hidden="true"></div>
-            <div class="label">Agente Inmobiliario</div>
-          </button>
-
-          <button class="icon-card" data-service="Automotor" aria-label="Automotor">
-            <div class="icon ico-car" aria-hidden="true"></div>
-            <div class="label">Automotor</div>
-          </button>
+  <main>
+    <section id="servicios">
+      <h2>Consultas rápidas</h2>
+      <div class="icon-grid">
+        <div class="icon-card" data-context="ciudadania">
+          <img src="assets/iconos/ciudadania.png" alt="Ciudadanía" />
+          <p>Ciudadanías</p>
         </div>
-
-        <div class="sellbuy">
-          <h3>Compras y ventas — ¿Querés ayuda?</h3>
-          <p class="muted">Si deseás comprar en Mercado Pago, Temu, Tiendamia u otras tiendas: dejá tu consulta. Si querés vender, mandanos fotos y precio y te ayudamos a publicarlo.</p>
-          <div class="sellbuy-actions">
-            <button id="btn-consulta" class="btn primary open-modal">Enviar mi consulta o producto</button>
-          </div>
+        <div class="icon-card" data-context="facturas">
+          <img src="assets/iconos/factura.png" alt="Facturas" />
+          <p>Pago de Facturas</p>
         </div>
-      </section>
-
-      <section id="noticias" class="card news">
-        <h3>Titulares principales (Argentina)</h3>
-        <div id="news-summary" class="news-summary">Cargando titulares...</div>
-        <h4 style="margin-top:14px">📅 Efemérides del día</h4>
-        <div id="efemerides">Cargando efemérides...</div>
-      </section>
-    </main>
-
-    <aside class="sidebar" aria-label="Panel derecho - widgets">
-      <div class="card" id="widget-clima">
-        <h4>🌤️ Clima</h4>
-        <div id="clima-content">Detectando ubicación...</div>
-      </div>
-
-      <div class="card" id="widget-dolar">
-        <h4>💵 Dólar (hoy)</h4>
-        <div id="dolar-content">Cargando cotización...</div>
-      </div>
-
-      <div class="card" id="widget-farmacias">
-        <h4>💊 Farmacias de turno en Santa Rosa</h4>
-        <div id="farmacias-fixed">
-          <ul>
-            <li><b>Demaria:</b> Av. Belgrano Norte 672. Tel: 410900.</li>
-            <li><b>PIO XII:</b> Ameghino y Pio XII. Tel: 427400.</li>
-            <li><b>Palasciano SCS:</b> H. Irigoyen y Moreno. Tel: 416400.</li>
-            <li><b>Weigel:</b> A. Cavero 306. Tel: 415651.</li>
-            <li><b>Costabel:</b> Av. Uruguay 350.</li>
-          </ul>
+        <div class="icon-card" data-context="arca">
+          <img src="assets/iconos/arca.png" alt="ARCA" />
+          <p>ARCA</p>
+        </div>
+        <div class="icon-card" data-context="web">
+          <img src="assets/iconos/web.png" alt="Páginas Web" />
+          <p>Páginas Web y Host</p>
+        </div>
+        <div class="icon-card" data-context="inmobiliario">
+          <img src="assets/iconos/inmobiliario.png" alt="Inmobiliario" />
+          <p>Agente Inmobiliario</p>
+        </div>
+        <div class="icon-card" data-context="automotor">
+          <img src="assets/iconos/auto.png" alt="Automotor" />
+          <p>Automotor</p>
         </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h4>🔗 Nuestras redes</h4>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/DatawebGames" target="_blank" rel="noopener">Facebook</a> ·
-          <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a> ·
-          <a href="https://x.com" target="_blank" rel="noopener">X</a>
-        </div>
-        <div class="visits"><strong>Visitas (este navegador):</strong> <span id="visit-count">0</span></div>
+    <section id="widgets">
+      <div id="clima" class="widget">Cargando clima...</div>
+      <div id="news" class="widget">
+        <h3>Últimas noticias</h3>
+        <ul></ul>
       </div>
-    </aside>
+    </section>
+  </main>
+
+  <!-- LÍA BURBUJA -->
+  <div id="liaBubble" class="bubble">
+    💬
   </div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="left">✉️ <a href="mailto:dataweb76@gmail.com">dataweb76@gmail.com</a> • 📱 <a href="https://wa.me/542954320639" target="_blank">+54 2954 320639</a></div>
-      <div class="right small">© 2025 DATAWEB Asesoramientos</div>
+  <!-- CHAT DE LÍA -->
+  <div id="liaChat" class="lia-chat">
+    <div class="lia-header">
+      <h3>💠 Lía</h3>
+      <span id="liaClose">×</span>
     </div>
+    <div id="liaMessages" class="lia-messages"></div>
+    <div class="lia-input">
+      <input type="text" id="liaInput" placeholder="Escribí tu mensaje..." />
+      <button id="liaSend">Enviar</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Dataweb Asesoramientos - Todos los derechos reservados.</p>
   </footer>
-
-  <!-- Lía: Burbuja y panel -->
-  <div id="lia-bubble" class="lia-bubble" title="Abrir chat con Lía">
-    <div class="lia-avatar-small">L</div>
-  </div>
-
-  <div id="lia-panel" class="lia-panel hidden" role="dialog" aria-modal="false">
-    <div class="lia-panel-header">
-      <div class="lia-avatar">L</div>
-      <div class="lia-info">
-        <div class="lia-name">Lía</div>
-        <div class="lia-sub">Asistente de Dataweb Asesoramientos</div>
-      </div>
-      <button id="lia-close" class="lia-close" aria-label="Cerrar">×</button>
-    </div>
-
-    <div class="lia-body" id="lia-body">
-      <div id="lia-messages" class="lia-messages"></div>
-      <div id="lia-quick" class="lia-quick"></div>
-    </div>
-
-    <form id="lia-form" class="lia-form" onsubmit="return false;">
-      <input type="hidden" id="lia-context" name="context" value="">
-      <input type="text" id="lia-input" placeholder="Escribí tu consulta..." autocomplete="off" />
-      <button type="button" id="lia-send" class="btn primary">Enviar</button>
-      <button type="button" id="lia-send-mail" class="btn">Enviar por correo</button>
-    </form>
-  </div>
-
-  <!-- Modal de Consulta -->
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-panel">
-      <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
-      <h3 id="modal-title">Enviar consulta</h3>
-      <form id="modal-form" action="https://formspree.io/f/xqagjovo" method="POST">
-        <input type="hidden" name="servicio" id="form-servicio" value="Consulta desde Lía" />
-        <label>Nombre</label>
-        <input id="m-nombre" name="nombre" type="text" required />
-        <label>Email</label>
-        <input id="m-email" name="email" type="email" required />
-        <label>Teléfono</label>
-        <input id="m-tel" name="telefono" type="text" />
-        <label>Ciudad</label>
-        <input id="m-ciudad" name="ciudad" type="text" />
-        <label>Consulta / Mensaje</label>
-        <textarea id="m-mensaje" name="mensaje" rows="4" required></textarea>
-        <div style="display:flex;gap:8px;margin-top:10px;">
-          <button type="submit" class="btn primary">Enviar por correo</button>
-          <button type="button" id="modal-send-wa" class="btn whatsapp">📱 Enviar por WhatsApp</button>
-        </div>
-        <div id="modal-status" class="form-status"></div>
-      </form>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>

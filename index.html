@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DATAWEB Asesoramientos</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -24,16 +24,35 @@
       <div class="icono" data-consulta="Agente Inmobiliario">🏠<p>Agente Inmobiliario</p></div>
       <div class="icono" data-consulta="Automotor">🚗<p>Automotor</p></div>
     </section>
+
+    <aside class="widgets">
+      <div id="climaWidget">
+        <h3>Clima</h3>
+        <p id="climaTexto">Cargando...</p>
+      </div>
+      <div id="dolarWidget">
+        <h3>Dólar Hoy</h3>
+        <p id="dolarTexto">Cargando...</p>
+      </div>
+    </aside>
   </main>
 
-  <!-- Modal de Lía -->
-  <div id="liaModal" class="modal">
-    <div class="modal-content">
-      <span id="cerrarModal" class="cerrar">&times;</span>
-      <h2>👋 Hola, soy Lía</h2>
-      <p>Asistente virtual de <strong>DATAWEB Asesoramientos</strong>.  
-      Estoy aquí para ayudarte a entender cada servicio y, si lo deseas, coordinar la gestión con nuestro equipo.</p>
-      <button id="btnContinuar">Entendido</button>
+  <!-- Chat de Lía -->
+  <div id="chatLia" class="chat-flotante">
+    <button id="abrirChat">💬 Lía</button>
+    <div id="modalChat" class="modal-chat">
+      <div class="modal-chat-contenido">
+        <span id="cerrarChat" class="cerrar">&times;</span>
+        <h2>👋 Hola, soy Lía</h2>
+        <p>Asistente de DATAWEB Asesoramientos. ¿Sobre qué deseas consultar?</p>
+        <input type="text" id="nombreUsuario" placeholder="Tu nombre (opcional)">
+        <textarea id="consultaUsuario" placeholder="Escribe tu consulta aquí..."></textarea>
+        <div class="opciones-envio">
+          <button id="enviarMail">Enviar por Mail</button>
+          <button id="enviarWhatsApp">Enviar por WhatsApp</button>
+        </div>
+        <p id="mensajeConfirmacion"></p>
+      </div>
     </div>
   </div>
 
@@ -42,7 +61,6 @@
   </footer>
 </body>
 </html>
-
 
 
 

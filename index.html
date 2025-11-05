@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DATAWEB - Servicios Digitales</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a DATAWEB</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>🌐 DATAWEB</h1>
-        <p>Soluciones digitales, servidores y soporte técnico.</p>
+        <h1>Bienvenido a <span class="resaltado">DATAWEB</span></h1>
+        <p id="saludo">Conectando contigo...</p>
+        <p id="clima">Detectando tu ubicación...</p>
     </header>
 
     <main>
-        <section id="services">
-            <h2>🛠️ Nuestros Servicios</h2>
-            <div class="service-grid">
-                <div class="service-item">
-                    <img src="assets/web-icon.png" alt="Desarrollo Web">
-                    <h3>Desarrollo Web</h3>
-                    <p>Páginas modernas, seguras y rápidas, adaptadas a tus necesidades.</p>
+        <section class="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="assets/ciudadania.png" alt="Ciudadanía">
+                    <h3>Ciudadanía</h3>
                 </div>
-                <div class="service-item">
-                    <img src="assets/server-icon.png" alt="Servidores">
-                    <h3>Servidores</h3>
-                    <p>Hosting, VPS y servidores personalizados para tus proyectos o juegos.</p>
+                <div class="card">
+                    <img src="assets/inmobiliario.png" alt="Inmobiliario">
+                    <h3>Gestiones Inmobiliarias</h3>
                 </div>
-                <div class="service-item">
-                    <img src="assets/support-icon.png" alt="Soporte Técnico">
-                    <h3>Soporte Técnico</h3>
-                    <p>Asistencia remota o presencial para que nada te detenga.</p>
+                <div class="card">
+                    <img src="assets/web.png" alt="Web">
+                    <h3>Diseño Web</h3>
+                </div>
+                <div class="card">
+                    <img src="assets/auto.png" alt="Auto">
+                    <h3>Automotor</h3>
+                </div>
+                <div class="card">
+                    <img src="assets/factura.png" alt="Factura">
+                    <h3>Facturación</h3>
+                </div>
+                <div class="card">
+                    <img src="assets/arca.png" alt="Arca">
+                    <h3>Servidor ARCA</h3>
                 </div>
             </div>
         </section>
 
-        <section id="widgets">
-            <div id="weather-widget" class="widget">
-                ⏳ Cargando clima...
-            </div>
-            <div id="farmacias" class="widget">
-                <h3>💊 Farmacias de turno en Santa Rosa</h3>
-                <ul>
-                    <li>Demaria: Av. Belgrano Norte 672. Tel: 410900.</li>
-                    <li>PIO XII: Ameghino y Pio XII. Tel: 427400.</li>
-                    <li>Palasciano SCS: H. Irigoyen y Moreno. Tel: 416400.</li>
-                    <li>Weigel: A. Cavero 306. Tel: 415651.</li>
-                    <li>Costabel: Av. Uruguay 350.</li>
-                </ul>
-            </div>
+        <section class="lia">
+            <h2>Habla con Lía</h2>
+            <form id="contact-form" action="https://formspree.io/f/mkgwlyay" method="POST">
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p id="respuesta-lia"></p>
         </section>
     </main>
 
@@ -57,18 +60,7 @@
         <p>© 2025 DATAWEB. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Burbuja flotante de Lía -->
-    <div id="lia-bubble">💬</div>
-
-    <!-- Ventana de chat de Lía -->
-    <div id="lia-chat" class="lia-hidden">
-        <div id="lia-header">Lía - Asistente Virtual</div>
-        <div id="lia-body"></div>
-        <div id="lia-input-area">
-            <input id="lia-input" type="text" placeholder="Escribí tu mensaje..." />
-            <button id="lia-send">Enviar</button>
-        </div>
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>
 

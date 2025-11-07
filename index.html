@@ -1,105 +1,148 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dataweb Asesoramientos</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DATAWEB Asesoramientos</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Encabezado -->
   <header>
     <h1>DATAWEB Asesoramientos</h1>
-    <p>Te ayudamos a simplificar tus trámites y gestiones. ¡Deja que nos encarguemos de todo!</p>
+    <p>Te ayudamos a simplificar tus trámites y gestiones. ¡Dejá que nos encarguemos de todo!</p>
   </header>
 
-  <!-- Servicios / Iconos -->
-  <main>
-    <section id="services">
-      <div class="service-card" data-service="Ciudadanías">
-        <img src="assets/ciudadania.png" alt="Ciudadanías">
-        <span>Ciudadanías</span>
-        <button class="mail-btn">Consulta</button>
-        <button class="wa-btn">WhatsApp</button>
+  <!-- Layout principal -->
+  <main class="layout">
+    <!-- Columna central: servicios + quienes somos -->
+    <section id="services-section">
+      <div id="services" class="services-grid">
+        <div class="service-card" data-service="Ciudadanías">
+          <img src="assets/ciudadania.png" alt="Ciudadanías">
+          <span>Ciudadanías</span>
+        </div>
+        <div class="service-card" data-service="Pagos de facturas">
+          <img src="assets/factura.png" alt="Pagos de facturas">
+          <span>Pagos de Facturas</span>
+        </div>
+        <div class="service-card" data-service="ARCA">
+          <img src="assets/arca.png" alt="ARCA">
+          <span>ARCA</span>
+        </div>
+        <div class="service-card" data-service="Compra y Venta">
+          <img src="assets/compraventa.png" alt="Compra y Venta">
+          <span>Compra y Venta</span>
+        </div>
+        <div class="service-card" data-service="Web y Hosting de Juegos">
+          <img src="assets/web.png" alt="Web y Hosting de Juegos">
+          <span>Web / Hosting / Juegos</span>
+        </div>
+        <div class="service-card" data-service="Electrónica">
+          <img src="assets/electronica.png" alt="Electrónica">
+          <span>Electrónica</span>
+        </div>
+        <div class="service-card" data-service="Inmobiliario">
+          <img src="assets/inmobiliario.png" alt="Inmobiliario">
+          <span>Inmobiliario</span>
+        </div>
+        <div class="service-card" data-service="Automotor">
+          <img src="assets/auto.png" alt="Automotor">
+          <span>Automotor</span>
+        </div>
       </div>
-      <div class="service-card" data-service="Pago de facturas">
-        <img src="assets/factura.png" alt="Pago de facturas">
-        <span>Pago de facturas</span>
-        <button class="mail-btn">Consulta</button>
-        <button class="wa-btn">WhatsApp</button>
-      </div>
-      <div class="service-card" data-service="ARCA">
-        <img src="assets/arca.png" alt="ARCA">
-        <span>ARCA</span>
-        <button class="mail-btn">Consulta</button>
-        <button class="wa-btn">WhatsApp</button>
-      </div>
-      <div class="service-card" data-service="Compras y Ventas">
-        <img src="assets/compraventa.png" alt="Compras y Ventas">
-        <span>Compras y Ventas</span>
-        <button class="mail-btn">Consulta</button>
-        <button class="wa-btn">WhatsApp</button>
-      </div>
-      <div class="service-card" data-service="Páginas web / Hosting / Juegos">
-        <img src="assets/web.png" alt="Web / Hosting / Juegos">
-        <span>Web / Hosting / Juegos</span>
-        <button class="mail-btn">Consulta</button>
-        <button class="wa-btn">WhatsApp</button>
-      </div>
-      <div class="service-card" data-service="Agente Inmobiliario">
-        <img src="assets/inmobiliario.png" alt="Inmobiliario">
-        <span>Inmobiliario</span>
-        <button class="mail-btn">Consulta</button>
-        <button class="wa-btn">WhatsApp</button>
-      </div>
-      <div class="service-card" data-service="Automotor">
-        <img src="assets/auto.png" alt="Automotor">
-        <span>Automotor</span>
-        <button class="mail-btn">Consulta</button>
-        <button class="wa-btn">WhatsApp</button>
-      </div>
+
+      <section id="about">
+        <h2>¿Quiénes somos?</h2>
+        <p>
+          En <strong>DATAWEB Asesoramientos</strong> nos dedicamos a hacer tu vida más simple.
+          Te acompañamos en trámites de ciudadanías, pagos de servicios, gestiones ARCA,
+          operaciones inmobiliarias, automotores, soluciones tecnológicas, compras y ventas,
+          y asesoramiento digital. Trabajamos con profesionales en cada área para brindarte
+          respuestas claras, seguras y rápidas.
+        </p>
+      </section>
     </section>
 
-    <!-- Chat / Lía -->
-    <div id="lia-chat">
-      <div id="lia-header">Lía - Asistente DATAWEB</div>
-      <div id="lia-messages">
-        <div class="lia-message">¡Hola! Para hacer una consulta, hacé click en alguna de las opciones. Estoy para ayudarte 😊</div>
+    <!-- Columna derecha: widgets -->
+    <aside id="widgets">
+      <div id="fecha-widget" class="widget">
+        <h3>📅 Fecha</h3>
+        <p id="fecha-texto"></p>
       </div>
-      <input type="text" id="lia-input" placeholder="Escribí aquí..." />
-      <button id="lia-send">Enviar</button>
-    </div>
-
-    <!-- Formulario de contacto -->
-    <section id="consultas">
-      <form id="contactForm">
-        <input type="hidden" name="servicio" id="f-servicio" value="Consulta general">
-        <label>Nombre</label>
-        <input type="text" name="nombre" id="f-nombre" required>
-        <label>Email</label>
-        <input type="email" name="email" id="f-email" required>
-        <label>Teléfono</label>
-        <input type="tel" name="telefono" id="f-tel">
-        <label>Ciudad</label>
-        <input type="text" name="ciudad" id="f-ciudad">
-        <label>Consulta</label>
-        <textarea name="mensaje" id="f-mensaje" required></textarea>
-        <button type="submit">Enviar</button>
-        <button type="button" id="btn-reset">Limpiar</button>
-        <div id="form-status"></div>
-      </form>
-    </section>
+      <div id="clima-widget" class="widget">
+        <h3>🌤 Clima</h3>
+        <p id="clima-texto">Cargando clima...</p>
+      </div>
+      <div id="dolar-widget" class="widget">
+        <h3>💱 Dólar & Euro</h3>
+        <p id="dolar-texto">Cargando cotizaciones...</p>
+      </div>
+    </aside>
   </main>
 
-  <!-- Widget derecho -->
-  <aside id="widgets">
-    <div id="clima-content">Cargando clima...</div>
-    <div id="dolar-content">Cargando cotización...</div>
-  </aside>
+  <!-- Modal Formulario de Consulta -->
+  <div id="consulta-modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-cerrar" class="modal-close">&times;</span>
+      <h2 id="modal-titulo">Consulta</h2>
+      <p>
+        Hola, bienvenido a <strong>DATAWEB Asesoramientos</strong>.<br>
+        Dejanos tu consulta y elegí cómo querés que te contactemos.
+      </p>
+      <form id="contactForm">
+        <input type="hidden" name="Servicio" id="f-servicio" value="Consulta general">
 
-<script src="script.js"></script>
+        <label for="f-nombre">Nombre</label>
+        <input type="text" id="f-nombre" name="Nombre" required>
+
+        <label for="f-ciudad">Ciudad</label>
+        <input type="text" id="f-ciudad" name="Ciudad" required>
+
+        <label for="f-contacto">Teléfono o Email</label>
+        <input type="text" id="f-contacto" name="Contacto" required>
+
+        <label for="f-mensaje">¿Qué deseás consultar?</label>
+        <textarea id="f-mensaje" name="Mensaje" required></textarea>
+
+        <fieldset class="contact-method">
+          <legend>¿Cómo preferís que te respondamos?</legend>
+          <label><input type="radio" name="metodo" value="mail" checked> Mail</label>
+          <label><input type="radio" name="metodo" value="whatsapp"> WhatsApp</label>
+        </fieldset>
+
+        <div class="modal-actions">
+          <button type="submit">Enviar consulta</button>
+          <button type="button" id="btn-reset">Limpiar</button>
+        </div>
+
+        <div id="form-status"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pop-up de agradecimiento -->
+  <div id="thanks-popup" class="thanks-popup">
+    <div class="thanks-content">
+      <p>✅ GRACIAS, en breve te estaremos contestando.<br>¡Estás a punto de resolver tus dudas!</p>
+    </div>
+  </div>
+
+  <!-- Chat de Lía -->
+  <div id="lia-bubble">Lía</div>
+  <div id="lia-chat" class="lia-hidden">
+    <div class="lia-header">
+      Lía - Asistente DATAWEB
+      <span id="lia-close">✕</span>
+    </div>
+    <div id="lia-messages" class="lia-messages"></div>
+    <input id="lia-input" type="text" placeholder="Escribí tu consulta y presioná Enter..." />
+  </div>
+
 </body>
 </html>
+
 
 
 

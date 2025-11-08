@@ -11,7 +11,7 @@ const DEFAULT_LOCATION = {
 const WEATHER_UPDATE_INTERVAL = 10 * 60 * 1000; // 10 minutos
 const RATES_UPDATE_INTERVAL = 10 * 60 * 1000;   // 10 minutos
 
-// Sonido tipo burbuja (si existe el archivo)
+// Sonido tipo burbuja
 let chatSound = null;
 try {
   chatSound = new Audio("assets/chat-pop.mp3");
@@ -21,15 +21,26 @@ try {
 
 function playChatSound() {
   if (!chatSound) return;
-  // Intento silencioso (algunos navegadores bloquean auto-play)
   chatSound.currentTime = 0;
   chatSound.play().catch(() => {});
 }
 
 // ==========================
-// INICIO CUANDO DOM CARGA
+// ESTADO DEL CHAT
+// ==========================
+let visitorName = null;    // se carga desde sessionStorage si existe
+let lastTopic = null;      // último tema detectado (ciudadania, pagos, auto, etc.)
+
+// ==========================
+// INICIO DOM
 // ==========================
 document.addEventListener("DOMContentLoaded", () => {
+  // cargar nombre si ya lo guardamos en la sesión
+  const storedName = sessionStorage.getItem("liaVisitorName");
+  if (storedName) {
+    visitorName = storedName;
+  }
+
   initServiceCards();
   initModalForm();
   initWidgets();
@@ -50,8 +61,24 @@ function initServiceCards() {
       if (fServicio) fServicio.value = service;
       if (modalTitulo) modalTitulo.textContent = `Consulta por ${service}`;
       openModal();
+      // guardamos tema como contexto inicial
+      lastTopic = detectTopicFromServiceName(service);
     });
   });
+}
+
+function detectTopicFromServiceName(name) {
+  if (!name) return null;
+  const n = name.toLowerCase();
+  if (n.includes("ciudadan")) return "ciudadania";
+  if (n.includes("factura") || n.includes("pago")) return "pagos";
+  if (n.includes("arca")) return "arca";
+  if (n.includes("auto")) return "automotor";
+  if (n.includes("inmobiliar")) return "inmobiliario";
+  if (n.includes("web") || n.includes("hosting") || n.includes("juego")) return "web";
+  if (n.includes("electr")) return "electronica";
+  if (n.includes("compra") || n.includes("venta")) return "compraventa";
+  return null;
 }
 
 function openModal() {
@@ -140,7 +167,6 @@ function initModalForm() {
         return;
       }
 
-      // Envío por Formspree
       const data = new FormData();
       data.append("Servicio", servicio);
       data.append("Nombre", nombre);
@@ -202,7 +228,7 @@ async function updateWeatherAndRates() {
 }
 
 async function getUserLocation() {
-  // 1) Intentar geolocalización del navegador
+  // 1) Geolocalización del navegador
   try {
     const pos = await new Promise((resolve, reject) => {
       if (!navigator.geolocation) return reject();
@@ -219,7 +245,7 @@ async function getUserLocation() {
     });
     return pos;
   } catch (e) {
-    // 2) Intentar por IP
+    // 2) Por IP
     try {
       const res = await fetch("https://ipapi.co/json/");
       if (!res.ok) throw new Error();
@@ -232,7 +258,7 @@ async function getUserLocation() {
           : data.region || data.country_name || "Tu zona",
       };
     } catch (e2) {
-      // 3) Fallback Santa Rosa
+      // 3) Fallback
       return DEFAULT_LOCATION;
     }
   }
@@ -242,9 +268,8 @@ async function loadWeather() {
   const climaEl = document.getElementById("clima-texto");
   if (!climaEl) return;
 
-  climaEl.textContent = "Cargando clima...";
-
   try {
+    climaEl.textContent = "Cargando clima...";
     const loc = await getUserLocation();
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current_weather=true&timezone=auto`;
     const r = await fetch(url);
@@ -266,9 +291,8 @@ async function loadDollar() {
   const el = document.getElementById("dolar-texto");
   if (!el) return;
 
-  el.textContent = "Cargando cotizaciones...";
-
   try {
+    el.textContent = "Cargando cotizaciones...";
     const res = await fetch("https://api.bluelytics.com.ar/v2/latest");
     const data = await res.json();
 
@@ -289,8 +313,6 @@ async function loadDollar() {
 // ==========================
 // CHAT DE LÍA
 // ==========================
-let visitorName = null;
-
 function initLiaChat() {
   const bubble = document.getElementById("lia-bubble");
   const chat = document.getElementById("lia-chat");
@@ -302,12 +324,13 @@ function initLiaChat() {
 
   bubble.addEventListener("click", () => {
     chat.classList.toggle("lia-hidden");
+
+    // Primer saludo cuando se abre por primera vez
     if (!chat.classList.contains("lia-hidden") && messages.childElementCount === 0) {
-      liaType(
+      const saludoBase =
         "¡Hola! Soy Lía, tu asistente virtual de DATAWEB Asesoramientos. " +
-        "Estoy acá para ayudarte con tus trámites, pagos o consultas. " +
-        "¿Querés contarme qué necesitás?"
-      );
+        "Estoy acá para ayudarte con tus trámites, pagos o consultas. ¿Querés contarme qué necesitás?";
+      liaType(saludoBase);
     }
   });
 
@@ -330,6 +353,7 @@ function initLiaChat() {
 function addUserMsg(text) {
   const messages = document.getElementById("lia-messages");
   if (!messages) return;
+
   const div = document.createElement("div");
   div.className = "lia-msg user";
   div.textContent = text;
@@ -342,21 +366,20 @@ function liaType(text) {
   const messages = document.getElementById("lia-messages");
   if (!messages) return;
 
-  // Bubble inicial "..."
-  const div = document.createElement("div");
-  div.className = "lia-msg lia";
-  div.textContent = "...";
-  messages.appendChild(div);
+  const bubble = document.createElement("div");
+  bubble.className = "lia-msg lia";
+  bubble.textContent = "...";
+  messages.appendChild(bubble);
   messages.scrollTop = messages.scrollHeight;
   playChatSound();
 
   const typingDelay = 25;
   const startDelay = 400;
+  let i = 0;
 
   setTimeout(() => {
-    let i = 0;
     const interval = setInterval(() => {
-      div.textContent = text.slice(0, i);
+      bubble.textContent = text.slice(0, i);
       i++;
       messages.scrollTop = messages.scrollHeight;
       if (i > text.length) {
@@ -369,109 +392,150 @@ function liaType(text) {
 function handleLiaResponse(text) {
   const msg = text.toLowerCase();
 
-  // Detectar nombre: "soy Daniel", "me llamo Daniel"
-  const nombreMatch = msg.match(/(?:soy|me llamo|mi nombre es)\s+([a-záéíóúñü]+)(?:\s|$)/i);
-  if (nombreMatch && !visitorName) {
-    visitorName = capitalize(nombreMatch[1]);
-    liaType(`Un gusto, ${visitorName} 😊. Contame con qué tipo de gestión te gustaría que te ayudemos.`);
+  // 1) Detectar nombre y mantener contexto
+  const nombreMatch = msg.match(/(?:soy|me llamo|mi nombre es)\s+([a-záéíóúñü]+)/i);
+  if (nombreMatch) {
+    const posibleNombre = capitalize(nombreMatch[1]);
+    if (!visitorName) {
+      visitorName = posibleNombre;
+      sessionStorage.setItem("liaVisitorName", visitorName);
+    }
+    if (lastTopic) {
+      liaType(
+        `Encantada, ${visitorName} 😊. Sigamos con tu consulta sobre ${renderTopic(lastTopic)}. ` +
+        `¿Querés que te explique cómo trabajamos o preferís que un asesor te contacte por mail o WhatsApp?`
+      );
+    } else {
+      liaType(`Un gusto, ${visitorName} 😊. Contame con qué tipo de gestión te gustaría que te ayudemos.`);
+    }
     return;
   }
 
-  // Saludos
+  // 2) Saludos
   if (msg.includes("hola") || msg.includes("buenas") || msg.includes("saludos")) {
     liaType(
       (visitorName ? `Hola ${visitorName}, ` : "Hola, ") +
-      "gracias por escribir. ¿Sobre qué trámite, pago o gestión querés hacer tu consulta?"
+      "gracias por contactarte. ¿Sobre qué trámite, pago o gestión querés hacer tu consulta?"
     );
     return;
   }
 
-  // Ciudadanías
-  if (msg.includes("ciudadan") || msg.includes("italian") || msg.includes("español")) {
+  // 3) Detectar temas y guardar lastTopic
+  if (msg.includes("ciudadan") || msg.includes("pasaport")) {
+    lastTopic = "ciudadania";
     liaType(
-      "Podemos ayudarte con ciudadanías europeas, incluyendo armado de carpeta, revisión de documentación y orientación paso a paso. " +
-      "Te recomiendo enviar una consulta seleccionando el icono de Ciudadanías y eligiendo mail o WhatsApp para que un especialista te contacte."
+      "Podemos ayudarte con ciudadanías europeas (italiana, española y otras), revisando requisitos, " +
+      "organizando la documentación y armando tu carpeta. Si querés avanzar, usá el ícono de Ciudadanías " +
+      "y enviá tu consulta por mail o WhatsApp."
     );
     return;
   }
 
-  // Pagos / facturas
   if (msg.includes("factura") || msg.includes("luz") || msg.includes("gas") || msg.includes("agua") || msg.includes("pago")) {
+    lastTopic = "pagos";
     liaType(
-      "Gestionamos pagos de servicios y facturas por vos, con confirmación del trámite. " +
-      "Indicá qué servicio querés regularizar y podés enviarnos tu consulta desde el icono de Pagos de Facturas."
+      "Gestionamos por vos el pago de servicios (luz, gas, agua, impuestos, etc.) y te enviamos comprobantes. " +
+      "Desde el ícono Pagos de Facturas podés dejarnos el detalle y elegís cómo querés que te contactemos."
     );
     return;
   }
 
-  // ARCA
   if (msg.includes("arca")) {
+    lastTopic = "arca";
     liaType(
-      "Con ARCA te ayudamos a comprender el estado de tu situación y a gestionar los pasos necesarios. " +
-      "Te sugiero enviar una consulta desde el icono de ARCA para derivarla a nuestro equipo."
+      "Te ayudamos con gestiones ARCA para regularizar situaciones, entender notificaciones y avanzar sin complicaciones. " +
+      "Podés completar una consulta desde el ícono ARCA y un asesor lo toma."
     );
     return;
   }
 
-  // Automotor
   if (msg.includes("auto") || msg.includes("automotor") || msg.includes("patente") || msg.includes("transferencia")) {
+    lastTopic = "automotor";
     liaType(
-      "En automotor te asistimos con transferencias, informes, documentación y consultas sobre vehículos. " +
-      "Podés detallar tu caso y enviar la consulta desde el icono de Automotor."
+      "En automotor te asistimos con transferencias, informes de dominio, deudas y documentación. " +
+      "Indicá el vehículo y la gestión, usando el ícono Automotor para que un especialista te responda."
     );
     return;
   }
 
-  // Inmobiliario
   if (msg.includes("inmobiliar") || msg.includes("alquiler") || msg.includes("venta") || msg.includes("casa") || msg.includes("departamento")) {
+    lastTopic = "inmobiliario";
     liaType(
-      "En el área inmobiliaria podemos orientarte en compras, ventas o alquileres, y en la documentación necesaria. " +
-      "Te recomiendo usar el icono de Inmobiliario y dejarnos tu consulta completa."
+      "En el área inmobiliaria te orientamos en compras, ventas y alquileres, además de la documentación necesaria. " +
+      "Te recomiendo enviar tu consulta desde el ícono Inmobiliario para un asesoramiento puntual."
     );
     return;
   }
 
-  // Web / Hosting / Juegos
   if (msg.includes("web") || msg.includes("hosting") || msg.includes("pagina") || msg.includes("servidor") || msg.includes("juego")) {
+    lastTopic = "web";
     liaType(
       "Ofrecemos asesoramiento en desarrollo web, hosting y servidores de juegos. " +
-      "Contanos qué proyecto tenés en mente y enviá tu consulta desde el icono Web / Hosting / Juegos."
+      "Contanos tu idea desde el ícono Web / Hosting / Juegos y te ayudamos a definir la mejor opción."
     );
     return;
   }
 
-  // Electrónica
-  if (msg.includes("pc") || msg.includes("notebook") || msg.includes("celular") || msg.includes("electronica") || msg.includes("electrónica")) {
+  if (msg.includes("pc") || msg.includes("notebook") || msg.includes("celular") || msg.includes("electrónica") || msg.includes("electronica")) {
+    lastTopic = "electronica";
     liaType(
-      "Podemos ayudarte a elegir o evaluar equipos electrónicos, computadoras, notebooks o celulares según tu necesidad. " +
-      "Podés enviarnos una consulta detallada para recibir una recomendación personalizada."
+      "Podemos ayudarte a elegir o evaluar equipos electrónicos, PC, notebooks o celulares según tus necesidades. " +
+      "Podés mandarnos tu consulta detallada y te orientamos con una recomendación."
     );
     return;
   }
 
-  // Preguntas fuera de tema
+  if (msg.includes("compra") || msg.includes("vendo") || msg.includes("venta")) {
+    lastTopic = "compraventa";
+    liaType(
+      "En compra y venta te ayudamos a tasar, publicar o evaluar productos para que tengas operaciones más seguras. " +
+      "Podés contarnos qué querés comprar o vender desde el ícono Compra y Venta."
+    );
+    return;
+  }
+
+  // 4) Temas fuera del alcance → redirigir
   if (
-    msg.includes("netflix") || msg.includes("futbol") || msg.includes("partido") ||
-    msg.includes("messi") || msg.includes("dolar futuro") || msg.includes("politica")
+    msg.includes("netflix") ||
+    msg.includes("fútbol") ||
+    msg.includes("futbol") ||
+    msg.includes("messi") ||
+    msg.includes("politic") ||
+    msg.includes("juego online gratis") ||
+    msg.includes("casino")
   ) {
     liaType(
       "Esa consulta no forma parte directamente de los servicios de DATAWEB Asesoramientos. " +
-      "Mi función es ayudarte con trámites, pagos, ciudadanías, automotor, inmobiliario y soluciones digitales. " +
-      "Si tenés alguna duda sobre esos temas, contame y te acompaño."
+      "Mi función es ayudarte con trámites, pagos, ciudadanías, inmobiliario, automotor y soluciones digitales. " +
+      "Si querés, contame tu consulta en alguno de esos temas y te acompaño."
     );
     return;
   }
 
-  // Default: redirigir a servicios
+  // 5) Default: siempre llevar al servicio
   liaType(
-    "Te entiendo. Para poder ayudarte mejor, te sugiero seleccionar el servicio relacionado arriba " +
-    "y enviarnos una consulta formal eligiendo mail o WhatsApp. Así un profesional de DATAWEB va a tomar tu caso."
+    "Te entiendo. Para ayudarte mejor, te sugiero elegir arriba el servicio relacionado " +
+    "y enviarnos una consulta formal por mail o WhatsApp. Un profesional de DATAWEB va a tomar tu caso."
   );
 }
 
 function capitalize(str) {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function renderTopic(topic) {
+  switch (topic) {
+    case "ciudadania": return "ciudadanía";
+    case "pagos": return "pagos y facturas";
+    case "arca": return "ARCA";
+    case "automotor": return "gestiones automotor";
+    case "inmobiliario": return "inmobiliario";
+    case "web": return "web y hosting";
+    case "electronica": return "electrónica";
+    case "compraventa": return "compra y venta";
+    default: return "tu consulta";
+  }
 }
 
 

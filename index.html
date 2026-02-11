@@ -8,15 +8,12 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Encabezado -->
   <header>
     <h1>DATAWEB Asesoramientos</h1>
     <p>Te ayudamos a simplificar tus trámites y gestiones. ¡Dejá que nos encarguemos de todo!</p>
   </header>
 
-  <!-- Layout principal -->
   <main class="layout">
-    <!-- Columna central: servicios + quienes somos -->
     <section id="services-section">
       <div id="services" class="services-grid">
         <div class="service-card" data-service="Ciudadanías">
@@ -51,6 +48,13 @@
           <img src="assets/auto.png" alt="Automotor">
           <span>Automotor</span>
         </div>
+
+        <div class="video-card">
+          <video controls poster="assets/thumbnail-video.jpg">
+            <source src="DATAWEB Asesoramientos.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
       </div>
 
       <section id="about">
@@ -65,7 +69,6 @@
       </section>
     </section>
 
-    <!-- Columna derecha: widgets -->
     <aside id="widgets">
       <div id="fecha-widget" class="widget">
         <h3>📅 Fecha</h3>
@@ -82,81 +85,10 @@
     </aside>
   </main>
 
-  <!-- Modal Formulario de Consulta -->
-  <div id="consulta-modal" class="modal">
-    <div class="modal-content">
-      <span id="modal-cerrar" class="modal-close">&times;</span>
-      <h2 id="modal-titulo">Consulta</h2>
-      <p>
-        Hola, bienvenido a <strong>DATAWEB Asesoramientos</strong>.<br>
-        Dejanos tu consulta y elegí cómo querés que te contactemos.
-      </p>
-      <form id="contactForm">
-        <input type="hidden" name="Servicio" id="f-servicio" value="Consulta general">
-
-        <label for="f-nombre">Nombre</label>
-        <input type="text" id="f-nombre" name="Nombre" required>
-
-        <label for="f-ciudad">Ciudad</label>
-        <input type="text" id="f-ciudad" name="Ciudad" required>
-
-        <label for="f-contacto">Teléfono o Email</label>
-        <input type="text" id="f-contacto" name="Contacto" required>
-
-        <label for="f-mensaje">¿Qué deseás consultar?</label>
-        <textarea id="f-mensaje" name="Mensaje" required></textarea>
-
-        <fieldset class="contact-method">
-          <legend>¿Cómo preferís que te respondamos?</legend>
-          <label><input type="radio" name="metodo" value="mail" checked> Mail</label>
-          <label><input type="radio" name="metodo" value="whatsapp"> WhatsApp</label>
-        </fieldset>
-
-        <div class="modal-actions">
-          <button type="submit">Enviar consulta</button>
-          <button type="button" id="btn-reset">Limpiar</button>
-        </div>
-
-        <div id="form-status"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Pop-up de agradecimiento -->
-  <div id="thanks-popup" class="thanks-popup">
-    <div class="thanks-content">
-      <p>✅ GRACIAS, en breve te estaremos contestando.<br>¡Estás a punto de resolver tus dudas!</p>
-    </div>
-  </div>
-
-  <!-- Chat de Lía -->
+  <div id="consulta-modal" class="modal">...</div>
+  <div id="thanks-popup" class="thanks-popup">...</div>
   <div id="lia-bubble">Lía</div>
-  <div id="lia-chat" class="lia-hidden">
-    <div class="lia-header">
-      Lía - Asistente DATAWEB
-      <span id="lia-close">✕</span>
-    </div>
-    <div id="lia-messages" class="lia-messages"></div>
-    <input id="lia-input" type="text" placeholder="Escribí tu consulta y presioná Enter..." />
-  </div>
+  <div id="lia-chat" class="lia-hidden">...</div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

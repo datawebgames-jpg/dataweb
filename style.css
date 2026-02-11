@@ -360,6 +360,30 @@ header p {
   #widgets .widget {
     flex: 1 1 45%;
   }
+  /* ... (Todo el resto del CSS anterior se mantiene igual) ... */
+
+}
+
+.video-card video {
+  width: 200%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ajuste de la grilla para que sea más flexible */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .video-card {
+    grid-column: span 1;
+  }
 }
 
 

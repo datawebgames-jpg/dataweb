@@ -37,7 +37,7 @@ header p { margin: 0.5rem 0 0; font-size: 1.05rem; }
 /* --- EL ARREGLO PARA EL VIDEO --- */
 .video-wrapper {
   padding: 5px !important;
-  aspect-ratio: 1 / 3; /* Lo hace cuadrado como los otros */
+  aspect-ratio: 2 / 1; /* Lo hace cuadrado como los otros */
   overflow: hidden;
   cursor: default;
 }

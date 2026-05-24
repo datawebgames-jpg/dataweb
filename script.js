@@ -50,19 +50,36 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================
 // SERVICIOS → MODAL CONSULTA
 // ==========================
+const SERVICE_PAGES = {
+  "Ciudadanías":           "ciudadanias.html",
+  "Pagos de facturas":     "pagos.html",
+  "ARCA":                  "arca.html",
+  "Compra y Venta":        "compraventa.html",
+  "Web y Hosting de Juegos": "web.html",
+  "Electrónica":           "electronica.html",
+  "Inmobiliario":          "inmobiliario.html",
+  "Automotor":             "automotor.html",
+};
+
 function initServiceCards() {
-  const cards = document.querySelectorAll(".service-card");
-  const fServicio = document.getElementById("f-servicio");
-  const modalTitulo = document.getElementById("modal-titulo");
+  // Soporta tanto .srv-card (nuevo diseño) como .service-card (legacy)
+  const cards = document.querySelectorAll(".srv-card, .service-card");
 
   cards.forEach(card => {
     card.addEventListener("click", () => {
       const service = card.getAttribute("data-service") || "Consulta";
-      if (fServicio) fServicio.value = service;
-      if (modalTitulo) modalTitulo.textContent = `Consulta por ${service}`;
-      openModal();
-      // guardamos tema como contexto inicial
-      lastTopic = detectTopicFromServiceName(service);
+      const page = SERVICE_PAGES[service];
+      if (page) {
+        window.location.href = page;
+      } else {
+        // fallback al modal para servicios sin página propia
+        const fServicio = document.getElementById("f-servicio");
+        const modalTitulo = document.getElementById("modal-titulo");
+        if (fServicio) fServicio.value = service;
+        if (modalTitulo) modalTitulo.textContent = `Consulta por ${service}`;
+        openModal();
+        lastTopic = detectTopicFromServiceName(service);
+      }
     });
   });
 }

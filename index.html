@@ -3,146 +3,393 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DATAWEB Asesoramientos</title>
+  <title>DATAWEB Asesoramientos — Trámites, Ciudadanías y Tecnología</title>
+  <meta name="description" content="DATAWEB Asesoramientos. Ciudadanías europeas, ARCA, automotor, inmobiliario, pagos y tecnología. Consultá online ya." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>DATAWEB Asesoramientos</h1>
-    <p>Te ayudamos a simplificar tus trámites y gestiones. ¡Dejá que nos encarguemos de todo!</p>
-  </header>
 
-  <main class="layout">
-    <section id="services-section">
-      <div id="services" class="services-grid">
-        <div class="service-card" data-service="Ciudadanías">
-          <img src="assets/ciudadania.png" alt="Ciudadanías">
-          <span>Ciudadanías</span>
-        </div>
-        <div class="service-card" data-service="Pagos de facturas">
-          <img src="assets/factura.png" alt="Pagos de facturas">
-          <span>Pagos de Facturas</span>
-        </div>
-        <div class="service-card" data-service="ARCA">
-          <img src="assets/arca.png" alt="ARCA">
-          <span>ARCA</span>
-        </div>
-        <div class="service-card" data-service="Compra y Venta">
-          <img src="assets/compraventa.png" alt="Compra y Venta">
-          <span>Compra y Venta</span>
-        </div>
-        <div class="service-card" data-service="Web y Hosting de Juegos">
-          <img src="assets/web.png" alt="Web y Hosting de Juegos">
-          <span>Web / Hosting / Juegos</span>
-        </div>
-        <div class="service-card" data-service="Electrónica">
-          <img src="assets/electronica.png" alt="Electrónica">
-          <span>Electrónica</span>
-        </div>
-        <div class="service-card" data-service="Inmobiliario">
-          <img src="assets/inmobiliario.png" alt="Inmobiliario">
-          <span>Inmobiliario</span>
-        </div>
-        <div class="service-card" data-service="Automotor">
-          <img src="assets/auto.png" alt="Automotor">
-          <span>Automotor</span>
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-bolt">⚡</span>
+        <span>DATA<span class="logo-accent">WEB</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#por-que">Por qué elegirnos</a>
+        <a href="#contacto" class="nav-cta-btn">Consultar ahora</a>
+      </div>
+      <button class="nav-burger" id="nav-burger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#servicios">Servicios</a>
+      <a href="#por-que">Por qué elegirnos</a>
+      <a href="#contacto">Consultar ahora</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-badge">✨ Asesoramientos profesionales — 100% online</div>
+      <h1 class="hero-title">
+        Tu trámite,<br>
+        <span class="hero-hl">resuelto.</span>
+      </h1>
+      <p class="hero-sub">
+        Ciudadanías europeas · ARCA · Automotor · Inmobiliario · Pagos · Tecnología.<br>
+        Te acompañamos en cada gestión con rapidez y profesionalismo.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5492954320639?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-primary">
+          💬 Consultar por WhatsApp
+        </a>
+        <a href="#servicios" class="btn-outline">Ver servicios →</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-pill"><span>⚡</span> Respuesta en el día</div>
+        <div class="trust-pill"><span>🔒</span> 100% seguro</div>
+        <div class="trust-pill"><span>🌎</span> Desde cualquier lugar</div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">▼</div>
+  </section>
+
+  <!-- WIDGETS BAR -->
+  <div class="widgets-bar">
+    <div class="wbar-item">
+      <span>📅</span>
+      <span id="fecha-texto">Cargando...</span>
+    </div>
+    <div class="wbar-divider"></div>
+    <div class="wbar-item">
+      <span>🌤</span>
+      <span id="clima-texto">Cargando clima...</span>
+    </div>
+    <div class="wbar-divider"></div>
+    <div class="wbar-item">
+      <span>💵</span>
+      <span id="dolar-texto">Cargando cotizaciones...</span>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- SERVICIOS -->
+    <section class="sec" id="servicios">
+      <div class="sec-head">
+        <div class="sec-tag">Lo que hacemos</div>
+        <h2 class="sec-title">Nuestros Servicios</h2>
+        <p class="sec-sub">Hacé clic en el servicio que necesitás y te asesoramos al instante</p>
+      </div>
+      <div id="services" class="srv-grid">
+
+        <div class="srv-card" data-service="Ciudadanías">
+          <div class="srv-icon-box">
+            <img src="assets/ciudadania.png" alt="Ciudadanías"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">🪪</span>
+          </div>
+          <h3>Ciudadanías</h3>
+          <p>Española, italiana y más. Armado completo de carpetas.</p>
+          <span class="srv-cta">Consultar →</span>
         </div>
 
-        <div class="service-card video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/yc5bZUK0sdI?autoplay=1&mute=1&loop=1&playlist=yc5bZUK0sdI&rel=0" 
-            title="Video Institucional" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        <div class="srv-card" data-service="Pagos de facturas">
+          <div class="srv-icon-box">
+            <img src="assets/factura.png" alt="Pagos"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">🧾</span>
+          </div>
+          <h3>Pagos de Facturas</h3>
+          <p>Luz, gas, agua, impuestos. Gestionamos todo por vos.</p>
+          <span class="srv-cta">Consultar →</span>
+        </div>
+
+        <div class="srv-card" data-service="ARCA">
+          <div class="srv-icon-box">
+            <img src="assets/arca.png" alt="ARCA"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">🏛️</span>
+          </div>
+          <h3>ARCA</h3>
+          <p>Gestiones fiscales, regularizaciones y notificaciones.</p>
+          <span class="srv-cta">Consultar →</span>
+        </div>
+
+        <div class="srv-card" data-service="Compra y Venta">
+          <div class="srv-icon-box">
+            <img src="assets/compraventa.png" alt="Compra y Venta"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">🛒</span>
+          </div>
+          <h3>Compra y Venta</h3>
+          <p>Tasaciones, publicaciones y operaciones seguras.</p>
+          <span class="srv-cta">Consultar →</span>
+        </div>
+
+        <div class="srv-card" data-service="Web y Hosting de Juegos">
+          <div class="srv-icon-box">
+            <img src="assets/web.png" alt="Web y Hosting"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">💻</span>
+          </div>
+          <h3>Web / Hosting / Juegos</h3>
+          <p>Páginas web, servidores de juegos y asesoramiento digital.</p>
+          <span class="srv-cta">Consultar →</span>
+        </div>
+
+        <div class="srv-card" data-service="Electrónica">
+          <div class="srv-icon-box">
+            <img src="assets/electronica.png" alt="Electrónica"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">📱</span>
+          </div>
+          <h3>Electrónica</h3>
+          <p>Asesoramiento en PC, notebooks, celulares y equipos.</p>
+          <span class="srv-cta">Consultar →</span>
+        </div>
+
+        <div class="srv-card" data-service="Inmobiliario">
+          <div class="srv-icon-box">
+            <img src="assets/inmobiliario.png" alt="Inmobiliario"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">🏠</span>
+          </div>
+          <h3>Inmobiliario</h3>
+          <p>Compras, ventas, alquileres y documentación.</p>
+          <span class="srv-cta">Consultar →</span>
+        </div>
+
+        <div class="srv-card" data-service="Automotor">
+          <div class="srv-icon-box">
+            <img src="assets/auto.png" alt="Automotor"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="srv-emoji" style="display:none">🚗</span>
+          </div>
+          <h3>Automotor</h3>
+          <p>Transferencias, informes de dominio y gestiones.</p>
+          <span class="srv-cta">Consultar →</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section class="sec sec-dark" id="por-que">
+      <div class="sec-head">
+        <div class="sec-tag light">¿Por qué nosotros?</div>
+        <h2 class="sec-title light">La diferencia DATAWEB</h2>
+        <p class="sec-sub light">Más de 8 años simplificando trámites y asesorando personas en todo el país</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">⚡</div>
+          <h3>Rapidez</h3>
+          <p>Respondemos en el día. Tu tiempo vale y lo sabemos.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <h3>Confianza</h3>
+          <p>Transparencia total en cada gestión. Tus datos, seguros.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <h3>Especialistas</h3>
+          <p>Profesionales dedicados en cada área de asesoramiento.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📱</div>
+          <h3>100% Online</h3>
+          <p>Consultá y resolvé desde donde estés, sin moverte.</p>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">8+</span>
+          <span class="stat-lbl">Años de experiencia</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">500+</span>
+          <span class="stat-lbl">Clientes satisfechos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">8</span>
+          <span class="stat-lbl">Áreas de servicio</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">24hs</span>
+          <span class="stat-lbl">Tiempo de respuesta</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO + SOBRE NOSOTROS -->
+    <section class="sec" id="nosotros">
+      <div class="sec-head">
+        <div class="sec-tag">Conocenos</div>
+        <h2 class="sec-title">¿Quiénes somos?</h2>
+      </div>
+      <div class="about-layout">
+        <div class="about-video">
+          <iframe
+            src="https://www.youtube.com/embed/yc5bZUK0sdI?rel=0"
+            title="DATAWEB Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
         </div>
-      </div> <section id="about">
-        <h2>¿Quiénes somos?</h2>
-        <p>
-          En <strong>DATAWEB Asesoramientos</strong> nos dedicamos a hacer tu vida más simple.
-          Te acompañamos en trámites de ciudadanías, pagos de servicios, gestiones ARCA,
-          operaciones inmobiliarias, automotores, soluciones tecnológicas, compras y ventas,
-          y asesoramiento digital. Trabajamos con profesionales en cada área para brindarte
-          respuestas claras, seguras y rápidas.
-        </p>
-      </section>
+        <div class="about-text">
+          <p>En <strong>DATAWEB Asesoramientos</strong> nos dedicamos a hacer tu vida más simple.</p>
+          <p>Te acompañamos en trámites de ciudadanías, pagos de servicios, gestiones ARCA, operaciones inmobiliarias, automotores, soluciones tecnológicas, compras y ventas, y asesoramiento digital.</p>
+          <p>Trabajamos con profesionales en cada área para brindarte respuestas claras, seguras y rápidas.</p>
+          <a href="https://wa.me/5492954320639" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;margin-top:1rem">
+            💬 Hablar con un asesor
+          </a>
+        </div>
+      </div>
     </section>
 
-    <aside id="widgets">
-      <div id="fecha-widget" class="widget">
-        <h3>📅 Fecha</h3>
-        <p id="fecha-texto"></p>
+    <!-- CTA CONTACTO -->
+    <section class="sec sec-cta" id="contacto">
+      <div class="cta-inner">
+        <h2>¿Tenés una consulta?</h2>
+        <p>Elegí el servicio de arriba o escribinos directamente. Estamos para ayudarte.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/5492954320639?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-primary">
+            💬 WhatsApp
+          </a>
+          <a href="mailto:dataweb76@gmail.com" class="btn-outline-light">
+            ✉️ Enviar mail
+          </a>
+        </div>
       </div>
-      <div id="clima-widget" class="widget">
-        <h3>🌤 Clima</h3>
-        <p id="clima-texto">Cargando clima...</p>
-      </div>
-      <div id="dolar-widget" class="widget">
-        <h3>💱 Dólar & Euro</h3>
-        <p id="dolar-texto">Cargando cotizaciones...</p>
-      </div>
-    </aside>
+    </section>
+
   </main>
 
-  <!-- Modal Formulario de Consulta -->
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">⚡ DATA<span>WEB</span></div>
+      <p class="footer-tagline">Asesoramientos profesionales online</p>
+      <div class="footer-links">
+        <span>✉️ dataweb76@gmail.com</span>
+        <span>📱 +54 2954 320639</span>
+      </div>
+      <p class="footer-copy">© 2025 DATAWEB Asesoramientos · Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- MODAL CONSULTA -->
   <div id="consulta-modal" class="modal">
     <div class="modal-content">
-      <span id="modal-cerrar" class="modal-close">&times;</span>
+      <span class="modal-close" id="modal-cerrar">✕</span>
       <h2 id="modal-titulo">Consulta</h2>
-      <p>
-        Hola, bienvenido a <strong>DATAWEB Asesoramientos</strong>.<br>
-        Dejanos tu consulta y elegí cómo querés que te contactemos.
-      </p>
-      <form id="contactForm">
-        <input type="hidden" name="Servicio" id="f-servicio" value="Consulta general">
-
-        <label for="f-nombre">Nombre</label>
-        <input type="text" id="f-nombre" name="Nombre" required>
-
-        <label for="f-ciudad">Ciudad</label>
-        <input type="text" id="f-ciudad" name="Ciudad" required>
-
-        <label for="f-contacto">Teléfono o Email</label>
-        <input type="text" id="f-contacto" name="Contacto" required>
-
-        <label for="f-mensaje">¿Qué deseás consultar?</label>
-        <textarea id="f-mensaje" name="Mensaje" required></textarea>
-
+      <form id="contactForm" autocomplete="off">
+        <label>
+          Servicio
+          <select id="f-servicio">
+            <option value="Ciudadanías">Ciudadanías</option>
+            <option value="Pagos de facturas">Pagos de facturas</option>
+            <option value="ARCA">ARCA</option>
+            <option value="Compra y Venta">Compra y Venta</option>
+            <option value="Web y Hosting de Juegos">Web / Hosting / Juegos</option>
+            <option value="Electrónica">Electrónica</option>
+            <option value="Inmobiliario">Inmobiliario</option>
+            <option value="Automotor">Automotor</option>
+            <option value="Consulta general">Consulta general</option>
+          </select>
+        </label>
+        <label>
+          Nombre
+          <input id="f-nombre" type="text" placeholder="Tu nombre completo" required />
+        </label>
+        <label>
+          Ciudad
+          <input id="f-ciudad" type="text" placeholder="Tu ciudad" required />
+        </label>
+        <label>
+          Contacto (mail o teléfono)
+          <input id="f-contacto" type="text" placeholder="Email o número de WhatsApp" required />
+        </label>
+        <label>
+          Mensaje
+          <textarea id="f-mensaje" placeholder="¿En qué te podemos ayudar?" required></textarea>
+        </label>
         <fieldset class="contact-method">
-          <legend>¿Cómo preferís que te respondamos?</legend>
-          <label><input type="radio" name="metodo" value="mail" checked> Mail</label>
-          <label><input type="radio" name="metodo" value="whatsapp"> WhatsApp</label>
+          <legend>Respondemos por:</legend>
+          <label><input type="radio" name="metodo" value="mail" checked /> Mail</label>
+          <label><input type="radio" name="metodo" value="whatsapp" /> WhatsApp</label>
         </fieldset>
-
         <div class="modal-actions">
           <button type="submit">Enviar consulta</button>
           <button type="button" id="btn-reset">Limpiar</button>
         </div>
-
         <div id="form-status"></div>
       </form>
     </div>
   </div>
 
-  <!-- Pop-up de agradecimiento -->
+  <!-- THANKS POPUP -->
   <div id="thanks-popup" class="thanks-popup">
     <div class="thanks-content">
-      <p>✅ GRACIAS, en breve te estaremos contestando.<br>¡Estás a punto de resolver tus dudas!</p>
+      ✅ ¡Gracias! Tu consulta fue enviada. Te respondemos pronto.
     </div>
   </div>
 
-  <!-- Chat de Lía -->
-  <div id="lia-bubble">Lía</div>
+  <!-- WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/5492954320639?text=Hola%2C%20vi%20la%20página%20DATAWEB%20y%20quiero%20hacer%20una%20consulta"
+     target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+    💬
+  </a>
+
+  <!-- LÍA CHAT -->
+  <div id="lia-bubble">🤖</div>
   <div id="lia-chat" class="lia-hidden">
     <div class="lia-header">
-      Lía - Asistente DATAWEB
-      <span id="lia-close">✕</span>
+      <span>💬 Lía — Asistente DATAWEB</span>
+      <span id="lia-close" style="cursor:pointer">✕</span>
     </div>
-    <div id="lia-messages" class="lia-messages"></div>
-    <input id="lia-input" type="text" placeholder="Escribí tu consulta y presioná Enter..." />
+    <div class="lia-messages" id="lia-messages"></div>
+    <input id="lia-input" type="text" placeholder="Escribí tu consulta..." />
   </div>
+
+  <!-- NAV mobile script -->
+  <script>
+    document.getElementById('nav-burger').addEventListener('click', function() {
+      document.getElementById('nav-mobile').classList.toggle('open');
+    });
+    document.querySelectorAll('#nav-mobile a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        document.getElementById('nav-mobile').classList.remove('open');
+      });
+    });
+    window.addEventListener('scroll', function() {
+      var nb = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        nb.classList.add('scrolled');
+      } else {
+        nb.classList.remove('scrolled');
+      }
+    });
+  </script>
 
 </body>
 </html>

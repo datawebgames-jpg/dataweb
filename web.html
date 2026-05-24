@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web, Hosting y Servidores de Juegos — DATAWEB Asesoramientos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css" />
+  <style>
+    .tech-stack { display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.8rem; }
+    .tech-pill {
+      background:#f0f4ff; color:#0070e0; font-size:0.72rem; font-weight:700;
+      padding:0.2rem 0.7rem; border-radius:50px; border:1px solid #d4e3ff;
+    }
+    .project-card {
+      background:#fff; border-radius:20px; overflow:hidden;
+      box-shadow:0 8px 32px rgba(13,27,42,0.1); border:1.5px solid #e8eef8;
+      transition:transform 0.25s, box-shadow 0.25s;
+    }
+    .project-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,112,224,0.18); }
+    .project-thumb {
+      height:200px; display:flex; align-items:center; justify-content:center;
+      font-size:4rem; font-weight:900; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,0.4);
+      position:relative; overflow:hidden;
+    }
+    .project-thumb::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.3));
+    }
+    .project-body { padding:1.4rem 1.4rem 1.6rem; }
+    .project-body h3 { font-size:1.15rem; font-weight:800; color:#0d1b2a; margin-bottom:0.4rem; }
+    .project-body p { font-size:0.85rem; color:#5a6a80; line-height:1.6; margin-bottom:1rem; }
+    .project-link {
+      display:inline-flex; align-items:center; gap:0.4rem;
+      color:#fff; font-size:0.85rem; font-weight:700; text-decoration:none;
+      background:linear-gradient(135deg,#00d4ff,#0070e0); padding:0.5rem 1.1rem;
+      border-radius:50px; transition:transform 0.2s;
+    }
+    .project-link:hover { transform:translateY(-2px); }
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:2rem; }
+  </style>
+</head>
+<body class="content-page">
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bolt">⚡</span>
+        <span>DATA<span class="logo-accent">WEB</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#por-que">Por qué elegirnos</a>
+        <a href="#contacto" class="nav-cta-btn">Consultar ahora</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);">
+    <div class="ph-blob" style="width:500px;height:500px;background:#7c3aed;top:-150px;right:-100px;"></div>
+    <div class="ph-blob" style="width:350px;height:350px;background:#00d4ff;bottom:-100px;left:-80px;"></div>
+    <div class="ph-inner">
+      <div class="ph-back"><a href="index.html">← Volver al inicio</a></div>
+      <div class="ph-badge">💻 Web · Hosting · Juegos</div>
+      <h1 class="ph-title">Tu presencia digital,<br><span class="ph-hl">a otro nivel.</span></h1>
+      <p class="ph-sub">Desarrollamos páginas web, gestionamos hosting y montamos servidores de juegos. Proyectos reales ya funcionando.</p>
+    </div>
+  </section>
+
+  <!-- PROYECTOS REALES -->
+  <div class="psec">
+    <h2 class="psec-title">🚀 Proyectos en producción</h2>
+    <p class="psec-sub">Sitios reales que desarrollamos y mantenemos. Hacé clic para visitarlos.</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#1e3a8a,#0070e0,#00d4ff);">
+          💼 TrabajoCerca
+        </div>
+        <div class="project-body">
+          <h3>TrabajoCerca</h3>
+          <p>Plataforma de búsqueda de empleo local. Conecta empleadores con trabajadores de la zona. Publicación de ofertas, búsqueda por categoría y contacto directo.</p>
+          <div class="tech-stack">
+            <span class="tech-pill">Next.js</span>
+            <span class="tech-pill">Supabase</span>
+            <span class="tech-pill">Tailwind CSS</span>
+            <span class="tech-pill">Vercel</span>
+          </div>
+          <br>
+          <a href="https://trabajocerca.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver sitio en vivo →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#1a0a00,#7c2d12,#c2410c);">
+          ⚔️ Conan Server
+        </div>
+        <div class="project-body">
+          <h3>Conan Exiles Server Hub</h3>
+          <p>Sitio web oficial de servidor de juegos Conan Exiles. Información del servidor, reglas, mapa interactivo, guías de inicio y canal de Discord.</p>
+          <div class="tech-stack">
+            <span class="tech-pill">HTML5</span>
+            <span class="tech-pill">CSS3</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">Vercel</span>
+          </div>
+          <br>
+          <a href="https://conan-server.vercel.app/" target="_blank" rel="noopener" class="project-link">🌐 Ver sitio en vivo →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#0a1628,#0070e0,#7c3aed);">
+          🏪 OfertasLocales
+        </div>
+        <div class="project-body">
+          <h3>Ofertas Locales</h3>
+          <p>Plataforma PWA para comercios locales. Gestión de ofertas, panel de administración, mapa de comercios y notificaciones push. Instalable como app.</p>
+          <div class="tech-stack">
+            <span class="tech-pill">PWA</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">Firebase</span>
+            <span class="tech-pill">Leaflet Maps</span>
+          </div>
+          <br>
+          <span class="project-link" style="background:linear-gradient(135deg,#6b7280,#4b5563);cursor:default;">🔧 En desarrollo</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SERVIDORES DE JUEGOS -->
+  <div style="background: linear-gradient(135deg,#0f0c29,#302b63); padding:4rem 1.5rem;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <h2 class="psec-title" style="color:#fff;">🎮 Hosting de Servidores de Juegos</h2>
+      <p class="psec-sub" style="color:rgba(255,255,255,0.7);">Montamos y administramos tu servidor para que vos y tus amigos jueguen sin interrupciones.</p>
+      <div class="game-grid">
+
+        <div class="game-card" style="background:linear-gradient(135deg,#1a0a00,#7c2d12,#b45309); min-height:260px; border-radius:20px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+          <div style="position:relative;z-index:2;padding:1.4rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);">
+            <div class="game-tag">Survival / Crafting</div>
+            <h3 style="color:#fff;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem;">⚔️ Conan Exiles</h3>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.83rem;">Servidor dedicado con mods personalizados, alta disponibilidad y panel de administración. Ya tenemos servidor activo.</p>
+          </div>
+        </div>
+
+        <div class="game-card" style="background:linear-gradient(135deg,#0c1a0c,#14532d,#15803d); min-height:260px; border-radius:20px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+          <div style="position:relative;z-index:2;padding:1.4rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);">
+            <div class="game-tag" style="background:rgba(255,255,255,0.15)">Survival / Dinosaurios</div>
+            <h3 style="color:#fff;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem;">🦕 ARK: Survival</h3>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.83rem;">Servidores ARK Survival Evolved y ARK Survival Ascended con mods, configuración personalizada y backups automáticos.</p>
+          </div>
+        </div>
+
+        <div class="game-card" style="background:linear-gradient(135deg,#0a0a0a,#1c1c3a,#3730a3); min-height:260px; border-radius:20px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+          <div style="position:relative;z-index:2;padding:1.4rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);">
+            <div class="game-tag" style="background:rgba(255,255,255,0.15)">Sandbox / Blocks</div>
+            <h3 style="color:#fff;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem;">⛏️ Minecraft</h3>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.83rem;">Servidores Minecraft Java y Bedrock. Vanilla, Spigot, Paper, plugins y mundos personalizados. Ideal para grupos y amigos.</p>
+          </div>
+        </div>
+
+        <div class="game-card" style="background:linear-gradient(135deg,#1a0a00,#451a03,#7c3aed); min-height:260px; border-radius:20px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+          <div style="position:relative;z-index:2;padding:1.4rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);">
+            <div class="game-tag" style="background:rgba(255,255,255,0.15)">RPG / Open World</div>
+            <h3 style="color:#fff;font-size:1.3rem;font-weight:900;margin-bottom:0.3rem;">🗡️ Otros juegos</h3>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.83rem;">Valheim, Rust, Palworld, 7 Days to Die, DayZ y muchos más. Consultanos por tu juego favorito.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS WEB -->
+  <div class="psec">
+    <h2 class="psec-title">🌐 Servicios de desarrollo web</h2>
+    <p class="psec-sub">Creamos tu presencia digital desde cero o mejoramos lo que ya tenés.</p>
+    <div class="features-grid">
+      <div class="feature-item">
+        <span class="feature-icon">🎨</span>
+        <div class="feature-text">
+          <h4>Diseño a medida</h4>
+          <p>Páginas modernas, responsive y optimizadas para móviles y buscadores.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🚀</span>
+        <div class="feature-text">
+          <h4>Landing Pages</h4>
+          <p>Páginas de aterrizaje para vender tus productos o servicios de forma efectiva.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🏪</span>
+        <div class="feature-text">
+          <h4>Tiendas Online</h4>
+          <p>E-commerce con carrito de compras, pagos y gestión de productos.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">☁️</span>
+        <div class="feature-text">
+          <h4>Hosting y dominio</h4>
+          <p>Gestión de hosting, dominios (.com, .com.ar) y SSL. Tu sitio siempre online.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔧</span>
+        <div class="feature-text">
+          <h4>Mantenimiento</h4>
+          <p>Actualizaciones, backups, monitoreo y soporte técnico continuo.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">📱</span>
+        <div class="feature-text">
+          <h4>Apps PWA</h4>
+          <p>Aplicaciones web instalables en Android e iOS. Sin app store, sin complicaciones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="page-cta" id="contacto">
+    <h2>¿Querés tu sitio web o servidor de juego?</h2>
+    <p>Contanos tu idea y te damos presupuesto sin cargo. Respondemos en el día.</p>
+    <div class="contact-options">
+      <a href="https://wa.me/5492954320639?text=Hola%2C%20quiero%20consultar%20sobre%20desarrollo%20web%20o%20servidor%20de%20juegos" target="_blank" rel="noopener" class="contact-btn wa">💬 WhatsApp</a>
+      <a href="mailto:dataweb76@gmail.com" class="contact-btn mail">✉️ dataweb76@gmail.com</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">⚡ DATA<span>WEB</span></div>
+      <p class="footer-tagline">Asesoramientos profesionales online</p>
+      <div class="footer-links">
+        <span>✉️ dataweb76@gmail.com</span>
+        <span>📱 +54 2954 320639</span>
+      </div>
+      <p class="footer-copy">© 2025 DATAWEB Asesoramientos · Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5492954320639" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">💬</a>
+
+</body>
+</html>

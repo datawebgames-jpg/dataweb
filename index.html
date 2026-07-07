@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DATAWEB Asesoramientos — Trámites, Ciudadanías y Tecnología</title>
-  <meta name="description" content="DATAWEB Asesoramientos. Ciudadanías europeas, ARCA, automotor, inmobiliario, pagos y tecnología. Consultá online ya." />
+  <title>DATAWEB Asesoramientos — Ciudadanías y Gestoría</title>
+  <meta name="description" content="DATAWEB Asesoramientos. Ciudadanías europeas y gestoría integral: automotor, inmobiliaria, previsional, impositiva, judicial y mucho más. Consultá online ya." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -23,6 +23,7 @@
       <div class="nav-links">
         <a href="#servicios">Servicios</a>
         <a href="#por-que">Por qué elegirnos</a>
+        <a href="#" class="btn-oficinas">📍 Oficinas</a>
         <a href="#contacto" class="nav-cta-btn">Consultar ahora</a>
       </div>
       <button class="nav-burger" id="nav-burger" aria-label="Menú">
@@ -32,6 +33,7 @@
     <div class="nav-mobile" id="nav-mobile">
       <a href="#servicios">Servicios</a>
       <a href="#por-que">Por qué elegirnos</a>
+      <a href="#" class="btn-oficinas">📍 Oficinas</a>
       <a href="#contacto">Consultar ahora</a>
     </div>
   </nav>
@@ -45,13 +47,14 @@
     </div>
     <div class="hero-inner">
       <div class="hero-badge">✨ Asesoramientos profesionales — 100% online</div>
+      <img src="assets/logo.png" alt="Feliza Alicia Cora — Gestora" class="hero-logo-img" />
       <h1 class="hero-title">
         Tu trámite,<br>
         <span class="hero-hl">resuelto.</span>
       </h1>
       <p class="hero-sub">
-        Ciudadanías europeas · ARCA · Automotor · Inmobiliario · Pagos · Tecnología.<br>
-        Te acompañamos en cada gestión con rapidez y profesionalismo.
+        Ciudadanías europeas · Gestoría integral.<br>
+        Te acompañamos en cada trámite con rapidez y profesionalismo.
       </p>
       <div class="hero-btns">
         <a href="https://wa.me/5492954320639?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-primary">
@@ -95,7 +98,7 @@
         <h2 class="sec-title">Nuestros Servicios</h2>
         <p class="sec-sub">Hacé clic en el servicio que necesitás y te asesoramos al instante</p>
       </div>
-      <div id="services" class="srv-grid">
+      <div id="services" class="srv-grid srv-grid-2">
 
         <div class="srv-card" data-service="Ciudadanías">
           <div class="srv-icon-box">
@@ -108,82 +111,218 @@
           <span class="srv-cta">Consultar →</span>
         </div>
 
-        <div class="srv-card" data-service="Pagos de facturas">
+        <div class="srv-card" data-service="Gestoría" data-anchor="#gestoria">
           <div class="srv-icon-box">
-            <img src="assets/factura.png" alt="Pagos"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span class="srv-emoji" style="display:none">🧾</span>
+            <span class="srv-emoji">🗂️</span>
           </div>
-          <h3>Pagos de Facturas</h3>
-          <p>Luz, gas, agua, impuestos. Gestionamos todo por vos.</p>
-          <span class="srv-cta">Consultar →</span>
+          <h3>Gestoría</h3>
+          <p>Automotor, inmobiliaria, previsional, impositiva y mucho más.</p>
+          <span class="srv-cta">Ver especialidades →</span>
         </div>
 
-        <div class="srv-card" data-service="ARCA">
-          <div class="srv-icon-box">
-            <img src="assets/arca.png" alt="ARCA"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span class="srv-emoji" style="display:none">🏛️</span>
-          </div>
-          <h3>ARCA</h3>
-          <p>Gestiones fiscales, regularizaciones y notificaciones.</p>
-          <span class="srv-cta">Consultar →</span>
-        </div>
+      </div>
+    </section>
 
-        <div class="srv-card" data-service="Compra y Venta">
-          <div class="srv-icon-box">
-            <img src="assets/compraventa.png" alt="Compra y Venta"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span class="srv-emoji" style="display:none">🛒</span>
-          </div>
-          <h3>Compra y Venta</h3>
-          <p>Tasaciones, publicaciones y operaciones seguras.</p>
-          <span class="srv-cta">Consultar →</span>
-        </div>
+    <!-- GESTORÍA -->
+    <section class="sec" id="gestoria">
+      <div class="sec-head">
+        <div class="sec-tag">Gestoría</div>
+        <h2 class="sec-title">Todas nuestras gestorías</h2>
+        <p class="sec-sub">Elegí la especialidad que necesitás y consultanos el trámite puntual</p>
+      </div>
+      <div class="gestoria-grid">
 
-        <div class="srv-card" data-service="Web y Hosting de Juegos">
-          <div class="srv-icon-box">
-            <img src="assets/web.png" alt="Web y Hosting"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span class="srv-emoji" style="display:none">💻</span>
-          </div>
-          <h3>Web / Hosting / Juegos</h3>
-          <p>Páginas web, servidores de juegos y asesoramiento digital.</p>
-          <span class="srv-cta">Consultar →</span>
-        </div>
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🚗</span> Gestoría del Automotor</summary>
+          <ul class="gestoria-list">
+            <li>Transferencias</li>
+            <li>Informes de dominio</li>
+            <li>Duplicados de título y cédula</li>
+            <li>Altas y bajas</li>
+            <li>Prendas</li>
+            <li>Denuncia de venta</li>
+            <li>Cambio de radicación</li>
+            <li>Patentes</li>
+            <li>Inscripción inicial</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría del Automotor">Consultar →</button>
+        </details>
 
-        <div class="srv-card" data-service="Electrónica">
-          <div class="srv-icon-box">
-            <img src="assets/electronica.png" alt="Electrónica"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span class="srv-emoji" style="display:none">📱</span>
-          </div>
-          <h3>Electrónica</h3>
-          <p>Asesoramiento en PC, notebooks, celulares y equipos.</p>
-          <span class="srv-cta">Consultar →</span>
-        </div>
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🏍️</span> Gestoría de Motovehículos</summary>
+          <ul class="gestoria-list">
+            <li>Los mismos trámites que automotores pero para motos</li>
+            <li>Transferencias</li>
+            <li>Informes de dominio</li>
+            <li>Altas y bajas</li>
+            <li>Patentes</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría de Motovehículos">Consultar →</button>
+        </details>
 
-        <div class="srv-card" data-service="Inmobiliario">
-          <div class="srv-icon-box">
-            <img src="assets/inmobiliario.png" alt="Inmobiliario"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span class="srv-emoji" style="display:none">🏠</span>
-          </div>
-          <h3>Inmobiliario</h3>
-          <p>Compras, ventas, alquileres y documentación.</p>
-          <span class="srv-cta">Consultar →</span>
-        </div>
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🏠</span> Gestoría Inmobiliaria</summary>
+          <ul class="gestoria-list">
+            <li>Informes de dominio</li>
+            <li>Certificados</li>
+            <li>Trámites en Registro de la Propiedad</li>
+            <li>Escrituras</li>
+            <li>Declaratoria de herederos (acompañando al escribano o abogado)</li>
+            <li>Planos</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Inmobiliaria">Consultar →</button>
+        </details>
 
-        <div class="srv-card" data-service="Automotor">
-          <div class="srv-icon-box">
-            <img src="assets/auto.png" alt="Automotor"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span class="srv-emoji" style="display:none">🚗</span>
-          </div>
-          <h3>Automotor</h3>
-          <p>Transferencias, informes de dominio y gestiones.</p>
-          <span class="srv-cta">Consultar →</span>
-        </div>
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">👵</span> Gestoría Previsional</summary>
+          <ul class="gestoria-list">
+            <li>Jubilaciones</li>
+            <li>Pensiones</li>
+            <li>PUAM</li>
+            <li>Reajustes</li>
+            <li>ANSES</li>
+            <li>Moratorias</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Previsional">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">⚖️</span> Gestoría Judicial</summary>
+          <ul class="gestoria-list">
+            <li>Diligenciamiento de oficios</li>
+            <li>Cédulas</li>
+            <li>Mandamientos</li>
+            <li>Presentaciones</li>
+            <li>Procuración judicial</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Judicial">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">📄</span> Gestoría Administrativa</summary>
+          <ul class="gestoria-list">
+            <li>Certificaciones</li>
+            <li>Legalizaciones</li>
+            <li>Trámites municipales</li>
+            <li>Trámites provinciales</li>
+            <li>Habilitaciones comerciales</li>
+            <li>Licencias</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Administrativa">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🏛️</span> Gestoría Municipal</summary>
+          <ul class="gestoria-list">
+            <li>Habilitación de comercios</li>
+            <li>Libre deuda</li>
+            <li>Tasas municipales</li>
+            <li>Obras particulares</li>
+            <li>Catastro</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Municipal">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">💰</span> Gestoría Impositiva</summary>
+          <ul class="gestoria-list">
+            <li>AFIP</li>
+            <li>ARCA</li>
+            <li>Rentas provinciales</li>
+            <li>Monotributo</li>
+            <li>Inscripciones</li>
+            <li>Claves fiscales</li>
+            <li>Facturación electrónica</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Impositiva">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🏢</span> Gestoría Empresarial</summary>
+          <ul class="gestoria-list">
+            <li>Constitución de sociedades</li>
+            <li>Inscripciones</li>
+            <li>Libros societarios</li>
+            <li>Marcas</li>
+            <li>Contratos</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Empresarial">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🌍</span> Gestoría de Ciudadanía y Migraciones</summary>
+          <ul class="gestoria-list">
+            <li>Ciudadanía italiana</li>
+            <li>Española</li>
+            <li>Residencias</li>
+            <li>Visas</li>
+            <li>Radicaciones</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría de Ciudadanía y Migraciones">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🛡️</span> Gestoría de Seguros</summary>
+          <ul class="gestoria-list">
+            <li>Denuncias</li>
+            <li>Altas</li>
+            <li>Bajas</li>
+            <li>Siniestros</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría de Seguros">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">📑</span> Gestoría Registral</summary>
+          <ul class="gestoria-list">
+            <li>Registro Civil</li>
+            <li>Partidas</li>
+            <li>Actas</li>
+            <li>Certificados</li>
+            <li>Apostillas</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Registral">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">👷</span> Gestoría Laboral</summary>
+          <ul class="gestoria-list">
+            <li>Altas y bajas</li>
+            <li>ART</li>
+            <li>Empleados</li>
+            <li>Certificaciones laborales</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Laboral">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">🚢</span> Gestoría Aduanera y Comercio Exterior</summary>
+          <ul class="gestoria-list">
+            <li>Importaciones</li>
+            <li>Exportaciones</li>
+            <li>Despachos</li>
+            <li>Certificados</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Aduanera y Comercio Exterior">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item">
+          <summary><span class="gestoria-icon">💡</span> Gestoría de Marcas y Patentes</summary>
+          <ul class="gestoria-list">
+            <li>Registro de marcas</li>
+            <li>Renovaciones</li>
+            <li>Propiedad intelectual</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría de Marcas y Patentes">Consultar →</button>
+        </details>
+
+        <details class="gestoria-item gestoria-item-featured">
+          <summary><span class="gestoria-icon">⭐</span> Gestoría Integral</summary>
+          <ul class="gestoria-list">
+            <li>Combina varias de las anteriores para ofrecer un servicio completo a particulares y empresas</li>
+          </ul>
+          <button type="button" class="gestoria-btn" data-service="Gestoría Integral">Consultar →</button>
+        </details>
 
       </div>
     </section>
@@ -229,8 +368,8 @@
           <span class="stat-lbl">Clientes satisfechos</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">8</span>
-          <span class="stat-lbl">Áreas de servicio</span>
+          <span class="stat-num">16</span>
+          <span class="stat-lbl">Especialidades de gestoría</span>
         </div>
         <div class="stat-item">
           <span class="stat-num">24hs</span>
@@ -257,7 +396,7 @@
         </div>
         <div class="about-text">
           <p>En <strong>DATAWEB Asesoramientos</strong> nos dedicamos a hacer tu vida más simple.</p>
-          <p>Te acompañamos en trámites de ciudadanías, pagos de servicios, gestiones ARCA, operaciones inmobiliarias, automotores, soluciones tecnológicas, compras y ventas, y asesoramiento digital.</p>
+          <p>Te acompañamos en ciudadanías europeas y en gestoría integral: automotor, inmobiliaria, previsional, judicial, impositiva, laboral, municipal y muchas especialidades más.</p>
           <p>Trabajamos con profesionales en cada área para brindarte respuestas claras, seguras y rápidas.</p>
           <a href="https://wa.me/5492954320639" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;margin-top:1rem">
             💬 Hablar con un asesor
@@ -292,7 +431,9 @@
       <div class="footer-links">
         <span>✉️ dataweb76@gmail.com</span>
         <span>📱 +54 2954 320639</span>
+        <span>📍 Pueyrredón 385, Santa Rosa, La Pampa</span>
       </div>
+      <a href="#" class="btn-oficinas footer-oficinas-btn">📍 Ver oficinas en el mapa</a>
       <p class="footer-copy">© 2025 DATAWEB Asesoramientos · Todos los derechos reservados</p>
     </div>
   </footer>
@@ -307,13 +448,7 @@
           Servicio
           <select id="f-servicio">
             <option value="Ciudadanías">Ciudadanías</option>
-            <option value="Pagos de facturas">Pagos de facturas</option>
-            <option value="ARCA">ARCA</option>
-            <option value="Compra y Venta">Compra y Venta</option>
-            <option value="Web y Hosting de Juegos">Web / Hosting / Juegos</option>
-            <option value="Electrónica">Electrónica</option>
-            <option value="Inmobiliario">Inmobiliario</option>
-            <option value="Automotor">Automotor</option>
+            <option value="Gestoría">Gestoría</option>
             <option value="Consulta general">Consulta general</option>
           </select>
         </label>
@@ -359,6 +494,67 @@
      target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
     💬
   </a>
+
+  <!-- MODAL OFICINAS -->
+  <div id="oficinas-modal" class="modal">
+    <div class="modal-content modal-content-map">
+      <span class="modal-close" id="oficinas-cerrar">✕</span>
+      <h2>📍 Nuestras oficinas</h2>
+      <p class="oficinas-direccion">Pueyrredón 385, Santa Rosa, La Pampa</p>
+      <div class="oficinas-map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Pueyrred%C3%B3n+385%2C+Santa+Rosa%2C+La+Pampa%2C+Argentina&output=embed"
+          width="100%" height="300" style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="oficinas-actions">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Pueyrred%C3%B3n+385%2C+Santa+Rosa%2C+La+Pampa%2C+Argentina"
+           target="_blank" rel="noopener" class="btn-primary">
+          🗺️ Cómo llegar
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Pueyrred%C3%B3n+385%2C+Santa+Rosa%2C+La+Pampa%2C+Argentina&dir_action=navigate&travelmode=driving"
+           target="_blank" rel="noopener" class="btn-outline-dark">
+          🚗 Iniciar viaje
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL POPUP DE LÍA (se abre cuando el chat identifica el trámite) -->
+  <div id="lia-popup" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="lia-popup-cerrar">✕</span>
+      <h2 id="lia-popup-titulo">Contanos tu consulta</h2>
+      <form id="liaPopupForm" autocomplete="off">
+        <label>
+          Nombre
+          <input id="lp-nombre" type="text" placeholder="Tu nombre completo" required />
+        </label>
+        <label>
+          Teléfono
+          <input id="lp-telefono" type="tel" placeholder="Tu número de teléfono" required />
+        </label>
+        <label>
+          Provincia
+          <input id="lp-provincia" type="text" placeholder="Tu provincia" required />
+        </label>
+        <label>
+          Localidad / Ciudad
+          <input id="lp-localidad" type="text" placeholder="Tu localidad o ciudad" required />
+        </label>
+        <label>
+          Consulta
+          <textarea id="lp-consulta" placeholder="Contanos qué necesitás" required></textarea>
+        </label>
+        <div class="modal-actions">
+          <button type="submit">💬 Enviar por WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- LÍA CHAT -->
   <div id="lia-bubble">🤖</div>

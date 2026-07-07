@@ -2,7 +2,8 @@
 // CONFIGURACIÓN GENERAL
 // ==========================
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqagjovo";
-const WA_NUMBER = "5492954320639";
+const WA_NUMBER = "5492954320639"; // Ciudadanías / número general
+const WA_NUMBER_GESTORIA = "5492954734472";
 const DEFAULT_LOCATION = {
   lat: -36.6167,
   lon: -64.2833,
@@ -29,7 +30,7 @@ function playChatSound() {
 // ESTADO DEL CHAT
 // ==========================
 let visitorName = null;    // se carga desde sessionStorage si existe
-let lastTopic = null;      // último tema detectado (ciudadania, pagos, auto, etc.)
+let lastTopic = null;      // último tema detectado (ciudadania, gestoria)
 
 // ==========================
 // INICIO DOM
@@ -42,23 +43,46 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initServiceCards();
+  initGestoriaButtons();
   initModalForm();
   initWidgets();
   initLiaChat();
+  initLiaPopup();
+  initOficinasModal();
 });
+
+// ==========================
+// MODAL OFICINAS (MAPA)
+// ==========================
+function initOficinasModal() {
+  const modal = document.getElementById("oficinas-modal");
+  const closeBtn = document.getElementById("oficinas-cerrar");
+  const triggers = document.querySelectorAll(".btn-oficinas");
+  if (!modal) return;
+
+  triggers.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.style.display = "block";
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  }
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+}
 
 // ==========================
 // SERVICIOS → MODAL CONSULTA
 // ==========================
 const SERVICE_PAGES = {
-  "Ciudadanías":           "ciudadanias.html",
-  "Pagos de facturas":     "pagos.html",
-  "ARCA":                  "arca.html",
-  "Compra y Venta":        "compraventa.html",
-  "Web y Hosting de Juegos": "web.html",
-  "Electrónica":           "electronica.html",
-  "Inmobiliario":          "inmobiliario.html",
-  "Automotor":             "automotor.html",
+  "Ciudadanías": "ciudadanias.html",
 };
 
 function initServiceCards() {
@@ -67,16 +91,20 @@ function initServiceCards() {
 
   cards.forEach(card => {
     card.addEventListener("click", () => {
+      const anchor = card.getAttribute("data-anchor");
+      if (anchor) {
+        const target = document.querySelector(anchor);
+        if (target) target.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
       const service = card.getAttribute("data-service") || "Consulta";
       const page = SERVICE_PAGES[service];
       if (page) {
         window.location.href = page;
       } else {
         // fallback al modal para servicios sin página propia
-        const fServicio = document.getElementById("f-servicio");
-        const modalTitulo = document.getElementById("modal-titulo");
-        if (fServicio) fServicio.value = service;
-        if (modalTitulo) modalTitulo.textContent = `Consulta por ${service}`;
+        setModalService(service);
         openModal();
         lastTopic = detectTopicFromServiceName(service);
       }
@@ -84,17 +112,53 @@ function initServiceCards() {
   });
 }
 
+// ==========================
+// GESTORÍA → BOTONES "CONSULTAR" DE CADA ACORDEÓN
+// ==========================
+function initGestoriaButtons() {
+  const buttons = document.querySelectorAll(".gestoria-btn");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const service = btn.getAttribute("data-service") || "Gestoría";
+      setModalService(service);
+      openModal();
+      lastTopic = "gestoria";
+    });
+  });
+}
+
+// Setea el servicio en el select del modal, agregando la opción si no existe
+function setModalService(service) {
+  const fServicio = document.getElementById("f-servicio");
+  const modalTitulo = document.getElementById("modal-titulo");
+
+  if (fServicio) {
+    let option = Array.from(fServicio.options).find(o => o.value === service);
+    if (!option) {
+      option = document.createElement("option");
+      option.value = service;
+      option.textContent = service;
+      fServicio.appendChild(option);
+    }
+    fServicio.value = service;
+  }
+
+  if (modalTitulo) modalTitulo.textContent = `Consulta por ${service}`;
+}
+
+// Elige el número de WhatsApp según el servicio/trámite (Ciudadanías vs Gestoría)
+function getWaNumberForService(service) {
+  if (service && service.toLowerCase().includes("gestor")) return WA_NUMBER_GESTORIA;
+  return WA_NUMBER;
+}
+
 function detectTopicFromServiceName(name) {
   if (!name) return null;
   const n = name.toLowerCase();
   if (n.includes("ciudadan")) return "ciudadania";
-  if (n.includes("factura") || n.includes("pago")) return "pagos";
-  if (n.includes("arca")) return "arca";
-  if (n.includes("auto")) return "automotor";
-  if (n.includes("inmobiliar")) return "inmobiliario";
-  if (n.includes("web") || n.includes("hosting") || n.includes("juego")) return "web";
-  if (n.includes("electr")) return "electronica";
-  if (n.includes("compra") || n.includes("venta")) return "compraventa";
+  if (n.includes("gestor")) return "gestoria";
   return null;
 }
 
@@ -108,13 +172,21 @@ function closeModal() {
   if (modal) modal.style.display = "none";
 }
 
-function showThanks() {
+function showThanks(nombre) {
   const popup = document.getElementById("thanks-popup");
   if (!popup) return;
+
+  const content = popup.querySelector(".thanks-content");
+  if (content) {
+    content.textContent = nombre
+      ? `✅ ¡Gracias, ${nombre}! Ya estaremos contestando tu consulta. ¡Gracias por confiar en nosotros!`
+      : "✅ ¡Gracias! Tu consulta fue enviada. Te respondemos pronto.";
+  }
+
   popup.style.display = "block";
   setTimeout(() => {
     popup.style.display = "none";
-  }, 2600);
+  }, 3200);
 }
 
 // ==========================
@@ -174,7 +246,7 @@ function initModalForm() {
 
     try {
       if (metodo === "whatsapp") {
-        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textoPlano)}`;
+        const url = `https://wa.me/${getWaNumberForService(servicio)}?text=${encodeURIComponent(textoPlano)}`;
         window.open(url, "_blank");
         formStatus.style.color = "#28a745";
         formStatus.textContent = "Abriendo WhatsApp...";
@@ -379,7 +451,7 @@ function addUserMsg(text) {
   playChatSound();
 }
 
-function liaType(text) {
+function liaType(text, onComplete) {
   const messages = document.getElementById("lia-messages");
   if (!messages) return;
 
@@ -401,9 +473,79 @@ function liaType(text) {
       messages.scrollTop = messages.scrollHeight;
       if (i > text.length) {
         clearInterval(interval);
+        if (typeof onComplete === "function") onComplete();
       }
     }, typingDelay);
   }, startDelay);
+}
+
+// ==========================
+// POPUP DE LÍA (nombre, teléfono, provincia, localidad, consulta)
+// ==========================
+let liaPopupTopic = null;
+
+function initLiaPopup() {
+  const modal = document.getElementById("lia-popup");
+  const closeBtn = document.getElementById("lia-popup-cerrar");
+  const form = document.getElementById("liaPopupForm");
+  if (!modal || !form) return;
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  }
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById("lp-nombre").value.trim();
+    const telefono = document.getElementById("lp-telefono").value.trim();
+    const provincia = document.getElementById("lp-provincia").value.trim();
+    const localidad = document.getElementById("lp-localidad").value.trim();
+    const consulta = document.getElementById("lp-consulta").value.trim();
+
+    if (!nombre || !telefono || !provincia || !localidad || !consulta) return;
+
+    const tema = liaPopupTopic === "gestoria" ? "Gestoría" : "Ciudadanías";
+    const numero = getWaNumberForService(tema);
+
+    const textoPlano =
+      `Consulta desde DATAWEB Asesoramientos\n` +
+      `Trámite: ${tema}\n` +
+      `Nombre: ${nombre}\n` +
+      `Teléfono: ${telefono}\n` +
+      `Provincia: ${provincia}\n` +
+      `Localidad / Ciudad: ${localidad}\n` +
+      `Consulta: ${consulta}\n`;
+
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(textoPlano)}`, "_blank");
+
+    modal.style.display = "none";
+    form.reset();
+    showThanks(nombre);
+  });
+}
+
+function openLiaPopup(topic) {
+  liaPopupTopic = topic;
+  const modal = document.getElementById("lia-popup");
+  const titulo = document.getElementById("lia-popup-titulo");
+  if (!modal) return;
+
+  if (titulo) {
+    titulo.textContent =
+      topic === "gestoria" ? "Contanos tu consulta de Gestoría" : "Contanos tu consulta de Ciudadanía";
+  }
+
+  const lpNombre = document.getElementById("lp-nombre");
+  if (lpNombre && visitorName) lpNombre.value = visitorName;
+
+  modal.style.display = "block";
 }
 
 function handleLiaResponse(text) {
@@ -442,71 +584,33 @@ function handleLiaResponse(text) {
     lastTopic = "ciudadania";
     liaType(
       "Podemos ayudarte con ciudadanías europeas (italiana, española y otras), revisando requisitos, " +
-      "organizando la documentación y armando tu carpeta. Si querés avanzar, usá el ícono de Ciudadanías " +
-      "y enviá tu consulta por mail o WhatsApp."
+      "organizando la documentación y armando tu carpeta. Dejame tus datos y te contactamos enseguida.",
+      () => openLiaPopup("ciudadania")
     );
     return;
   }
 
-  if (msg.includes("factura") || msg.includes("luz") || msg.includes("gas") || msg.includes("agua") || msg.includes("pago")) {
-    lastTopic = "pagos";
+  if (
+    msg.includes("factura") || msg.includes("luz") || msg.includes("gas") || msg.includes("agua") || msg.includes("pago") ||
+    msg.includes("arca") ||
+    msg.includes("auto") || msg.includes("automotor") || msg.includes("patente") || msg.includes("transferencia") ||
+    msg.includes("moto") ||
+    msg.includes("inmobiliar") || msg.includes("alquiler") || msg.includes("venta") || msg.includes("casa") || msg.includes("departamento") ||
+    msg.includes("jubila") || msg.includes("pension") || msg.includes("anses") ||
+    msg.includes("judicial") || msg.includes("oficio") || msg.includes("cedula") ||
+    msg.includes("municipal") || msg.includes("habilitacion") ||
+    msg.includes("monotribut") || msg.includes("impuesto") ||
+    msg.includes("sociedad") || msg.includes("marca") ||
+    msg.includes("residencia") || msg.includes("visa") ||
+    msg.includes("seguro") || msg.includes("siniestro") ||
+    msg.includes("art") || msg.includes("laboral") ||
+    msg.includes("importacion") || msg.includes("exportacion")
+  ) {
+    lastTopic = "gestoria";
     liaType(
-      "Gestionamos por vos el pago de servicios (luz, gas, agua, impuestos, etc.) y te enviamos comprobantes. " +
-      "Desde el ícono Pagos de Facturas podés dejarnos el detalle y elegís cómo querés que te contactemos."
-    );
-    return;
-  }
-
-  if (msg.includes("arca")) {
-    lastTopic = "arca";
-    liaType(
-      "Te ayudamos con gestiones ARCA para regularizar situaciones, entender notificaciones y avanzar sin complicaciones. " +
-      "Podés completar una consulta desde el ícono ARCA y un asesor lo toma."
-    );
-    return;
-  }
-
-  if (msg.includes("auto") || msg.includes("automotor") || msg.includes("patente") || msg.includes("transferencia")) {
-    lastTopic = "automotor";
-    liaType(
-      "En automotor te asistimos con transferencias, informes de dominio, deudas y documentación. " +
-      "Indicá el vehículo y la gestión, usando el ícono Automotor para que un especialista te responda."
-    );
-    return;
-  }
-
-  if (msg.includes("inmobiliar") || msg.includes("alquiler") || msg.includes("venta") || msg.includes("casa") || msg.includes("departamento")) {
-    lastTopic = "inmobiliario";
-    liaType(
-      "En el área inmobiliaria te orientamos en compras, ventas y alquileres, además de la documentación necesaria. " +
-      "Te recomiendo enviar tu consulta desde el ícono Inmobiliario para un asesoramiento puntual."
-    );
-    return;
-  }
-
-  if (msg.includes("web") || msg.includes("hosting") || msg.includes("pagina") || msg.includes("servidor") || msg.includes("juego")) {
-    lastTopic = "web";
-    liaType(
-      "Ofrecemos asesoramiento en desarrollo web, hosting y servidores de juegos. " +
-      "Contanos tu idea desde el ícono Web / Hosting / Juegos y te ayudamos a definir la mejor opción."
-    );
-    return;
-  }
-
-  if (msg.includes("pc") || msg.includes("notebook") || msg.includes("celular") || msg.includes("electrónica") || msg.includes("electronica")) {
-    lastTopic = "electronica";
-    liaType(
-      "Podemos ayudarte a elegir o evaluar equipos electrónicos, PC, notebooks o celulares según tus necesidades. " +
-      "Podés mandarnos tu consulta detallada y te orientamos con una recomendación."
-    );
-    return;
-  }
-
-  if (msg.includes("compra") || msg.includes("vendo") || msg.includes("venta")) {
-    lastTopic = "compraventa";
-    liaType(
-      "En compra y venta te ayudamos a tasar, publicar o evaluar productos para que tengas operaciones más seguras. " +
-      "Podés contarnos qué querés comprar o vender desde el ícono Compra y Venta."
+      "Eso lo resolvemos dentro de Gestoría: tenemos especialistas en automotor, inmobiliaria, previsional, judicial, " +
+      "impositiva, laboral, municipal y varias áreas más. Dejame tus datos y te contactamos enseguida.",
+      () => openLiaPopup("gestoria")
     );
     return;
   }
@@ -523,7 +627,7 @@ function handleLiaResponse(text) {
   ) {
     liaType(
       "Esa consulta no forma parte directamente de los servicios de DATAWEB Asesoramientos. " +
-      "Mi función es ayudarte con trámites, pagos, ciudadanías, inmobiliario, automotor y soluciones digitales. " +
+      "Mi función es ayudarte con ciudadanías y gestoría (automotor, inmobiliaria, previsional, judicial, impositiva y más). " +
       "Si querés, contame tu consulta en alguno de esos temas y te acompaño."
     );
     return;
@@ -544,13 +648,7 @@ function capitalize(str) {
 function renderTopic(topic) {
   switch (topic) {
     case "ciudadania": return "ciudadanía";
-    case "pagos": return "pagos y facturas";
-    case "arca": return "ARCA";
-    case "automotor": return "gestiones automotor";
-    case "inmobiliario": return "inmobiliario";
-    case "web": return "web y hosting";
-    case "electronica": return "electrónica";
-    case "compraventa": return "compra y venta";
+    case "gestoria": return "tu gestoría";
     default: return "tu consulta";
   }
 }

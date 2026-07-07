@@ -75,6 +75,9 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4) !important;
 }
+.btn-oficinas {
+  cursor: pointer;
+}
 .nav-burger {
   display: none;
   flex-direction: column;
@@ -173,6 +176,17 @@ body {
   font-weight: 600;
   letter-spacing: 0.5px;
   margin-bottom: 1.5rem;
+}
+.hero-logo-img {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 600px) {
+  .hero-logo-img { max-width: 100%; border-radius: 14px; }
 }
 .hero-title {
   font-size: clamp(2.8rem, 7vw, 5.5rem);
@@ -596,6 +610,66 @@ body {
 }
 
 /* =====================
+   OFICINAS (MAPA)
+   ===================== */
+.modal-content-map {
+  max-width: 560px;
+}
+.oficinas-direccion {
+  color: #5a6a80;
+  font-size: 0.95rem;
+  margin: -0.5rem 0 1rem;
+}
+.oficinas-map-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid #d4e3ff;
+  margin-bottom: 1.2rem;
+}
+.oficinas-map-wrap iframe {
+  display: block;
+}
+.oficinas-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.oficinas-actions .btn-primary,
+.oficinas-actions .btn-outline-dark {
+  flex: 1;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+}
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 2px solid #0070e0;
+  color: #0070e0;
+  font-weight: 700;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-outline-dark:hover {
+  background: #0070e0;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.footer-oficinas-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00d4ff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+.footer-oficinas-btn:hover { text-decoration: underline; }
+
+/* =====================
    FOOTER
    ===================== */
 .footer {
@@ -921,4 +995,94 @@ body {
 @media (max-width: 400px) {
   .srv-grid { grid-template-columns: 1fr; }
   .pillars { grid-template-columns: 1fr; }
+}
+
+/* =====================
+   SERVICIOS — GRID REDUCIDA (2 tarjetas)
+   ===================== */
+.srv-grid-2 {
+  grid-template-columns: repeat(2, minmax(220px, 320px));
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .srv-grid-2 { grid-template-columns: 1fr; max-width: 320px; }
+}
+
+/* =====================
+   GESTORÍA
+   ===================== */
+.gestoria-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+.gestoria-item {
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 4px 20px rgba(13, 27, 42, 0.07);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.gestoria-item[open] {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 112, 224, 0.15);
+}
+.gestoria-item summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0d1b2a;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  position: relative;
+  padding-right: 1.6rem;
+}
+.gestoria-item summary::-webkit-details-marker { display: none; }
+.gestoria-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0070e0;
+  transition: transform 0.2s;
+}
+.gestoria-item[open] summary::after {
+  content: '−';
+}
+.gestoria-icon { font-size: 1.3rem; }
+.gestoria-list {
+  margin: 0.9rem 0 1rem;
+  padding-left: 1.3rem;
+  color: #5a6a80;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.gestoria-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #00d4ff, #0070e0);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.3rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.gestoria-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 112, 224, 0.3);
+}
+.gestoria-item-featured {
+  background: linear-gradient(135deg, #eaf7ff, #f0f4ff);
+  border-color: rgba(124, 58, 237, 0.3);
 }
